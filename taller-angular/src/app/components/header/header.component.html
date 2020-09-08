@@ -1,0 +1,32 @@
+<div class="container-fluid bg-dark">
+    <div class="container">
+        <div class="row m-0 d-flex justify-content-center align-items-center py-3">
+            <h2 class="text-white mb-0">Tienda<span class="ml-1 pb-1 px-1 bg-danger text-dark">Angular</span></h2>
+            <div *ngIf="logged" class="ml-auto">
+                <button class="btn btn-danger mr-1">Entrar</button>
+                <button class="btn btn-outline-light ml-1">Registrarse</button>
+            </div>
+            <div *ngIf="!logged" class="ml-auto d-flex align-items-center text-white">
+                <div class="dropdown mr-2">
+                    <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        ¡Hola {{userName}}!
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Datos personales</a>
+                        <a class="dropdown-item" href="#">Mis favoritos</a>
+                        <a class="dropdown-item" href="#">Salir</a>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center">
+                    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-cart-fill ml-2 mb-0"
+                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                    </svg>
+                    <span class="badge badge-light align-self-start">{{cardItems}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
