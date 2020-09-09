@@ -10,6 +10,7 @@ import { PromotionProductComponent } from './components/promotion-product/promot
 import { ProductComponent } from './components/product/product.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     PromotionProductComponent,
     ProductComponent,
     ProductListComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
