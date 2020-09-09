@@ -14,6 +14,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ShoppingCardModalComponent } from './components/shopping-card-modal/shopping-card-modal.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ShoppingCardModalComponent } from './components/shopping-card-modal/sho
     ProfileComponent,
     LoginComponent,
     RegistrationComponent,
-    ShoppingCardModalComponent
+    ShoppingCardModalComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

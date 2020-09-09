@@ -1,0 +1,276 @@
+<div class="row m-0">
+    <div class="col-8">
+        <div class="col-12 p-3 bg-light">
+            <div class="row m-0">
+                <div class="col-5 px-0 pr-1">
+                    <div class="card m-0 p-3">
+                        <p class="font-weight-bold">Datos de contacto</p>
+                        <p class="mb-0">Nombre Apellido Apellido</p>
+                        <p class="mb-0">correo-electronico@correo.com</p>
+                    </div>
+                </div>
+                <div class="col-7 px-0 pl-1">
+                    <div class="card m-0 p-3 h-100">
+                        <p class="font-weight-bold">Seleccionar envío:</p>
+                        <div class="row m-0 justify-content-between h6">
+                            <div class="form-check form-check-inline align-items-baseline">
+                                <input class="form-check-input" type="radio" name="shippingOptions" id="shippingOption1"
+                                    value="option1">
+                                <label class="form-check-label" for="shippingOption1">
+                                    <span class="d-block">Correos</span>
+                                    <span class="d-block text-muted text-center">6,90€</span>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline align-items-baseline">
+                                <input class="form-check-input" type="radio" name="shippingOptions" id="shippingOption2"
+                                    value="option2">
+                                <label class="form-check-label" for="shippingOption2">
+                                    <span class="d-block">Empresa mensajería</span>
+                                    <span class="d-block text-muted text-center">4,90€</span>
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline align-items-baseline">
+                                <input class="form-check-input" type="radio" name="shippingOptions" id="shippingOption3"
+                                    value="option3">
+                                <label class="form-check-label" for="shippingOption3">
+                                    <span class="d-block">Recoger en tienda</span>
+                                    <span class="d-block text-muted text-center">Gratis</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 px-0 mt-3">
+                <div class="card m-0 p-3">
+                    <p class="font-weight-bold">Dirección de evío:</p>
+                    <div class="row m-0 justify-content-around h6">
+                        <div class="form-check form-check-inline align-items-baseline">
+                            <input class="form-check-input" type="radio" name="addressOptions" id="addressOption1"
+                                value="option1">
+                            <label class="form-check-label" for="addressOption1">
+                                <span class="d-block">C/Algo, nº25, Portal 1, 2º Dcha</span>
+                                <span class="d-block">28001, Ciudad, Provincia</span>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="addressOptions" id="addressOption2"
+                                value="option2" data-toggle="collapse" data-target="#collapseAddress">
+                            <label class="form-check-label" for="addressOption2">Enviar a otra dirección</label>
+                        </div>
+                    </div>
+                    <div class="collapse" id="collapseAddress">
+                        <div class="card border-0 text-left mt-4 px-3">
+                            <div class="form-group">
+                                <label for="address" class="mb-1">Dirección</label>
+                                <input type="text" class="form-control" id="address">
+                            </div>
+                            <div class="row m-0">
+                                <div class="col-2 px-0 pr-1">
+                                    <div class="form-group">
+                                        <label for="postalCode" class="mb-1">CP</label>
+                                        <input type="text" class="form-control" id="postalCode">
+                                    </div>
+                                </div>
+                                <div class="col-6 px-0 pl-1 pr-1">
+                                    <div class="form-group">
+                                        <label for="city" class="mb-1">Ciudad</label>
+                                        <input type="text" class="form-control" id="city">
+                                    </div>
+                                </div>
+                                <div class="col-4 px-0 pl-1">
+                                    <div class="form-group">
+                                        <label for="province" class="mb-1">Provincia</label>
+                                        <input type="text" class="form-control" id="province">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-0">
+                                <button class="btn btn-dark ml-auto">Seleccionar dirección</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 px-0 mt-3">
+                <div class="card m-0 p-3">
+                    <p class="font-weight-bold">Seleccionar modo de pago:</p>
+                    <div class="row m-0 justify-content-around h6">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="paymentOptions" id="paymentOption1"
+                                value="option1" data-toggle="collapse" data-target="#collapsePaymentCards">
+                            <label class="form-check-label" for="paymentOption1">Tarjeta de crédito</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="paymentOptions" id="paymentOption2"
+                                value="option2">
+                            <label class="form-check-label" for="paymentOption2">Paypal</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="paymentOptions" id="paymentOption3"
+                                value="option3">
+                            <label class="form-check-label" for="paymentOption3">Contra reembolso</label>
+                        </div>
+                    </div>
+                    <div class="collapse" id="collapsePaymentCards">
+                        <div class="row m-0 mt-4">
+                            <div class="col-4">
+                                <div class="card text-left p-3 credit-card h-100">
+                                    <p class="mb-0 font-weight-bold">Nombre Apellido Apellido</p>
+                                    <p class="mb-0">1111 1111 1111 1111</p>
+                                    <p class="mb-0 text-muted">01/2025</p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="card text-left p-3 credit-card h-100">
+                                    <p class="mb-0 font-weight-bold">Nombre Apellido Apellido</p>
+                                    <p class="mb-0">1111 1111 1111 1111</p>
+                                    <p class="mb-0 text-muted">01/2025</p>
+                                </div>
+                            </div>
+                            <div class="col-4" data-toggle="collapse" data-target="#collapseNewCreditCard">
+                                <div class="card align-items-center justify-content-center p-3 credit-card h-100">
+                                    <p class="mb-0 font-weight-bold">Seleccionar otra</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="collapse" id="collapseNewCreditCard">
+                            <div class="card border-0 mt-4 px-3 text-left">
+                                <div class="form-group">
+                                    <label for="creditCardHolder" class="mb-1">Titular</label>
+                                    <input type="text" class="form-control" id="creditCardHolder">
+                                </div>
+                                <div class="row m-0">
+                                    <div class="col-8 px-0 pr-1">
+                                        <div class="form-group">
+                                            <label for="creditCardNumber" class="mb-1">Número</label>
+                                            <input type="text" class="form-control" id="creditCardNumber">
+                                        </div>
+                                    </div>
+                                    <div class="col-4 px-0 pl-1">
+                                        <div class="form-group">
+                                            <label for="creditCardDate" class="mb-1">Fecha caducidad</label>
+                                            <input type="text" class="form-control" id="creditCardDate">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row m-0">
+                                    <button class="btn btn-dark ml-auto">Usar tarjeta</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 px-0 mt-3">
+                <div class="card m-0 p-3">
+                    <div class="row m-0 justify-content-around align-items-center h6">
+                        <div class="col-3 px-0">
+                            <p class="font-weight-bold mb-0">Código de descuento:</p>
+                        </div>
+                        <div class="col-7 px-0 pr-3">
+                            <input class="form-control" />
+                        </div>
+                        <div class="col-2 px-0 pl-2">
+                            <button class="btn btn-outline-dark btn-block">Aplicar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="col-12 p-3 text-center bg-light">
+            <div class="card flex-row m-0 my-2 p-3">
+                <div class="col-4 px-0">
+                    <img class="img-fluid" [src]="product.img" [alt]="product.name">
+                </div>
+                <div class="col-8 px-0 d-flex flex-column justify-content-center align-items-center">
+                    <div class="col-12 px-0">
+                        <p class="mb-0 font-weight-bold h4">{{product.name}}</p>
+                        <p class="mb-2">{{product.description}}</p>
+                        <div
+                            class="row m-0 pb-2 mb-2 text-right d-flex align-items-center justify-content-end border-bottom border-dark">
+                            <span class="mb-0 mr-1 h4">{{product.currentPrice}}€</span>x
+                            <span class="mb-0 mx-1 h4">{{product.boughtQuantity}}</span>
+                            <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-trash-fill ml-1"
+                                fill="#df4759" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
+                            </svg>
+                        </div>
+                        <div class="row m-0">
+                            <div class="col-12 px-0 text-right font-weight-bold mb-0">
+                                <span class="text-muted">Total:</span> <span
+                                    class="h3 ml-3">{{product.currentPrice * product.boughtQuantity}}€</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex-row m-0 my-2 p-3">
+                <div class="col-4 px-0">
+                    <img class="img-fluid" [src]="product.img" [alt]="product.name">
+                </div>
+                <div class="col-8 px-0 d-flex flex-column justify-content-center align-items-center">
+                    <div class="col-12 px-0">
+                        <p class="mb-0 font-weight-bold h4">{{product.name}}</p>
+                        <p class="mb-2">{{product.description}}</p>
+                        <div
+                            class="row m-0 pb-2 mb-2 text-right d-flex align-items-center justify-content-end border-bottom border-dark">
+                            <span class="mb-0 mr-1 h4">{{product.currentPrice}}€</span>x
+                            <span class="mb-0 mx-1 h4">{{product.boughtQuantity}}</span>
+                            <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-trash-fill ml-1"
+                                fill="#df4759" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
+                            </svg>
+                        </div>
+                        <div class="row m-0">
+                            <div class="col-12 px-0 text-right font-weight-bold mb-0">
+                                <span class="text-muted">Total:</span> <span
+                                    class="h3 ml-3">{{product.currentPrice * product.boughtQuantity}}€</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex-row m-0 my-2 p-3">
+                <div class="col-6 px-0 text-left">
+                    <p class="mb-0 font-weight-bold">Descuentos:</p>
+                </div>
+                <div class="col-6 px-0 text-danger text-right">
+                    <p class="mb-0 font-weight-bold">BIENVENIDA</p>
+                    <p class="mb-0 h4">-5%</p>
+                </div>
+            </div>
+            <div class="card flex-row m-0 my-2 p-3">
+                <div class="col-6 px-0 text-left">
+                    <p class="mb-0 font-weight-bold">Envío:</p>
+                </div>
+                <div class="col-6 px-0 text-right">
+                    <p class="mb-0 font-weight-bold">Correos</p>
+                    <p class="mb-0 h4">6,90€</p>
+                </div>
+            </div>
+            <div class="card flex-row m-0 my-2 p-3 align-items-center">
+                <div class="col-6 px-0 text-left">
+                    <p class="mb-0 font-weight-bold">IVA (21%):</p>
+                </div>
+                <div class="col-6 px-0 text-right">
+                    <p class="mb-0 h4">557,80€</p>
+                </div>
+            </div>
+            <div class="card flex-row bg-dark sflex-row m-0 my-2 p-3 h4 text-white">
+                <div class="col-6 px-0 text-left">
+                    <p class="mb-0">TOTAL</p>
+                </div>
+                <div class="col-6 px-0 text-right">
+                    <p class="mb-0">3213,80€</p>
+                </div>
+            </div>
+            <button class="btn btn-success btn-block"><span class="h3">PAGAR</span></button>
+        </div>
+    </div>
+</div>
