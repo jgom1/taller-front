@@ -2,11 +2,11 @@
     <div class="container">
         <div class="row m-0 d-flex justify-content-center align-items-center py-3">
             <h2 class="text-white mb-0">Tienda<span class="ml-1 pb-1 px-1 bg-danger text-dark">Angular</span></h2>
-            <div *ngIf="logged" class="ml-auto">
-                <button class="btn btn-danger mr-1">Entrar</button>
+            <div *ngIf="!logged" class="ml-auto">
+                <button class="btn btn-danger mr-1" data-toggle="modal" data-target="#exampleModal">Entrar</button>
                 <button class="btn btn-outline-light ml-1">Registrarse</button>
             </div>
-            <div *ngIf="!logged" class="ml-auto d-flex align-items-center text-white">
+            <div *ngIf="logged" class="ml-auto d-flex align-items-center text-white">
                 <div class="dropdown mr-2">
                     <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -29,4 +29,8 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <app-login></app-login>
 </div>
