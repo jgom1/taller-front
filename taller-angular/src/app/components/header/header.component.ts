@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.logged = false;
+    this.logged = true;
     this.userName = 'Comprador';
     this.cardItems = 0;
   }
