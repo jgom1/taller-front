@@ -15,6 +15,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ShoppingCardModalComponent } from './components/shopping-card-modal/shopping-card-modal.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { PurchaseHistoryComponent } from './components/purchase-history/purchase-history.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PaymentComponent } from './components/payment/payment.component';
     LoginComponent,
     RegistrationComponent,
     ShoppingCardModalComponent,
-    PaymentComponent
+    PaymentComponent,
+    PurchaseHistoryComponent
   ],
   imports: [
     BrowserModule,

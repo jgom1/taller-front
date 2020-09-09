@@ -1,0 +1,169 @@
+<div class="col-12 p-5">
+    <div class="col-12 p-3 bg-light">
+        <h2 class="text-center mb-5">Mi historial de compras</h2>
+        <div class="row m-0">
+            <div class="col-6 px-2">
+                <div class="card p-3 my-2">
+                    <div class="row m-0 align-items-center text-center cursor-pointer" data-toggle="collapse" data-target="#purchase1">
+                        <div class="col-3 px-0">
+                            <p class="mb-0">
+                                <span class="d-block text-muted small">Fecha de compra</span>
+                                <span class="d-block font-weight-bold">01/01/2020</span>
+                            </p>
+                        </div>
+                        <div class="col-3 px-0">
+                            <p class="mb-0">
+                                <span class="d-block text-muted small">Artículos</span>
+                                <span class="d-block font-weight-bold">5</span>
+                            </p>
+                        </div>
+                        <div class="col-3 px-0">
+                            <p class="mb-0">
+                                <span class="d-block text-muted small">Precio total</span>
+                                <span class="d-block font-weight-bold">450€</span>
+                            </p>
+                        </div>
+                        <div class="col-3 px-0">
+                            <p class="h5 mb-0"><span class="badge badge-info font-weight-bold p-2">Entregado</span></p>
+                        </div>
+                    </div>
+                    <div data-toggle="collapse" id="purchase1" class="pt-4">
+                        <div class="row m-0 align-items-center border-top border-dark">
+                            <div class="col-2 px-0">
+                                <img [src]="product.img" [alt]="product.name" class="img-fluid">
+                            </div>
+                            <div class="col-9 px-0 pl-3">
+                                <div class="row m-0">
+                                    <div class="col-8 px-0 d-flex flex-column justify-content-center">
+                                        <p class="h4">{{product.name}}</p>
+                                        <p class="mb-0">{{product.description}}</p>
+                                    </div>
+                                    <div class="col-4 px-0 d-flex justify-content-end align-items-center">
+                                        <p class="mb-0 h3">200€ x 2</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-0 align-items-center border-top border-dark">
+                            <div class="col-2 px-0">
+                                <img [src]="product.img" [alt]="product.name" class="img-fluid">
+                            </div>
+                            <div class="col-9 px-0 pl-3">
+                                <div class="row m-0">
+                                    <div class="col-8 px-0 d-flex flex-column justify-content-center">
+                                        <p class="h4">{{product.name}}</p>
+                                        <p class="mb-0">{{product.description}}</p>
+                                    </div>
+                                    <div class="col-4 px-0 d-flex justify-content-end align-items-center">
+                                        <p class="mb-0 h3">100€ x 1</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-0 text-center border-top border-dark pt-2">
+                            <div class="col-4 px-0">
+                                <p class="mb-0">
+                                    <span class="d-block text-muted small">Envío correos</span>
+                                    <span class="d-block font-weight-bold">4,90€</span>
+                                </p>
+                            </div>
+                            <div class="col-4 px-0">
+                                <p class="mb-0">
+                                    <span class="d-block text-muted small">Descuentos</span>
+                                    <span class="d-block font-weight-bold">20€</span>
+                                </p>
+                            </div>
+                            <div class="col-4 px-0">
+                                <p class="mb-0">
+                                    <span class="d-block text-muted small">IVA(21%)</span>
+                                    <span class="d-block font-weight-bold">40€</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 px-2">
+                <div class="card p-3 my-2">
+                    <div class="row m-0 align-items-center text-center cursor-pointer" data-toggle="collapse" data-target="#purchase2">
+                        <div class="col-3 px-0">
+                            <p class="mb-0">
+                                <span class="d-block text-muted small">Fecha de compra</span>
+                                <span class="d-block font-weight-bold">01/01/2020</span>
+                            </p>
+                        </div>
+                        <div class="col-3 px-0">
+                            <p class="mb-0">
+                                <span class="d-block text-muted small">Artículos</span>
+                                <span class="d-block font-weight-bold">5</span>
+                            </p>
+                        </div>
+                        <div class="col-3 px-0">
+                            <p class="mb-0">
+                                <span class="d-block text-muted small">Precio total</span>
+                                <span class="d-block font-weight-bold">450€</span>
+                            </p>
+                        </div>
+                        <div class="col-3 px-0">
+                            <p class="h5 mb-0"><span class="badge badge-success font-weight-bold p-2">Enviado</span></p>
+                        </div>
+                    </div>
+                    <div data-toggle="collapse" id="purchase2" class="pt-4">
+                        <div class="row m-0 align-items-center border-top border-dark">
+                            <div class="col-2 px-0">
+                                <img [src]="product.img" [alt]="product.name" class="img-fluid">
+                            </div>
+                            <div class="col-9 px-0 pl-3">
+                                <div class="row m-0">
+                                    <div class="col-8 px-0 d-flex flex-column justify-content-center">
+                                        <p class="h4">{{product.name}}</p>
+                                        <p class="mb-0">{{product.description}}</p>
+                                    </div>
+                                    <div class="col-4 px-0 d-flex justify-content-end align-items-center">
+                                        <p class="mb-0 h3">200€ x 2</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-0 align-items-center border-top border-dark">
+                            <div class="col-2 px-0">
+                                <img [src]="product.img" [alt]="product.name" class="img-fluid">
+                            </div>
+                            <div class="col-9 px-0 pl-3">
+                                <div class="row m-0">
+                                    <div class="col-8 px-0 d-flex flex-column justify-content-center">
+                                        <p class="h4">{{product.name}}</p>
+                                        <p class="mb-0">{{product.description}}</p>
+                                    </div>
+                                    <div class="col-4 px-0 d-flex justify-content-end align-items-center">
+                                        <p class="mb-0 h3">100€ x 1</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-0 text-center border-top border-dark pt-2">
+                            <div class="col-4 px-0">
+                                <p class="mb-0">
+                                    <span class="d-block text-muted small">Envío correos</span>
+                                    <span class="d-block font-weight-bold">4,90€</span>
+                                </p>
+                            </div>
+                            <div class="col-4 px-0">
+                                <p class="mb-0">
+                                    <span class="d-block text-muted small">Descuentos</span>
+                                    <span class="d-block font-weight-bold">20€</span>
+                                </p>
+                            </div>
+                            <div class="col-4 px-0">
+                                <p class="mb-0">
+                                    <span class="d-block text-muted small">IVA(21%)</span>
+                                    <span class="d-block font-weight-bold">40€</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
