@@ -17,6 +17,11 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { ShoppingCardModalComponent } from './components/shopping-card-modal/shopping-card-modal.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PurchaseHistoryComponent } from './components/purchase-history/purchase-history.component';
+import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
+import { ProductDetailPageComponent } from './pages/product-detail-page/product-detail-page.component';
+import { FavouritesPageComponent } from './pages/favourites-page/favourites-page.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { PurchasesPageComponent } from './pages/purchases-page/purchases-page.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,12 @@ import { PurchaseHistoryComponent } from './components/purchase-history/purchase
     RegistrationComponent,
     ShoppingCardModalComponent,
     PaymentComponent,
-    PurchaseHistoryComponent
+    PurchaseHistoryComponent,
+    ProductListPageComponent,
+    ProductDetailPageComponent,
+    FavouritesPageComponent,
+    ProfilePageComponent,
+    PurchasesPageComponent
   ],
   imports: [
     BrowserModule,
