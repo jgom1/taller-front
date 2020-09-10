@@ -1,0 +1,260 @@
+{
+    "posts": [
+        {
+            "id": 1,
+            "title": "json-server",
+            "author": "typicode"
+        }
+    ],
+    "comments": [
+        {
+            "id": 1,
+            "body": "some comment",
+            "postId": 1
+        }
+    ],
+    "profile": {
+        "name": "typicode"
+    },
+    "users": [
+        {
+            "id": 1,
+            "userName": "Juan",
+            "userSurname": "Pérez",
+            "userEmail": "juan-perez@correo.com",
+            "userPassword": "abc123"
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "productName": "Apple iPhone 11",
+            "productResume": "256GB Malva móvil libre",
+            "productPromotion": false,
+            "productOldPrice": 0,
+            "productPrice": 1095.98,
+            "productQuantity": 0,
+            "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MARKET/019/019/922/0190199227057_00_640x640.jpg"
+        },
+        {
+            "id": 2,
+            "productName": "Samsung Galaxy A51",
+            "productResume": "128 GB Azul móvil libre",
+            "productPromotion": true,
+            "productOldPrice": 369,
+            "productPrice": 299,
+            "productQuantity": 10,
+            "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202001/27/00157063420806009_13__640x640.jpg"
+        },
+        {
+            "id": 3,
+            "productName": "Huawei P30 Lite",
+            "productResume": "128GB Breathing Crystal móvil libre",
+            "productPromotion": true,
+            "productOldPrice": 259,
+            "productPrice": 229,
+            "productQuantity": 15,
+            "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/201909/30/00157063419600009_1__640x640.jpg"
+        },
+        {
+            "id": 4,
+            "productName": "Apple iPhone SE 2020",
+            "productResume": "64GB Negro móvil libre",
+            "productPromotion": false,
+            "productOldPrice": 0,
+            "productPrice": 489,
+            "productQuantity": 25,
+            "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202004/16/00194610401252_1__640x640.jpg"
+        },
+        {
+            "id": 5,
+            "productName": "Xiaomi Redmi Note 9",
+            "productResume": "64GB Midnight Grey móvil libre",
+            "productPromotion": true,
+            "productOldPrice": 199.90,
+            "productPrice": 169.90,
+            "productQuantity": 17,
+            "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202005/26/00157063421812009_1__640x640.jpg"
+        },
+        {
+            "id": 6,
+            "productName": "Xiaomi Redmi Note 9",
+            "productResume": "64GB Midnight Grey móvil libre",
+            "productPromotion": true,
+            "productOldPrice": 199.90,
+            "productPrice": 169.90,
+            "productQuantity": 17,
+            "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202005/26/00157063421812009_1__640x640.jpg"
+        },
+        {
+            "id": 7,
+            "productName": "Apple iPhone 11",
+            "productResume": "128GB Blanco móvil libre",
+            "productPromotion": false,
+            "productOldPrice": 0,
+            "productPrice": 859,
+            "productQuantity": 17,
+            "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/201909/11/00194610600846____1__640x640.jpg"
+        },
+        {
+            "id": 8,
+            "productName": "Apple iPhone 11 Pro Max",
+            "productResume": "256GB Verde Noche móvil libre",
+            "productPromotion": true,
+            "productOldPrice": 1429,
+            "productPrice": 1329,
+            "productQuantity": 17,
+            "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/201909/11/00194611000723_1__640x640.jpg"
+        },
+        {
+            "id": 9,
+            "productName": "Apple iPhone 11",
+            "productResume": "128GB Negro móvil libre",
+            "productPromotion": false,
+            "productOldPrice": 0,
+            "productPrice": 859,
+            "productQuantity": 12,
+            "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/201909/11/00194610600838____1__640x640.jpg"
+        },
+        {
+            "id": 10,
+            "productName": "Samsung Galaxy A30s",
+            "productResume": "128GB Negro móvil libre",
+            "productPromotion": false,
+            "productOldPrice": 0,
+            "productPrice": 209,
+            "productQuantity": 15,
+            "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202004/16/00157063421473009_1__640x640.jpg"
+        },
+        {
+            "id": 11,
+            "productName": "Samsung Galaxy A20e",
+            "productResume": "32GB Azul móvil libre",
+            "productPromotion": false,
+            "productOldPrice": 0,
+            "productPrice": 159,
+            "productQuantity": 19,
+            "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/201905/20/00157063417950009_1__640x640.jpg"
+        },
+        {
+            "id": 12,
+            "productName": "Xiaomi Redmi Note 9",
+            "productResume": "128 GB Polar White",
+            "productPromotion": false,
+            "productOldPrice": 0,
+            "productPrice": 199,
+            "productQuantity": 9,
+            "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202005/26/00157063421796009_1__640x640.jpg"
+        },
+        {
+            "id": 13,
+            "productName": "Apple iPhone SE 2020",
+            "productResume": "64GB RED móvil libre",
+            "productPromotion": false,
+            "productOldPrice": 0,
+            "productPrice": 489,
+            "productQuantity": 5,
+            "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202004/16/00194610401278_1__640x640.jpg"
+        },
+        {
+            "id": 14,
+            "productName": "Samsung Galaxy A51",
+            "productResume": "128GB Blanco móvil libre",
+            "productPromotion": false,
+            "productOldPrice": 0,
+            "productPrice": 299,
+            "productQuantity": 13,
+            "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202001/27/00157063420822009_12__640x640.jpg"
+        },
+        {
+            "id": 15,
+            "productName": "Alcatel 3088",
+            "productResume": "4GB Azul móvil libre",
+            "productPromotion": false,
+            "productOldPrice": 0,
+            "productPrice": 64.90,
+            "productQuantity": 30,
+            "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202001/09/00157063302657009_1__640x640.jpg"
+        },
+        {
+            "id": 16,
+            "productName": "OPPO Reno 2",
+            "productResume": "8GB Azul móvil libre",
+            "productPromotion": false,
+            "productOldPrice": 0,
+            "productPrice": 409.90,
+            "productQuantity": 10,
+            "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202002/06/00157063419840009_8__640x640.jpg"
+        },
+        {
+            "id": 17,
+            "productName": "LG V30 H930",
+            "productResume": "64GB Azul móvil libre",
+            "productPromotion": false,
+            "productOldPrice": 0,
+            "productPrice": 404.68,
+            "productQuantity": 8,
+            "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MARKET/880/608/702/8806087028966_00_640x640.jpg"
+        },
+        {
+            "id": 18,
+            "productName": "Wiko View 2 GO",
+            "productResume": "16+2 Deep Bleen móvil libre",
+            "productPromotion": false,
+            "productOldPrice": 0,
+            "productPrice": 106.57,
+            "productQuantity": 8,
+            "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MARKET/694/327/941/6943279418098_00_640x640.jpg"
+        },
+        {
+            "id": 19,
+            "productName": "LG K51S",
+            "productResume": "64 GB titán móvil libre",
+            "productPromotion": false,
+            "productOldPrice": 0,
+            "productPrice": 199.90,
+            "productQuantity": 4,
+            "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202009/07/00157063421531009_8__640x640.jpg"
+        },
+        {
+            "id": 20,
+            "productName": "Oppo Find X2 5G",
+            "productResume": "256 GB negro móvil libre",
+            "productPromotion": false,
+            "productOldPrice": 0,
+            "productPrice": 949.90,
+            "productQuantity": 14,
+            "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202005/29/00157063600266009_4__640x640.jpg"
+        }
+    ],
+    "purchases": [
+        {
+            "id": 1,
+            "userId": 1,
+            "purchaseDate": "10/09/2020",
+            "purchaseProducts": [
+                {
+                    "purchaseid": 2,
+                    "purchaseProductPrice": 299,
+                    "purchaseProductQuantity": 1
+                },
+                {
+                    "purchaseid": 3,
+                    "purchaseProductPrice": 229,
+                    "purchaseProductQuantity": 1
+                }
+            ],
+            "purchaseDiscounts": [
+                {
+                    "purchaseDiscountName": "BIENVENIDA",
+                    "purchaseDiscountPercentage": 5
+                }
+            ],
+            "purchaseShipping": {
+                "purchaseShippingName": "Correos",
+                "purchaseShippingPayment": 6.90
+            },
+            "purchasePayment": 614.87
+        }
+    ]
+}
