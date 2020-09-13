@@ -11,7 +11,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getProducts() {
-    this.http.get(`${this.URL}/products`).subscribe((products: any) => { return products });
+    return this.http.get(`${this.URL}products`);
   }
 
   getProductById(id: number) {
