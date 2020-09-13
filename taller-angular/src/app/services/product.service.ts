@@ -15,7 +15,7 @@ export class ProductService {
   }
 
   getProductById(id: number) {
-    this.http.get(`${this.URL}/products/${id}`).subscribe((product: any) => { return product });
+    return this.http.get(`${this.URL}products/${id}`);
   }
 
   getProductByFeatures(features: string) {
