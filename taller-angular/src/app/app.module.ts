@@ -1,6 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { appReducer } from './store/app.reducer';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +27,7 @@ import { ProductDetailPageComponent } from './pages/product-detail-page/product-
 import { FavouritesPageComponent } from './pages/favourites-page/favourites-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { PurchasesPageComponent } from './pages/purchases-page/purchases-page.component';
+import { environment } from '../environments/environment.prod';
 
 @NgModule({
   declarations: [
@@ -48,7 +54,13 @@ import { PurchasesPageComponent } from './pages/purchases-page/purchases-page.co
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    StoreModule.forRoot({ app: appReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production, 
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

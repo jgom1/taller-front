@@ -11,14 +11,14 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUserById(id: number) {
-    this.http.get(`${this.URL}/users/${id}`).subscribe((user: any) => { return user });
+    return this.http.get(`${this.URL}users/${id}`);
   }
 
   getUserByEmail(email: string) {
-    this.http.get(`${this.URL}/users?userEmail=${email}`).subscribe((user: any) => { return user });
+    return this.http.get(`${this.URL}users?userEmail=${email}`);
   }
 
   addNewUser(user: any) {
-    this.http.post(`${this.URL}/users`, user).subscribe((newUser: any) => { return newUser });
+    return this.http.post(`${this.URL}users`, user);
   }
 }
