@@ -1,49 +1,74 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { appActions } from '../../store/app.actions';
 import { UserService } from '../../services/user.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   @Output() loggedEmitter = new EventEmitter<boolean>();
   private logged$: Observable<boolean> = this.store.select((state: any) => state.app.userLogged);
-  public email: string;
-  public password: string;
+  public loginForm: FormGroup;
   public errorMessage: string;
+  private subscription: Subscription = new Subscription();
 
   constructor(
+    private fb: FormBuilder,
     private userService: UserService,
     private store: Store<{
       userLogged: boolean,
-      user:{}
+      user: {}
     }>) { }
 
   ngOnInit(): void {
-    this.logged$.subscribe((data: any) => {
-      if (data === true) {
-        this.loggedEmitter.emit(data);
-        document.getElementById('closeModal').click();
+    this.subscribeLogged();
+    this.createForm();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  public login() {
+    this.userService.getUserByEmail(this.loginForm.get('email').value).subscribe((data: any) => {
+      if (data.length == 0 || data[0].userPassword !== this.loginForm.get('password').value) {
+        this.errorMessage = 'El usuario introducido no existe o los datos no son correctos.'
+      } else {
+        this.solveSuccessfulLogin(data[0]);
       }
     });
   }
 
-  public login() {
-    this.userService.getUserByEmail(this.email).subscribe((user: any) => {
-      if (user.length == 0 || user[0].userPassword !== this.password) {
-        this.errorMessage = 'El usuario introducido no existe o los datos no son correctos.'
-        console.log('No existe ese ususario o la contraseña no coincide');
-      } else {
-        this.errorMessage = '';
-        this.store.dispatch(appActions.login());
-        this.store.dispatch(appActions.setUser(user[0]));
-      }
+  private subscribeLogged(): void {
+    this.subscription.add(
+      this.logged$.subscribe((data: any) => {
+        if (data === true) {
+          this.loggedEmitter.emit(data);
+          document.getElementById('closeModal').click();
+        }
+      })
+    );
+  }
+
+  private createForm(): void {
+    this.loginForm = this.fb.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
     });
+  }
+
+  private solveSuccessfulLogin(user: any): void {
+    this.loginForm.get('email').setValue('');
+    this.loginForm.get('password').setValue('');
+    this.errorMessage = '';
+    this.store.dispatch(appActions.login());
+    this.store.dispatch(appActions.setUser(user));
   }
 
 }
