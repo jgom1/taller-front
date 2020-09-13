@@ -6,6 +6,7 @@ import { FavouritesPageComponent } from './pages/favourites-page/favourites-page
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { PurchasesPageComponent } from './pages/purchases-page/purchases-page.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { AnonymousPageComponent } from './pages/anonymous-page/anonymous-page.component';
 
 const routes: Routes = [
   { path: 'products', component: ProductListPageComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfilePageComponent },
   { path: 'purchases', component: PurchasesPageComponent },
   { path: 'payment', component: PaymentComponent },
+  { path: 'other', component: AnonymousPageComponent },
   { path: '', redirectTo: '/products', pathMatch: 'full' },
   { path: '**', component: ProductListPageComponent }
 ];
