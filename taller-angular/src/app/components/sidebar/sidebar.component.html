@@ -1,9 +1,4 @@
 <div class="text-center">
     <h2 class="mb-0 py-3 bg-dark text-white">¡Ofertas!</h2>
-    <app-promotion-product></app-promotion-product>
-    <app-promotion-product></app-promotion-product>
-    <app-promotion-product></app-promotion-product>
-    <app-promotion-product></app-promotion-product>
-    <app-promotion-product></app-promotion-product>
-    <app-promotion-product></app-promotion-product>
+    <app-promotion-product *ngFor="let product of products" [product]="product"></app-promotion-product>
 </div>

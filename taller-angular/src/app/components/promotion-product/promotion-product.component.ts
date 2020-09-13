@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-promotion-product',
@@ -7,17 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PromotionProductComponent implements OnInit {
 
-  product:any;
-  constructor() { }
+  @Input() product: any;
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.product = {
-      name: 'Apple iPhone 11 ',
-      description: '64GB Verde móvil libre',
-      oldPrice: 809,
-      currentPrice: 699,
-      img: 'https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/201909/11/00194610401047____1__640x640.jpg'
-    }
+    console.log(this.product);
+  }
+
+  public navigateToProduct() {
+    this.router.navigate(['/product', this.product.id]);
   }
 
 }

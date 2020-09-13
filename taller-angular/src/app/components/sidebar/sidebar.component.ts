@@ -1,15 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  private subscription: Subscription = new Subscription();
+  public products: any[];
+
+  constructor(
+    private productService: ProductService
+  ) { }
 
   ngOnInit(): void {
+    this.getProductList();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  private getProductList() {
+    this.subscription.add(
+      this.productService.getPromotionalProducts().subscribe((data: any) => {
+        console.log('Productos en oferta', data);
+        this.products = data;
+      })
+    );
   }
 
 }

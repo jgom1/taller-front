@@ -23,7 +23,7 @@ export class ProductService {
   }
 
   getPromotionalProducts() {
-    this.http.get(`${this.URL}/products?productPromotion=true`).subscribe((products: any) => { return products });
+    return this.http.get(`${this.URL}products?productPromotion=true`);
   }
 
   updateProduct(product: any) {
