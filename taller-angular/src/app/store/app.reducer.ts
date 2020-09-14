@@ -3,7 +3,8 @@ import { appActions } from "./app.actions";
 
 const initialState = {
     userLogged: false,
-    user: {}
+    user: {},
+    cart: {}
 }
 
 export const featureReducer = createReducer(
@@ -11,6 +12,7 @@ export const featureReducer = createReducer(
     on(appActions.login, (state) => ({ ...state, userLogged: true })),
     on(appActions.logout, (state) => ({ ...state, userLogged: false })),
     on(appActions.setUser, (state, user) => ({ ...state, user })),
+    on(appActions.setCart, (state, cart) => ({ ...state, cart })),
 );
 
 export function appReducer(state, action) {

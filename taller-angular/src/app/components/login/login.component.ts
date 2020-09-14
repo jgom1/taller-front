@@ -23,7 +23,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private store: Store<{
       userLogged: boolean,
-      user: {}
+      user: {},
+      cart: {}
     }>) { }
 
   ngOnInit(): void {
