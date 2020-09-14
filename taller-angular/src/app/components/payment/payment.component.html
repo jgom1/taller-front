@@ -41,7 +41,7 @@
                     <div class="row m-0 justify-content-around h6">
                         <div class="form-check form-check-inline align-items-baseline">
                             <input class="form-check-input" type="radio" name="addressOptions" id="addressOption1"
-                                value="option1">
+                                value="defaultAddress" checked>
                             <label class="form-check-label" for="addressOption1">
                                 <span class="d-block">{{user.userAddress.street}}, nº{{user.userAddress.number}}, Portal
                                     {{user.userAddress.entrance}}, {{user.userAddress.floor}}º
@@ -52,7 +52,7 @@
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="addressOptions" id="addressOption2"
-                                value="option2" data-toggle="collapse" data-target="#collapseAddress">
+                                value="newAddress" data-toggle="collapse" data-target="#collapseAddress">
                             <label class="form-check-label" for="addressOption2">Enviar a otra dirección</label>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                     <div class="row m-0 justify-content-around h6">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="paymentOptions" id="paymentOption1"
-                                value="option1" data-toggle="collapse" data-target="#collapsePaymentCards">
+                                value="option1" data-toggle="collapse" data-target="#collapsePaymentCards" checked>
                             <label class="form-check-label" for="paymentOption1">Tarjeta de crédito</label>
                         </div>
                         <div class="form-check form-check-inline">
@@ -111,41 +111,12 @@
                     </div>
                     <div class="collapse" id="collapsePaymentCards">
                         <div class="row m-0 mt-4">
-                            <div *ngFor="let creditCard of user.userCreditCard" class="col-4">
-                                <div class="card text-left p-3 credit-card h-100">
+                            <div *ngFor="let creditCard of user.userCreditCard; index as i" class="col-4">
+                                <div class="card text-left p-3 credit-card h-100" (click)="setSelectedCreditCard(i)"
+                                    [ngClass]="(i===selectedCreditCard)?'selected-credit-card':'average-credit-card'">
                                     <p class="mb-0 font-weight-bold">{{creditCard.userCreditCardHolder}}</p>
                                     <p class="mb-0">{{creditCard.userCreditCardNumber}}</p>
                                     <p class="mb-0 text-muted">{{creditCard.userCreditCardDate}}</p>
-                                </div>
-                            </div>
-                            <div class="col-4" data-toggle="collapse" data-target="#collapseNewCreditCard">
-                                <div class="card align-items-center justify-content-center p-3 credit-card h-100">
-                                    <p class="mb-0 font-weight-bold">Seleccionar otra</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="collapse" id="collapseNewCreditCard">
-                            <div class="card border-0 mt-4 px-3 text-left">
-                                <div class="form-group">
-                                    <label for="creditCardHolder" class="mb-1">Titular</label>
-                                    <input type="text" class="form-control" id="creditCardHolder">
-                                </div>
-                                <div class="row m-0">
-                                    <div class="col-8 px-0 pr-1">
-                                        <div class="form-group">
-                                            <label for="creditCardNumber" class="mb-1">Número</label>
-                                            <input type="text" class="form-control" id="creditCardNumber">
-                                        </div>
-                                    </div>
-                                    <div class="col-4 px-0 pl-1">
-                                        <div class="form-group">
-                                            <label for="creditCardDate" class="mb-1">Fecha caducidad</label>
-                                            <input type="text" class="form-control" id="creditCardDate">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row m-0">
-                                    <button class="btn btn-dark ml-auto">Usar tarjeta</button>
                                 </div>
                             </div>
                         </div>

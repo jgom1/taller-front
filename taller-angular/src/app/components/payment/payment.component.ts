@@ -21,6 +21,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
   public user: User;
   public shippingType: string = 'Correos';
   public totalPaymentBeforeTaxes: number;
+  public selectedCreditCard: number = 0;
 
   constructor(private store: Store<appState>) { }
 
@@ -65,6 +66,10 @@ export class PaymentComponent implements OnInit, OnDestroy {
   public removeCartItem(indexItem: number) {
     this.cartProducts = [...this.cartProducts].filter((value, index) => index !== indexItem);
     this.store.dispatch(appActions.setCart({ cart: this.cartProducts }));
+  }
+
+  public setSelectedCreditCard(index) {
+    this.selectedCreditCard = index;
   }
 
 }
