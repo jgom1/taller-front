@@ -19,6 +19,7 @@ export class ShoppingCartModalComponent implements OnInit, OnDestroy {
   constructor(private store: Store<appState>) { }
 
   ngOnInit(): void {
+    console.log(this.products);
     this.getCart();
   }
 

@@ -16,9 +16,9 @@ export class HeaderComponent implements OnInit {
   private user$: Observable<any> = this.store.select((state: any) => state.app.user);
   private cart$: Observable<Product[]> = this.store.select((state: any) => state.app.cart);
   private subscription: Subscription = new Subscription();
+  public cardItems: number;
   logged: boolean = false;
   userName: string = '';
-  cardItems: number;
 
   constructor(private store: Store<appState>) { }
 
