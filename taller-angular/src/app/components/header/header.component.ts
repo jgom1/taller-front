@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Store, select } from '@ngrx/store';
+import { Observable, Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { appActions } from '../../store/app.actions';
-import { state } from '@angular/animations';
+import { Product } from '../../models/product.model';
+import { User } from '../../models/user.model';
+import { appState } from '../../store/app.state.interface';
 
 @Component({
   selector: 'app-header',
@@ -13,23 +14,40 @@ import { state } from '@angular/animations';
 export class HeaderComponent implements OnInit {
 
   private user$: Observable<any> = this.store.select((state: any) => state.app.user);
+  private cart$: Observable<Product[]> = this.store.select((state: any) => state.app.cart);
+  private subscription: Subscription = new Subscription();
   logged: boolean = false;
   userName: string = '';
   cardItems: number;
 
-  constructor(private store: Store<{
-    userLogged: boolean,
-    user: any
-  }>) { }
+  constructor(private store: Store<appState>) { }
 
   ngOnInit(): void {
-    this.user$.subscribe((data: any) => {
-      console.log('Usuario en header',data);
-      if (data) {
-        this.userName = data.userName;
-      }
-    });
-    this.cardItems = 0;
+    this.subscribeCart();
+    this.subscribeUser();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  private subscribeCart() {
+    this.subscription.add(
+      this.cart$.subscribe((data: Product[]) => {
+        this.cardItems = data.length;
+      })
+    );
+  }
+
+  private subscribeUser() {
+    this.subscription.add(
+      this.user$.subscribe((data: User) => {
+        console.log('Usuario en header', data);
+        if (data) {
+          this.userName = data.userName;
+        }
+      })
+    );
   }
 
   public setLogged(event) {
