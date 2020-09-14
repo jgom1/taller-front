@@ -1,21 +1,4 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  },
   "users": [
     {
       "id": 1,
@@ -232,32 +215,106 @@
       "id": 1,
       "userId": 1,
       "purchaseDate": "10/09/2020",
-      "purchaseProducts": [2,3],
-      "purchaseDiscounts": [
+      "purchaseProducts": [
         {
-          "purchaseDiscountName": "BIENVENIDA",
-          "purchaseDiscountPercentage": 5
+          "id": 2,
+          "productName": "Samsung Galaxy A51",
+          "productResume": "128 GB Azul móvil libre",
+          "productPromotion": true,
+          "productOldPrice": 369,
+          "productPrice": 299,
+          "productQuantity": 5,
+          "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202001/27/00157063420806009_13__640x640.jpg"
+        },
+        {
+          "id": 3,
+          "productName": "Huawei P30 Lite",
+          "productResume": "128GB Breathing Crystal móvil libre",
+          "productPromotion": true,
+          "productOldPrice": 259,
+          "productPrice": 229,
+          "productQuantity": 15,
+          "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/201909/30/00157063419600009_1__640x640.jpg"
         }
       ],
+      "purchaseDiscount": {
+        "purchaseDiscountName": "BIENVENIDA",
+        "purchaseDiscountPercentage": 5
+      },
       "purchaseShipping": {
         "purchaseShippingName": "Correos",
         "purchaseShippingPayment": 6.9
       },
       "purchasePayment": 614.87,
-      "purchaseState": 1
+      "purchaseState": "Entregado"
     },
     {
-      "id": 1,
+      "id": 2,
       "userId": 1,
       "purchaseDate": "14/09/2020",
-      "purchaseProducts": [4, 5],
-      "purchaseDiscounts": [],
+      "purchaseProducts": [
+        {
+          "id": 4,
+          "productName": "Apple iPhone SE 2020",
+          "productResume": "64GB Negro móvil libre",
+          "productPromotion": false,
+          "productOldPrice": 0,
+          "productPrice": 489,
+          "productQuantity": 25,
+          "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202004/16/00194610401252_1__640x640.jpg"
+        },
+        {
+          "id": 5,
+          "productName": "Xiaomi Redmi Note 9",
+          "productResume": "64GB Midnight Grey móvil libre",
+          "productPromotion": true,
+          "productOldPrice": 199.9,
+          "productPrice": 169.9,
+          "productQuantity": 17,
+          "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202005/26/00157063421812009_1__640x640.jpg"
+        }
+      ],
+      "purchaseDiscount": {},
       "purchaseShipping": {
         "purchaseShippingName": "Correos",
         "purchaseShippingPayment": 6.9
       },
       "purchasePayment": 614.87,
-      "purchaseState": 1
+      "purchaseState": "Enviado"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "purchaseDate": "14/09/2020",
+      "purchaseProducts": [
+        {
+          "id": 6,
+          "productName": "Xiaomi Redmi Note 9",
+          "productResume": "64GB Midnight Grey móvil libre",
+          "productPromotion": true,
+          "productOldPrice": 199.9,
+          "productPrice": 169.9,
+          "productQuantity": 17,
+          "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202005/26/00157063421812009_1__640x640.jpg"
+        },
+        {
+          "id": 7,
+          "productName": "Apple iPhone 11",
+          "productResume": "128GB Blanco móvil libre",
+          "productPromotion": false,
+          "productOldPrice": 0,
+          "productPrice": 859,
+          "productQuantity": 17,
+          "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/201909/11/00194610600846____1__640x640.jpg"
+        }
+      ],
+      "purchaseDiscount": {},
+      "purchaseShipping": {
+        "purchaseShippingName": "Correos",
+        "purchaseShippingPayment": 6.9
+      },
+      "purchasePayment": 614.87,
+      "purchaseState": "Procesado"
     }
   ]
 }

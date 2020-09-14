@@ -21,4 +21,8 @@ export class UserService {
   addNewUser(user: any) {
     return this.http.post(`${this.URL}users`, user);
   }
+
+  getUserPurchases(userId: number) {
+    return this.http.get(`${this.URL}purchases?userId=${userId}`);
+  }
 }
