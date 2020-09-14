@@ -18,6 +18,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
   private user$: Observable<User> = this.store.select((state: any) => state.app.user);
   private subscription: Subscription = new Subscription();
   public cartProducts: Product[];
+  public user: User;
   public shippingType: string = 'Correos';
   public shippingCost: number = 6.90;
   public totalPaymentBeforeTaxes: number;
@@ -26,6 +27,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscribeCart();
+    this.subscribeUser();
   }
 
   ngOnDestroy(): void {
@@ -41,11 +43,6 @@ export class PaymentComponent implements OnInit, OnDestroy {
     );
   }
 
-  public removeCartItem(indexItem: number) {
-    this.cartProducts = [...this.cartProducts].filter((value, index) => index !== indexItem);
-    this.store.dispatch(appActions.setCart({ cart: this.cartProducts }));
-  }
-
   private getTotalProductCost() {
     let totalCost = 0;
     for (const key in this.cartProducts) {
@@ -56,6 +53,19 @@ export class PaymentComponent implements OnInit, OnDestroy {
 
   private getTotalPaymentBeforeTaxes() {
     this.totalPaymentBeforeTaxes = this.getTotalProductCost() + this.shippingCost;
+  }
+
+  private subscribeUser() {
+    this.subscription.add(
+      this.user$.subscribe((data: User) => {
+        this.user = data;
+      })
+    );
+  }
+
+  public removeCartItem(indexItem: number) {
+    this.cartProducts = [...this.cartProducts].filter((value, index) => index !== indexItem);
+    this.store.dispatch(appActions.setCart({ cart: this.cartProducts }));
   }
 
 }
