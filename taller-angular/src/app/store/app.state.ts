@@ -1,7 +1,7 @@
 import { appState } from './app.state.interface';
 
 export const initialState: appState = {
-    userLogged: true,
+    userLogged: false,
     user: undefined,
     cart: []
 }
