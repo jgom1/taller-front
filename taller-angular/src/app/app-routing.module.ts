@@ -11,7 +11,7 @@ import { PaymentComponent } from './components/payment/payment.component';
 const routes: Routes = [
   { path: 'products', component: ProductListPageComponent },
   { path: 'product/:id', component: ProductDetailPageComponent },
-  { path: 'favorites', component: FavouritesPageComponent },
+  { path: 'favourites', component: FavouritesPageComponent },
   { path: 'profile', component: ProfilePageComponent },
   { path: 'purchases', component: PurchasesPageComponent },
   { path: 'payment', component: PaymentComponent },
