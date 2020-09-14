@@ -13,9 +13,7 @@ export class PromotionProductComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit(): void {
-    console.log(this.product);
-  }
+  ngOnInit(): void {}
 
   public navigateToProduct() {
     this.router.navigate(['/product', this.product.id]);

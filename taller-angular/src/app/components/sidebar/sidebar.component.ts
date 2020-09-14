@@ -27,7 +27,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
   private getProductList() {
     this.subscription.add(
       this.productService.getPromotionalProducts().subscribe((data: any) => {
-        console.log('Productos en oferta', data);
         this.products = data;
       })
     );
