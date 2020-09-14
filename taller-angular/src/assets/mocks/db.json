@@ -232,18 +232,7 @@
       "id": 1,
       "userId": 1,
       "purchaseDate": "10/09/2020",
-      "purchaseProducts": [
-        {
-          "purchaseid": 2,
-          "purchaseProductPrice": 299,
-          "purchaseProductQuantity": 1
-        },
-        {
-          "purchaseid": 3,
-          "purchaseProductPrice": 229,
-          "purchaseProductQuantity": 1
-        }
-      ],
+      "purchaseProducts": [2,3],
       "purchaseDiscounts": [
         {
           "purchaseDiscountName": "BIENVENIDA",
@@ -254,7 +243,21 @@
         "purchaseShippingName": "Correos",
         "purchaseShippingPayment": 6.9
       },
-      "purchasePayment": 614.87
+      "purchasePayment": 614.87,
+      "purchaseState": 1
+    },
+    {
+      "id": 1,
+      "userId": 1,
+      "purchaseDate": "14/09/2020",
+      "purchaseProducts": [4, 5],
+      "purchaseDiscounts": [],
+      "purchaseShipping": {
+        "purchaseShippingName": "Correos",
+        "purchaseShippingPayment": 6.9
+      },
+      "purchasePayment": 614.87,
+      "purchaseState": 1
     }
   ]
 }
