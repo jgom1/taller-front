@@ -19,7 +19,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { ProfileComponent } from './components/profile/profile.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
-import { ShoppingCardModalComponent } from './components/shopping-card-modal/shopping-card-modal.component';
+import { ShoppingCartModalComponent } from './components/shopping-cart-modal/shopping-cart-modal.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PurchaseHistoryComponent } from './components/purchase-history/purchase-history.component';
 import { ProductListPageComponent } from './pages/product-list-page/product-list-page.component';
@@ -43,7 +43,7 @@ import { AnonymousPageComponent } from './pages/anonymous-page/anonymous-page.co
     ProfileComponent,
     LoginComponent,
     RegistrationComponent,
-    ShoppingCardModalComponent,
+    ShoppingCartModalComponent,
     PaymentComponent,
     PurchaseHistoryComponent,
     ProductListPageComponent,

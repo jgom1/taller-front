@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-shopping-card-modal',
-  templateUrl: './shopping-card-modal.component.html',
-  styleUrls: ['./shopping-card-modal.component.scss']
+  selector: 'app-shopping-cart-modal',
+  templateUrl: './shopping-cart-modal.component.html',
+  styleUrls: ['./shopping-cart-modal.component.scss']
 })
-export class ShoppingCardModalComponent implements OnInit {
+export class ShoppingCartModalComponent implements OnInit {
 
   product: any;
 
