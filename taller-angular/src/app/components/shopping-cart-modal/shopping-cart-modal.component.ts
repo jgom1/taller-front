@@ -4,6 +4,7 @@ import { appState } from 'src/app/store/app.state.interface';
 import { Subscription, Observable } from 'rxjs';
 import { Product } from '../../models/product.model';
 import { appActions } from '../../store/app.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart-modal',
@@ -16,7 +17,9 @@ export class ShoppingCartModalComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
   public products: Product[];
 
-  constructor(private store: Store<appState>) { }
+  constructor(
+    private store: Store<appState>,
+    private router: Router) { }
 
   ngOnInit(): void {
     console.log(this.products);
@@ -38,6 +41,11 @@ export class ShoppingCartModalComponent implements OnInit, OnDestroy {
   public removeCartItem(indexItem: number) {
     this.products = [...this.products].filter((value, index) => index !== indexItem);
     this.store.dispatch(appActions.setCart({ cart: this.products }));
+  }
+
+  public navigateToPayment() {
+    this.router.navigate(['/payment']);
+    document.getElementById('closeShoppingCartModal').click();
   }
 
 }

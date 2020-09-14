@@ -13,7 +13,7 @@ import { UserService } from '../../services/user.service';
 export class ProfileComponent implements OnInit, OnDestroy {
 
   private user$: Observable<User> = this.store.select((state: any) => state.app.user);
-  private user: User;
+  public user: User;
   private subscription: Subscription = new Subscription();
 
   constructor(private store: Store<appState>) { }
