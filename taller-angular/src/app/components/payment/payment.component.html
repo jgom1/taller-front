@@ -41,7 +41,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-12 px-0 mt-3">
                 <div class="card m-0 p-3">
                     <p class="font-weight-bold">Dirección de evío:</p>
@@ -182,20 +181,20 @@
     </div>
     <div class="col-4">
         <div class="col-12 p-3 text-center bg-light">
-            <div class="card flex-row m-0 my-2 p-3">
+            <div *ngFor="let product of cartProducts; index as i" class="card flex-row m-0 my-2 p-3">
                 <div class="col-4 px-0">
-                    <img class="img-fluid" [src]="product.img" [alt]="product.name">
+                    <img class="img-fluid" [src]="product.productImage" [alt]="product.productName">
                 </div>
                 <div class="col-8 px-0 d-flex flex-column justify-content-center align-items-center">
                     <div class="col-12 px-0">
-                        <p class="mb-0 font-weight-bold h4">{{product.name}}</p>
-                        <p class="mb-2">{{product.description}}</p>
+                        <p class="mb-0 font-weight-bold h4">{{product.productName}}</p>
+                        <p class="mb-2">{{product.productResume}}</p>
                         <div
                             class="row m-0 pb-2 mb-2 text-right d-flex align-items-center justify-content-end border-bottom border-dark">
-                            <span class="mb-0 mr-1 h4">{{product.currentPrice}}€</span>x
-                            <span class="mb-0 mx-1 h4">{{product.boughtQuantity}}</span>
-                            <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-trash-fill ml-1"
-                                fill="#df4759" xmlns="http://www.w3.org/2000/svg">
+                            <span class="mb-0 mr-1 h4">{{product.productPrice}}€</span>
+                            <svg width="1.3em" height="1.3em" viewBox="0 0 16 16"
+                                class="bi bi-trash-fill ml-1 cursor-pointer" fill="#df4759"
+                                xmlns="http://www.w3.org/2000/svg" (click)="removeCartItem(i)">
                                 <path fill-rule="evenodd"
                                     d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
                             </svg>
@@ -203,34 +202,7 @@
                         <div class="row m-0">
                             <div class="col-12 px-0 text-right font-weight-bold mb-0">
                                 <span class="text-muted">Total:</span> <span
-                                    class="h3 ml-3">{{product.currentPrice * product.boughtQuantity}}€</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card flex-row m-0 my-2 p-3">
-                <div class="col-4 px-0">
-                    <img class="img-fluid" [src]="product.img" [alt]="product.name">
-                </div>
-                <div class="col-8 px-0 d-flex flex-column justify-content-center align-items-center">
-                    <div class="col-12 px-0">
-                        <p class="mb-0 font-weight-bold h4">{{product.name}}</p>
-                        <p class="mb-2">{{product.description}}</p>
-                        <div
-                            class="row m-0 pb-2 mb-2 text-right d-flex align-items-center justify-content-end border-bottom border-dark">
-                            <span class="mb-0 mr-1 h4">{{product.currentPrice}}€</span>x
-                            <span class="mb-0 mx-1 h4">{{product.boughtQuantity}}</span>
-                            <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-trash-fill ml-1"
-                                fill="#df4759" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
-                            </svg>
-                        </div>
-                        <div class="row m-0">
-                            <div class="col-12 px-0 text-right font-weight-bold mb-0">
-                                <span class="text-muted">Total:</span> <span
-                                    class="h3 ml-3">{{product.currentPrice * product.boughtQuantity}}€</span>
+                                    class="h3 ml-3">{{product.productPrice}}€</span>
                             </div>
                         </div>
                     </div>
@@ -250,8 +222,8 @@
                     <p class="mb-0 font-weight-bold">Envío:</p>
                 </div>
                 <div class="col-6 px-0 text-right">
-                    <p class="mb-0 font-weight-bold">Correos</p>
-                    <p class="mb-0 h4">6,90€</p>
+                    <p class="mb-0 font-weight-bold">{{shippingType}}</p>
+                    <p class="mb-0 h4">{{shippingCost}}€</p>
                 </div>
             </div>
             <div class="card flex-row m-0 my-2 p-3 align-items-center">
@@ -259,7 +231,7 @@
                     <p class="mb-0 font-weight-bold">IVA (21%):</p>
                 </div>
                 <div class="col-6 px-0 text-right">
-                    <p class="mb-0 h4">557,80€</p>
+                    <p class="mb-0 h4">{{totalPaymentBeforeTaxes*0.21 | number:'.0-2'}}€</p>
                 </div>
             </div>
             <div class="card flex-row bg-dark sflex-row m-0 my-2 p-3 h4 text-white">
@@ -267,7 +239,7 @@
                     <p class="mb-0">TOTAL</p>
                 </div>
                 <div class="col-6 px-0 text-right">
-                    <p class="mb-0">3213,80€</p>
+                    <p class="mb-0">{{totalPaymentBeforeTaxes*1.21 | number:'.0-2'}}€</p>
                 </div>
             </div>
             <button class="btn btn-success btn-block"><span class="h3">PAGAR</span></button>

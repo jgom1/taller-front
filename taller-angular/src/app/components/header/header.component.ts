@@ -13,10 +13,10 @@ import { appState } from '../../store/app.state.interface';
 })
 export class HeaderComponent implements OnInit {
 
-  private user$: Observable<any> = this.store.select((state: any) => state.app.user);
+  private user$: Observable<User> = this.store.select((state: any) => state.app.user);
   private cart$: Observable<Product[]> = this.store.select((state: any) => state.app.cart);
   private subscription: Subscription = new Subscription();
-  public cardItems: number;
+  public cartItems: number;
   logged: boolean = false;
   userName: string = '';
 
@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
   private subscribeCart() {
     this.subscription.add(
       this.cart$.subscribe((data: Product[]) => {
-        this.cardItems = data.length;
+        this.cartItems = data.length;
       })
     );
   }
