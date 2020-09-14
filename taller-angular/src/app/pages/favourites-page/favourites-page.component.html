@@ -1,1 +1,11 @@
-<div class="row-m-0"></div>
+<div class="row m-0">
+    <div class="col-9 pl-0 bg-light" *ngIf="products">
+        <h2 *ngIf="products.length === 0" class="text-center my-5">Aún no tienes productos favoritos</h2>
+        <section class="card-deck px-3" *ngIf="products.length !== 0">
+            <app-product *ngFor="let product of products" [product]="product" class="col-3 px-0 py-2"></app-product>
+        </section>
+    </div>
+    <div class="col-3 pr-0">
+        <app-sidebar></app-sidebar>
+    </div>
+</div>

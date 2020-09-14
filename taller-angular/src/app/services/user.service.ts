@@ -25,4 +25,8 @@ export class UserService {
   getUserPurchases(userId: number) {
     return this.http.get(`${this.URL}purchases?userId=${userId}`);
   }
+
+  getUserFavourites(userId: number) {
+    return this.http.get(`${this.URL}favourites?userId=${userId}`);
+  }
 }
