@@ -242,7 +242,21 @@
                     <p class="mb-0">{{totalPaymentBeforeTaxes*1.21 | number:'.0-2'}}€</p>
                 </div>
             </div>
-            <button class="btn btn-success btn-block"><span class="h3">PAGAR</span></button>
+            <button class="btn btn-block" [ngClass]="(cartProducts.length<1)?'btn-secondary':'btn-success'"
+                [disabled]="cartProducts.length<1" data-toggle="modal" data-target="#successfulPurchaseModal">
+                <span class="h3">PAGAR</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="successfulPurchaseModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body p-5 text-center">
+                <h2 class="my-5">Tu compra ha sido realizada correctamente</h2>
+                <button type="button" class="col-4 btn btn-success mx-auto" data-dismiss="modal" routerLink="/purchases">Aceptar</button>
+            </div>
         </div>
     </div>
 </div>
