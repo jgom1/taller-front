@@ -20,7 +20,6 @@ export class PaymentComponent implements OnInit, OnDestroy {
   public cartProducts: Product[];
   public user: User;
   public shippingType: string = 'Correos';
-  public shippingCost: number = 6.90;
   public totalPaymentBeforeTaxes: number;
 
   constructor(private store: Store<appState>) { }
@@ -51,16 +50,16 @@ export class PaymentComponent implements OnInit, OnDestroy {
     return totalCost;
   }
 
-  private getTotalPaymentBeforeTaxes() {
-    this.totalPaymentBeforeTaxes = this.getTotalProductCost() + this.shippingCost;
-  }
-
   private subscribeUser() {
     this.subscription.add(
       this.user$.subscribe((data: User) => {
         this.user = data;
       })
     );
+  }
+
+  public getTotalPaymentBeforeTaxes() {
+    this.totalPaymentBeforeTaxes = this.getTotalProductCost() + ((this.shippingType === 'Correos') ? 6.90 : 4.90);
   }
 
   public removeCartItem(indexItem: number) {
