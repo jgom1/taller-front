@@ -32,7 +32,6 @@ export class PurchaseHistoryComponent implements OnInit, OnDestroy {
   private getPurchases(userId: number) {
     this.subscription.add(
       this.userService.getUserPurchases(userId).subscribe((data: Purchase[]) => {
-        console.log('Purchases', data);
         this.purchases = data;
       })
     );

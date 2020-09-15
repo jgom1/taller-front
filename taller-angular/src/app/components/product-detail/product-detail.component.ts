@@ -14,11 +14,12 @@ import { Product } from '../../models/product.model';
 })
 export class ProductDetailComponent implements OnInit {
 
+  private logged$: Observable<boolean> = this.store.select((state: any) => state.app.userLogged);
   private cart$: Observable<Product[]> = this.store.select((state: any) => state.app.cart);
   private cart: Product[];
   private subscription: Subscription = new Subscription();
   public product: Product;
-
+  public logged: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,6 +31,7 @@ export class ProductDetailComponent implements OnInit {
     this.route.params.subscribe(routeParams => {
       this.getProduct(routeParams['id']);
       this.getCart();
+      this.subscribeLogged();
     });
   }
 
@@ -49,6 +51,14 @@ export class ProductDetailComponent implements OnInit {
     this.subscription.add(
       this.productService.getProductById(id).subscribe((data: any) => {
         this.product = data;
+      })
+    );
+  }
+
+  private subscribeLogged(): void {
+    this.subscription.add(
+      this.logged$.subscribe((data: any) => {
+        this.logged = data;
       })
     );
   }

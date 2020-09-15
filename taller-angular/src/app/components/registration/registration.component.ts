@@ -69,7 +69,6 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   private createUser(userObject: User) {
     this.subscription.add(
       this.userService.addNewUser(userObject).subscribe((newUser: User) => {
-        console.log('\nNEW USER', newUser,'\n');
         this.solveSuccessfulRegister(newUser);
       })
     );

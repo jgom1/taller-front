@@ -22,7 +22,6 @@ export class ShoppingCartModalComponent implements OnInit, OnDestroy {
     private router: Router) { }
 
   ngOnInit(): void {
-    console.log(this.products);
     this.getCart();
   }
 
