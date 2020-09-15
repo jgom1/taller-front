@@ -14,35 +14,24 @@ import { User } from '../../models/user.model';
 })
 export class FavouritesPageComponent implements OnInit, OnDestroy {
 
-  private user$: Observable<User> = this.store.select((state: any) => state.app.user);
+  private favourites$: Observable<any[]> = this.store.select((state: any) => state.app.favourites);
   private subscription: Subscription = new Subscription();
   public products: Product[];
 
-  constructor(
-    private store: Store<appState>,
-    private userService: UserService) { }
+  constructor(private store: Store<appState>) { }
 
   ngOnInit(): void {
-    // this.getUser();
-    this.getFavouriteProducts(1);
+    this.subscribeFavourites();
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  private getFavouriteProducts(userId: number) {
+  private subscribeFavourites(): void {
     this.subscription.add(
-      this.userService.getUserFavourites(userId).subscribe((data: any) => {
-        this.products = (data[0] && data[0].favouriteProducts) ? data[0].favouriteProducts : [];
-      })
-    );
-  }
-
-  private getUser() {
-    this.subscription.add(
-      this.user$.subscribe((data: any) => {
-        this.getFavouriteProducts(data.id);
+      this.favourites$.subscribe((data: any) => {
+        this.products = data;
       })
     );
   }
