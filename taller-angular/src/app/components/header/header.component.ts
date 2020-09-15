@@ -61,6 +61,8 @@ export class HeaderComponent implements OnInit {
 
   public logout() {
     this.store.dispatch(appActions.logout());
+    this.store.dispatch(appActions.setCart({ cart: [] }));
+    this.store.dispatch(appActions.setUser({ user: {} }));
   }
 
 }
