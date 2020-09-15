@@ -7,7 +7,7 @@
             </button>
         </div>
         <div class="modal-body px-5 py-3 text-center">
-            <p *ngIf="products.length < 1" class="h3 my-3 text-center">Aún no tienes ningún artículo en el carro.</p>
+            <p *ngIf="products.length&lt;1" class="h3 my-3 text-center">Aún no tienes ningún artículo en el carro.</p>
             <div class="card flex-row m-0 my-2 p-3" *ngFor="let product of products; index as i">
                 <div class="col-10 px-0 d-flex flex-column justify-content-center align-items-start">
                     <p class="mb-0 font-weight-bold h4">{{product.productName}}</p>
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="modal-footer bg-dark px-5 py-3">
-            <button type="button" class="btn btn-success btn-block py-2" (click)="navigateToPayment()">Continuar</button>
+            <button type="button" class="btn btn-success btn-block py-2" [disabled]="products.length&lt;1" (click)="navigateToPayment()">Continuar</button>
         </div>
     </div>
 </div>
