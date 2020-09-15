@@ -37,7 +37,7 @@
                                     <path
                                         d="M8 1a2 2 0 0 0-2 2v2H5V3a3 3 0 0 1 6 0v2h-1V3a2 2 0 0 0-2-2zM5 5H3.361a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.356a2.5 2.5 0 0 0 2.472-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11v1.5a.5.5 0 0 1-1 0V5H6v1.5a.5.5 0 0 1-1 0V5z" />
                                 </svg>Mis compras</a>
-                            <a class="dropdown-item d-flex align-items-center cursor-pointer" (click)="logout()">
+                            <a class="dropdown-item d-flex align-items-center cursor-pointer" data-toggle="modal" data-target="#confirmLogoutModal">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-door-open-fill mr-1"
                                     fill="#343A40" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -52,7 +52,8 @@
                             <path fill-rule="evenodd"
                                 d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
                         </svg>
-                        <span [ngClass]="(cardItems<1)?'badge-light':'badge-success'" class="badge align-self-start">{{cartItems}}</span>
+                        <span [ngClass]="(cardItems<1)?'badge-light':'badge-success'"
+                            class="badge align-self-start">{{cartItems}}</span>
                     </div>
                 </div>
             </div>
@@ -72,4 +73,16 @@
 <div class="modal fade" id="shoppingCartModal" tabindex="-1" aria-labelledby="shoppingCartModalLabel"
     aria-hidden="true">
     <app-shopping-cart-modal></app-shopping-cart-modal>
+</div>
+
+<div class="modal fade" id="confirmLogoutModal" tabindex="-1" aria-labelledby="confirmLogoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content p-5">
+            <div class="modal-body text-center h4 mb-4">¿Seguro que deseas salir?</div>
+            <div class="row m-0 justify-content-center">
+                <button type="button" class="col-3 btn btn-success mr-2" data-dismiss="modal">No</button>
+                <button type="button" class="col-3 btn btn-danger ml-2" data-dismiss="modal" (click)="logout()">Sí</button>
+            </div>
+        </div>
+    </div>
 </div>
