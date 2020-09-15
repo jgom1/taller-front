@@ -4,5 +4,6 @@ export const initialState: appState = {
     userLogged: false,
     user: undefined,
     cart: [],
-    favourites: []
+    favourites: [],
+    favouritesId: 0
 }

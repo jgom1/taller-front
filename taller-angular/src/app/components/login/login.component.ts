@@ -48,7 +48,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   private getUserFavourites(userId: number) {
     this.subscription.add(
       this.userService.getUserFavourites(userId).subscribe((userFavourites: any) => {
-        this.store.dispatch(appActions.setFavourites({ favourites: userFavourites }));
+        this.store.dispatch(appActions.setFavourites({ favourites: (userFavourites.length>0)?userFavourites[0].favouriteProducts:[] }));
+        this.store.dispatch(appActions.setFavouritesId({ favouritesId: (userFavourites.length>0)?userFavourites[0].id:0 }));
       })
     );
   }

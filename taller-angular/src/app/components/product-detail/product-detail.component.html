@@ -26,7 +26,7 @@
                 ¡Ops! Actualmente este producto no está disponible en nuestro stock...
             </p>
             <div *ngIf="logged" class="row m-0 mt-4 justify-content-end">
-                <button class="btn btn-outline-dark mr-2 p-3 d-flex align-items-center">
+                <button type="button" *ngIf="!isFavourite" (click)="addProductToFavourites()" class="btn btn-outline-dark mr-2 p-3 d-flex align-items-center">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill mr-1" fill="#df4759"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -34,9 +34,17 @@
                     </svg>
                     Añadir a favoritos
                 </button>
-                <button *ngIf="product.productQuantity&gt;0" class="btn btn-danger ml-2 p-3"
+                <button type="button" *ngIf="isFavourite" (click)="removeProductFromFavourites()" class="btn btn-dark mr-2 p-3 d-flex align-items-center">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill mr-1" fill="#df4759"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                    </svg>
+                    Eliminar de favoritos
+                </button>
+                <button type="button" *ngIf="product.productQuantity&gt;0" class="btn btn-danger ml-2 p-3"
                     (click)="addToCart()">Comprar</button>
-                <button *ngIf="product.productQuantity&lt;1" class="btn btn-dark ml-2 p-3 d-flex align-items-center">
+                <button type="button" *ngIf="product.productQuantity&lt;1" class="btn btn-dark ml-2 p-3 d-flex align-items-center">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-envelope-fill mr-1"
                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
