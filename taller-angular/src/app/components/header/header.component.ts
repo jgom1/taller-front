@@ -13,16 +13,18 @@ import { appState } from '../../store/app.state.interface';
 })
 export class HeaderComponent implements OnInit {
 
+  private logged$: Observable<boolean> = this.store.select((state: any) => state.app.userLogged);
   private user$: Observable<User> = this.store.select((state: any) => state.app.user);
   private cart$: Observable<Product[]> = this.store.select((state: any) => state.app.cart);
   private subscription: Subscription = new Subscription();
   public cartItems: number;
-  logged: boolean = false;
-  userName: string = '';
+  public logged: boolean;
+  public userName: string = '';
 
   constructor(private store: Store<appState>) { }
 
   ngOnInit(): void {
+    this.subscribeLogged();
     this.subscribeCart();
     this.subscribeUser();
   }
@@ -42,7 +44,6 @@ export class HeaderComponent implements OnInit {
   private subscribeUser() {
     this.subscription.add(
       this.user$.subscribe((data: User) => {
-        console.log('Usuario en header', data);
         if (data) {
           this.userName = data.userName;
         }
@@ -50,13 +51,16 @@ export class HeaderComponent implements OnInit {
     );
   }
 
-  public setLogged(event) {
-    this.logged = event;
+  private subscribeLogged(): void {
+    this.subscription.add(
+      this.logged$.subscribe((data: any) => {
+        this.logged = data;
+      })
+    );
   }
 
   public logout() {
     this.store.dispatch(appActions.logout());
-    this.logged = false;
   }
 
 }

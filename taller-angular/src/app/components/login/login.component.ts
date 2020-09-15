@@ -4,6 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { appActions } from '../../store/app.actions';
 import { UserService } from '../../services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { appState } from '../../store/app.state.interface';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  @Output() loggedEmitter = new EventEmitter<boolean>();
   private logged$: Observable<boolean> = this.store.select((state: any) => state.app.userLogged);
   public loginForm: FormGroup;
   public errorMessage: string;
@@ -21,11 +21,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private store: Store<{
-      userLogged: boolean,
-      user: {},
-      cart: {}
-    }>) { }
+    private store: Store<appState>) { }
 
   ngOnInit(): void {
     this.subscribeLogged();
@@ -37,20 +33,21 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   public login() {
-    this.userService.getUserByEmail(this.loginForm.get('email').value).subscribe((data: any) => {
-      if (data.length == 0 || data[0].userPassword !== this.loginForm.get('password').value) {
-        this.errorMessage = 'El usuario introducido no existe o los datos no son correctos.'
-      } else {
-        this.solveSuccessfulLogin(data[0]);
-      }
-    });
+    this.subscription.add(
+      this.userService.getUserByEmail(this.loginForm.get('email').value).subscribe((data: any) => {
+        if (data.length == 0 || data[0].userPassword !== this.loginForm.get('password').value) {
+          this.errorMessage = 'El usuario introducido no existe o los datos no son correctos.'
+        } else {
+          this.solveSuccessfulLogin(data[0]);
+        }
+      })
+    );
   }
 
   private subscribeLogged(): void {
     this.subscription.add(
       this.logged$.subscribe((data: any) => {
         if (data === true) {
-          this.loggedEmitter.emit(data);
           document.getElementById('closeModal').click();
         }
       })
