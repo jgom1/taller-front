@@ -38,12 +38,25 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private solveSuccessfulLogin(user: any): void {
+    this.resetForm();
+    this.store.dispatch(appActions.login());
+    this.store.dispatch(appActions.setUser(user));
+    this.getUserFavourites(user.id);
+    document.getElementById('closeLoginModal').click();
+  }
+
+  private getUserFavourites(userId: number) {
+    this.subscription.add(
+      this.userService.getUserFavourites(userId).subscribe((userFavourites: any) => {
+        this.store.dispatch(appActions.setFavourites({ favourites: userFavourites }));
+      })
+    );
+  }
+
+  private resetForm() {
     this.loginForm.get('email').setValue('');
     this.loginForm.get('password').setValue('');
     this.errorMessage = '';
-    this.store.dispatch(appActions.login());
-    this.store.dispatch(appActions.setUser(user));
-    document.getElementById('closeLoginModal').click();
   }
 
   public login(): void {

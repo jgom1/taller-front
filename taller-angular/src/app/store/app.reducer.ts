@@ -8,6 +8,7 @@ export const featureReducer = createReducer(
     on(appActions.logout, (state) => ({ ...state, userLogged: false })),
     on(appActions.setUser, (state, user) => ({ ...state, user })),
     on(appActions.setCart, (state, cart) => ({ ...state, ...cart })),
+    on(appActions.setFavourites, (state, favourites) => ({ ...state, ...favourites })),
 );
 
 export function appReducer(state, action) {

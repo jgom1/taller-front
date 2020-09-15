@@ -5,10 +5,12 @@ const login = createAction('[Header Component] login');
 const logout = createAction('[Header Component] logout');
 const setUser = createAction('[Header Component] setUser', props<{ user: any }>());
 const setCart = createAction('[Product Component setCart', props<{ cart: Product[] }>())
+const setFavourites = createAction('[Product Component setFavourites', props<{ favourites: any[] }>())
 
 export const appActions = {
     login,
     logout,
     setUser,
-    setCart
+    setCart,
+    setFavourites
 }
