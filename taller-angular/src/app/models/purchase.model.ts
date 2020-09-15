@@ -4,15 +4,9 @@ export interface Purchase {
     "userId"?: number;
     "purchaseDate"?: string;
     "purchaseProducts"?: Product[];
-    "purchaseDiscount"?: PurchaseDiscount;
     "purchaseShipping"?: PurchaseShipping;
     "purchasePayment"?: number;
     "purchaseState"?: string;
-}
-
-export interface PurchaseDiscount {
-    "purchaseDiscountName"?: string;
-    "purchaseDiscountPercentage": number;
 }
 
 export interface PurchaseShipping {

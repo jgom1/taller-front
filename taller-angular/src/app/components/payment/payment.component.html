@@ -123,21 +123,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 px-0 mt-3">
-                <div class="card m-0 p-3">
-                    <div class="row m-0 justify-content-around align-items-center h6">
-                        <div class="col-3 px-0">
-                            <p class="font-weight-bold mb-0">Código de descuento:</p>
-                        </div>
-                        <div class="col-7 px-0 pr-3">
-                            <input class="form-control" />
-                        </div>
-                        <div class="col-2 px-0 pl-2">
-                            <button class="btn btn-outline-dark btn-block">Aplicar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <div class="col-4">
@@ -171,15 +156,6 @@
             </div>
             <div class="card flex-row m-0 my-2 p-3">
                 <div class="col-6 px-0 text-left">
-                    <p class="mb-0 font-weight-bold">Descuentos:</p>
-                </div>
-                <div class="col-6 px-0 text-danger text-right">
-                    <p class="mb-0 font-weight-bold">BIENVENIDA</p>
-                    <p class="mb-0 h4">-5%</p>
-                </div>
-            </div>
-            <div class="card flex-row m-0 my-2 p-3">
-                <div class="col-6 px-0 text-left">
                     <p class="mb-0 font-weight-bold">Envío:</p>
                 </div>
                 <div class="col-6 px-0 text-right">
@@ -204,7 +180,8 @@
                 </div>
             </div>
             <button class="btn btn-block" [ngClass]="(cartProducts.length<1)?'btn-secondary':'btn-success'"
-                [disabled]="cartProducts.length<1" data-toggle="modal" data-target="#successfulPurchaseModal">
+                [disabled]="cartProducts.length<1" data-toggle="modal" data-target="#successfulPurchaseModal"
+                (click)="endAndPay()">
                 <span class="h3">PAGAR</span>
             </button>
         </div>
@@ -217,7 +194,7 @@
             <div class="modal-body p-5 text-center">
                 <h2 class="my-5">Tu compra ha sido realizada correctamente</h2>
                 <button type="button" class="col-4 btn btn-success mx-auto" data-dismiss="modal"
-                    routerLink="/purchases">Aceptar</button>
+                     (click)="cleanCartAndNavigate()">Aceptar</button>
             </div>
         </div>
     </div>

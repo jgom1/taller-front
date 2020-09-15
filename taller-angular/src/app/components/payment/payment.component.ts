@@ -5,7 +5,8 @@ import { appState } from '../../store/app.state.interface';
 import { Product } from '../../models/product.model';
 import { User } from '../../models/user.model';
 import { appActions } from '../../store/app.actions';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -23,7 +24,10 @@ export class PaymentComponent implements OnInit, OnDestroy {
   public totalPaymentBeforeTaxes: number;
   public selectedCreditCard: number = 0;
 
-  constructor(private store: Store<appState>) { }
+  constructor(
+    private store: Store<appState>,
+    private userService: UserService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.subscribeCart();
@@ -59,6 +63,11 @@ export class PaymentComponent implements OnInit, OnDestroy {
     );
   }
 
+  private getFormatedDate() {
+    const currentDate = new Date();
+    return `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
+  }
+
   public getTotalPaymentBeforeTaxes() {
     this.totalPaymentBeforeTaxes = this.getTotalProductCost() + ((this.shippingType === 'Correos') ? 6.90 : 4.90);
   }
@@ -72,4 +81,25 @@ export class PaymentComponent implements OnInit, OnDestroy {
     this.selectedCreditCard = index;
   }
 
+  public endAndPay() {
+    const purchase = {
+      'userId': this.user.id,
+      'purchaseDate': this.getFormatedDate(),
+      'purchaseProducts': this.cartProducts,
+      'purchaseShipping': {
+        'purchaseShippingName': this.shippingType,
+        'purchaseShippingPayment': (this.shippingType === 'Correos') ? 6.90 : 4.90
+      },
+      'purchasePayment': Math.round((this.totalPaymentBeforeTaxes * 1.21) * 100) / 100,
+      'purchaseState': 'Procesado'
+    };
+    this.subscription.add(
+      this.userService.addNewPurchase(purchase).subscribe((data) => { })
+    );
+  }
+
+  public cleanCartAndNavigate() {
+    this.store.dispatch(appActions.setCart({ cart: [] }));
+    this.router.navigate(['/purchases']);
+  }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Purchase } from '../models/purchase.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,13 @@ export class UserService {
 
   getUserFavourites(userId: number) {
     return this.http.get(`${this.URL}favourites?userId=${userId}`);
+  }
+
+  addNewPurchase(newPurchase: Purchase) {
+    // return this.http.post(`${this.URL}purchases`, newPurchase);
+    const headers = {
+      "Content-type": "application/json; charset=UTF-8"
+    };
+    return this.http.post(`https://jsonplaceholder.typicode.com/posts`, JSON.stringify(newPurchase), { headers });
   }
 }
