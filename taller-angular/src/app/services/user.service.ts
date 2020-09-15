@@ -19,8 +19,12 @@ export class UserService {
     return this.http.get(`${this.URL}users?userEmail=${email}`);
   }
 
-  addNewUser(user: any) {
-    return this.http.post(`${this.URL}users`, user);
+  addNewUser(newUser: any) {
+    // return this.http.post(`${this.URL}users`, JSON.stringify(newUser), { headers });
+    const headers = {
+      "Content-type": "application/json; charset=UTF-8"
+    };
+    return this.http.post(`https://jsonplaceholder.typicode.com/posts`, JSON.stringify(newUser), { headers });
   }
 
   getUserPurchases(userId: number) {
