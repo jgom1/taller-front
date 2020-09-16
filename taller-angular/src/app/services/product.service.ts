@@ -26,6 +26,10 @@ export class ProductService {
     return this.http.get(`${this.URL}products?productPromotion=true`);
   }
 
+  getBrands() {
+    return this.http.get(`${this.URL}brands`);
+  }
+
   updateProduct(product: any) {
     this.http.put(`${this.URL}/products/${product.id}`, product).subscribe((updatedProduct: any) => { return updatedProduct });
   }

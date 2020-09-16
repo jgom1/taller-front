@@ -1,0 +1,16 @@
+<div class="row m-0 px-3 py-3 mb-5 justify-content-between bg-light">
+    <input class="col-4 px-0 form-control text-center border-dark" type="search" placeholder="¿Qué estás buscando?"
+        aria-label="Search" [(ngModel)]="userFilter">
+    <select class="col-2 px-0 pl-3 custom-select text-center" [(ngModel)]="brandFilter">
+        <option value='noBrandFilter' selected>¿De qué marca?</option>
+        <option *ngFor="let brand of brands" [value]="brand">{{brand}}</option>
+    </select>
+    <select class="col-2 px-0 pl-3 custom-select" [(ngModel)]="priceFilter">
+        <option class="text-center" value='noPriceFilter' selected>¿De qué precio?</option>
+        <option *ngFor="let priceInterval of prices;index as i" [value]="i">
+            <span *ngIf="priceInterval.length&gt;1">De {{priceInterval[0]}} a {{priceInterval[1]}}€</span>
+            <span *ngIf="priceInterval.length&lt;2">Más de {{priceInterval[0]}}€</span>
+        </option>
+    </select>
+    <button type="button" class="col-2 px-0 btn btn-outline-dark" (click)="filterProducts()">Buscar</button>
+</div>

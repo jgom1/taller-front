@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.service';
 import { Subscription } from 'rxjs';
+import { ShareDataService } from '../../services/share-data.service';
 
 @Component({
   selector: 'app-product-list',
@@ -12,9 +12,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
   public products: any[];
 
-  constructor(
-    private productService: ProductService
-  ) { }
+  constructor(private shareService: ShareDataService) { }
 
   ngOnInit(): void {
     this.getProductList();
@@ -26,7 +24,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   private getProductList() {
     this.subscription.add(
-      this.productService.getProducts().subscribe((data: any) => {
+      this.shareService.filteredProducts.subscribe((data: any) => {
         this.products = data;
       })
     );

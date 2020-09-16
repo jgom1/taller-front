@@ -1,12 +1,8 @@
 <section>
-    <div class="row m-0 pt-3 pb-4">
-        <div class="col-6 px-0 mx-auto d-flex">
-            <input class="form-control mr-1 text-center border-dark" type="search" placeholder="¿Qué estás buscando?"
-                aria-label="Search">
-            <button class="btn btn-outline-dark ml-1"><span class="font-weight-bold">¡Encuéntralo!</span></button>
-        </div>
-    </div>
-    <div class="card-deck px-3">
+    <app-search></app-search>
+    <div class="card-deck px-3 bg-light">
+        <p *ngIf="products.length&lt;1" class="text-center h2">Parece que ningún producto coincide con lo que buscas...
+        </p>
         <app-product *ngFor="let product of products" [product]="product" class="col-3 px-0 py-2"></app-product>
     </div>
 </section>

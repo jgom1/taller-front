@@ -29,6 +29,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { PurchasesPageComponent } from './pages/purchases-page/purchases-page.component';
 import { environment } from '../environments/environment.prod';
 import { AnonymousPageComponent } from './pages/anonymous-page/anonymous-page.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { AnonymousPageComponent } from './pages/anonymous-page/anonymous-page.co
     FavouritesPageComponent,
     ProfilePageComponent,
     PurchasesPageComponent,
-    AnonymousPageComponent
+    AnonymousPageComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
