@@ -1,11 +1,11 @@
 <div class="col-12 p-5">
     <div class="col-12 p-3 bg-light">
         <h2 class="text-center mb-5">Mi historial de compras</h2>
-        <div class="row m-0">
-            <div class="col-6 px-2" *ngFor="let purchase of purchases">
+        <h4 *ngIf="!purchases" class="text-center">Aún no has realizado ninguna compra.</h4>
+        <div *ngIf="purchases" class="row m-0">
+            <div class="col-6 px-2" *ngFor="let purchase of purchases;index as i">
                 <div class="card p-3 my-2">
-                    <div class="row m-0 align-items-center text-center cursor-pointer" data-toggle="collapse"
-                        data-target="#purchase1">
+                    <div class="row m-0 align-items-center text-center cursor-pointer">
                         <div class="col-3 px-0">
                             <p class="mb-0">
                                 <span class="d-block text-muted small">Fecha de compra</span>
@@ -32,7 +32,7 @@
                                     class="badge font-weight-bold p-2">{{purchase.purchaseState}}</span></p>
                         </div>
                     </div>
-                    <div data-toggle="collapse" id="purchase1" class="pt-4">
+                    <div class="pt-4">
                         <div *ngFor="let product of purchase.purchaseProducts"
                             class="row m-0 align-items-center border-top border-dark">
                             <div class="col-2 px-0">
@@ -50,22 +50,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row m-0 text-center border-top border-dark pt-2">
+                        <div class="row m-0 text-center border-top border-dark pt-2 justify-content-around">
                             <div class="col-4 px-0">
                                 <p class="mb-0">
                                     <span class="d-block text-muted small">Envío
                                         {{purchase.purchaseShipping.purchaseShippingName}}</span>
                                     <span
                                         class="d-block font-weight-bold">{{purchase.purchaseShipping.purchaseShippingPayment}}€</span>
-                                </p>
-                            </div>
-                            <div class="col-4 px-0">
-                                <p class="mb-0">
-                                    <span class="d-block text-muted small">Descuentos</span>
-                                    <span
-                                        class="d-block small">{{purchase.purchaseDiscount.purchaseDiscountName}}</span>
-                                    <span
-                                        class="d-block font-weight-bold">{{purchase.purchaseDiscount.purchaseDiscountPercentage}}%</span>
                                 </p>
                             </div>
                             <div class="col-4 px-0">
