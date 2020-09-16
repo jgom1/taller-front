@@ -43,18 +43,10 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   }
 
   private solveSuccessfulRegister(user: any): void {
-    this.resetForm();
+    this.registrationForm.reset();
     this.store.dispatch(appActions.login());
     this.store.dispatch(appActions.setUser(user));
     document.getElementById('closeRegistrationModal').click();
-  }
-
-  private resetForm(): void {
-    this.registrationForm.get('name').setValue('');
-    this.registrationForm.get('surname').setValue('');
-    this.registrationForm.get('email').setValue('');
-    this.registrationForm.get('password').setValue('');
-    this.registrationForm.get('confirmedPassword').setValue('');
   }
 
   private createUserObject(): User {

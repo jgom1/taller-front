@@ -45,7 +45,7 @@
                 </div>
                 <div class="collapse" id="collapseAddress">
                     <div class="card card-body text-left">
-                        <form [formGroup]="changeAddressForm" (ngSubmit)="changeAddress()">
+                        <form [formGroup]="addressForm" (ngSubmit)="changeAddress()">
                             <div class="form-group">
                                 <label for="address" class="mb-1">Dirección</label>
                                 <input formControlName="address" type="text" class="form-control" id="address" required>
@@ -74,7 +74,7 @@
                                 </div>
                             </div>
                             <div class="row m-0">
-                                <button type="submit" [disabled]="!changeAddressForm.valid"
+                                <button type="submit" [disabled]="!addressForm.valid"
                                     class="btn btn-dark ml-auto">Cambiar dirección</button>
                             </div>
                         </form>
@@ -85,17 +85,17 @@
         <div class="col-6 text-center p-2 d-flex justify-content-strench">
             <div class="border border-dark w-100 p-3 d-flex flex-column justify-content-strench">
                 <h3 class="my-2">Mis tarjetas</h3>
-                <p *ngIf="!user.userCreditCard">No tienes tarjetas guardadas.</p>
+                <p *ngIf="!user.userCreditCard || user.userCreditCard.length&lt;1">No tienes tarjetas guardadas.</p>
                 <div *ngIf="user.userCreditCard">
-                    <div *ngFor="let card of user.userCreditCard" class="card flex-row my-2 p-3">
+                    <div *ngFor="let card of user.userCreditCard; index as i" class="card flex-row my-2 p-3">
                         <div class="col-10 px-0 d-flex flex-column justify-content-center align-items-start">
                             <p class="mb-0 font-weight-bold">{{card.userCreditCardHolder}}</p>
                             <p class="mb-0">{{card.userCreditCardNumber}}</p>
                             <p class="mb-0 text-muted">{{card.userCreditCardDate}}</p>
                         </div>
                         <div class="col-2 px-0 d-flex align-items-center justify-content-center">
-                            <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-trash-fill"
-                                fill="#df4759" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-trash-fill svg-button"
+                                fill="#df4759" xmlns="http://www.w3.org/2000/svg" (click)="removeCreditCard(i)">
                                 <path fill-rule="evenodd"
                                     d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
                             </svg>
@@ -189,4 +189,33 @@
             </div>
         </div>
     </div>
+    <div class="row m-0 justify-content-end px-2 pt-4">
+        <button type="button" class="col-3 px-0 btn btn-danger mr-2" data-toggle="modal"
+        data-target="#confirmRemoveAccountModal">Eliminar cuenta</button>
+        <button type="button" class="col-3 px-0 btn btn-dark ml-2" (click)="saveChanges()">Guardar cambios</button>
+    </div>
 </section>
+
+<div class="modal fade" id="confirmRemoveAccountModal" tabindex="-1" aria-labelledby="confirmRemoveAccountModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content p-5 text-center">
+            <p>Si eliminas tu cuenta perderás todos tus datos, no podrás acceder a tu historial de
+                compras y lo que es peor...no podrás seguir disfrutando de los mejores precios en tus productos
+                favoritos...</p>
+            <div class="modal-body font-weight-bold mb-3">¿Estás seguro de quieres eliminar tu cuenta?</div>
+            <div class="row m-0 justify-content-center">
+                <button type="button" class="btn btn-success mb-3" data-dismiss="modal">No, quiero seguir en la página</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"
+                    (click)="removeAccount()">Sí, eliminar mi cuenta</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showSaveChangesAlert" class="alert alert-success alert-dismissible fade show my-3 text-center" role="alert">
+    <strong>Tus cambios han sido guardados correctamente.</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="showSaveChangesAlert=false">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>

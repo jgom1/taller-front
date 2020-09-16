@@ -1,4 +1,3 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, VirtualTimeScheduler } from 'rxjs';
 import { Product } from 'src/app/models/product.model';

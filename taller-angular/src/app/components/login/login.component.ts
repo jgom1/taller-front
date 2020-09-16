@@ -55,8 +55,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private resetForm() {
-    this.loginForm.get('email').setValue('');
-    this.loginForm.get('password').setValue('');
+    this.loginForm.reset();
     this.errorMessage = '';
   }
 

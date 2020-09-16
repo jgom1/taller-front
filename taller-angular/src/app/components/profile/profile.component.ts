@@ -6,7 +6,7 @@ import { appState } from '../../store/app.state.interface';
 import { UserService } from '../../services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { appActions } from '../../store/app.actions';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -19,15 +19,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
   public user: any;
   public changeEmailForm: FormGroup;
-  public changeAddressForm: FormGroup;
+  public addressForm: FormGroup;
   public creditCardForm: FormGroup;
   public passwordForm: FormGroup;
   public profilePasswordErrorMessage: string;
   public hidenPassword: string;
+  public showSaveChangesAlert: boolean;
 
   constructor(
     private fb: FormBuilder,
-    private store: Store<appState>) { }
+    private store: Store<appState>,
+    private router:Router) { }
 
   ngOnInit(): void {
     this.subscribeUser();
@@ -58,7 +60,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   private createAddressForm(): void {
-    this.changeAddressForm = this.fb.group({
+    this.addressForm = this.fb.group({
       address: ['', Validators.required],
       postalCode: ['', Validators.required],
       city: ['', Validators.required],
@@ -98,15 +100,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   public changeAddress() {
-    // this.user.userAddress.address = this.changeAddressForm.get('address').value;
-    // this.user.userAddress.cp = this.changeAddressForm.get('postalCode').value;
-    // this.user.userAddress.city = this.changeAddressForm.get('city').value;
-    // this.user.userAddress.province = this.changeAddressForm.get('province').value;
-    // this.store.dispatch(appActions.setUser(this.user));
-    // this.changeAddressForm.get('address').setValue('');
-    // this.changeAddressForm.get('postalCode').setValue('');
-    // this.changeAddressForm.get('city').setValue('');
-    // this.changeAddressForm.get('province').setValue('');
+    this.user.userAddress = {
+      address: this.addressForm.get('address').value,
+      cp: this.addressForm.get('postalCode').value,
+      city: this.addressForm.get('city').value,
+      province: this.addressForm.get('province').value
+    };
+    this.store.dispatch(appActions.setUser(this.user));
+    this.addressForm.reset();
   }
 
   public addCreditCard() {
@@ -115,6 +116,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
       "userCreditCardNumber": this.creditCardForm.get('creditCardNumber').value,
       "userCreditCardDate": this.creditCardForm.get('creditCardDate').value
     }
+    this.user.userCreditCard = [...this.user.userCreditCard, newCreditCard];
+    this.store.dispatch(appActions.setUser(this.user));
+    this.creditCardForm.reset();
+  }
+
+  public removeCreditCard(cardIndex: number): void {
+    this.user.userCreditCard = [...this.user.userCreditCard].filter((value, index) => index !== cardIndex);
+    this.store.dispatch(appActions.setUser(this.user));
   }
 
   public changePassword() {
@@ -125,10 +134,20 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.profilePasswordErrorMessage = 'Las nuevas contraseñas deben ser iguales';
       } else {
         this.profilePasswordErrorMessage = '';
-        console.log('Password correcto');
+        this.user.userPassword = this.passwordForm.get('newProfilePassword').value;
+        this.store.dispatch(appActions.setUser(this.user));
+        this.passwordForm.reset();
       }
     }
+  }
 
+  public saveChanges(){
+    this.showSaveChangesAlert = true;
+  }
+
+  public removeAccount(){
+    this.store.dispatch(appActions.logout());
+    this.router.navigate(['/products']);
   }
 
 }
