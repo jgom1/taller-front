@@ -15,13 +15,16 @@
                 </div>
                 <div class="collapse" id="collapsePersonal">
                     <div class="card card-body text-left">
-                        <div class="form-group">
-                            <label for="personalEmail" class="mb-1">Nuevo email</label>
-                            <input type="text" class="form-control" id="personalEmail">
-                        </div>
-                        <div class="row m-0">
-                            <button class="btn btn-dark ml-auto">Cambiar email</button>
-                        </div>
+                        <form [formGroup]="changeEmailForm" (ngSubmit)="changeEmail()">
+                            <div class="form-group">
+                                <label for="personalEmail" class="mb-1">Nuevo email</label>
+                                <input formControlName="personalEmail" type="text" class="form-control"
+                                    id="personalEmail">
+                            </div>
+                            <div class="row m-0">
+                                <button type="submit" class="btn btn-dark ml-auto">Cambiar email</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -29,9 +32,10 @@
         <div class="col-6 text-center p-2 d-flex justify-content-strench">
             <div class="border border-dark w-100 p-3 d-flex flex-column justify-content-strench">
                 <h3 class="my-2">Mi dirección</h3>
-                <p class="mb-0">{{user.userAddress.street}}, nº{{user.userAddress.number}}, Portal
-                    {{user.userAddress.entrance}}, {{user.userAddress.floor}}º {{user.userAddress.door}}</p>
-                <p>{{user.userAddress.cp}}, {{user.userAddress.city}}, {{user.userAddress.province}}</p>
+                <p *ngIf="!user.userAddress">Aún no tienes ninguna dirección guardada.</p>
+                <p *ngIf="user.userAddress" class="mb-0">{{user.userAddress.address}}</p>
+                <p *ngIf="user.userAddress">{{user.userAddress.cp}}, {{user.userAddress.city}},
+                    {{user.userAddress.province}}</p>
                 <div class="col-2 px-0 mx-auto mt-auto" data-toggle="collapse" data-target="#collapseAddress">
                     <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-caret-down-fill svg-button"
                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -41,33 +45,39 @@
                 </div>
                 <div class="collapse" id="collapseAddress">
                     <div class="card card-body text-left">
-                        <div class="form-group">
-                            <label for="address" class="mb-1">Dirección</label>
-                            <input type="text" class="form-control" id="address">
-                        </div>
-                        <div class="row m-0">
-                            <div class="col-2 px-0 pr-1">
-                                <div class="form-group">
-                                    <label for="postalCode" class="mb-1">CP</label>
-                                    <input type="text" class="form-control" id="postalCode">
+                        <form [formGroup]="changeAddressForm" (ngSubmit)="changeAddress()">
+                            <div class="form-group">
+                                <label for="address" class="mb-1">Dirección</label>
+                                <input formControlName="address" type="text" class="form-control" id="address" required>
+                            </div>
+                            <div class="row m-0">
+                                <div class="col-2 px-0 pr-1">
+                                    <div class="form-group">
+                                        <label for="postalCode" class="mb-1">CP</label>
+                                        <input formControlName="postalCode" type="text" class="form-control"
+                                            id="postalCode" required>
+                                    </div>
+                                </div>
+                                <div class="col-6 px-0 pl-1 pr-1">
+                                    <div class="form-group">
+                                        <label for="city" class="mb-1">Ciudad</label>
+                                        <input formControlName="city" type="text" class="form-control" id="city"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="col-4 px-0 pl-1">
+                                    <div class="form-group">
+                                        <label for="province" class="mb-1">Provincia</label>
+                                        <input formControlName="province" type="text" class="form-control" id="province"
+                                            required>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-6 px-0 pl-1 pr-1">
-                                <div class="form-group">
-                                    <label for="city" class="mb-1">Ciudad</label>
-                                    <input type="text" class="form-control" id="city">
-                                </div>
+                            <div class="row m-0">
+                                <button type="submit" [disabled]="!changeAddressForm.valid"
+                                    class="btn btn-dark ml-auto">Cambiar dirección</button>
                             </div>
-                            <div class="col-4 px-0 pl-1">
-                                <div class="form-group">
-                                    <label for="province" class="mb-1">Provincia</label>
-                                    <input type="text" class="form-control" id="province">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row m-0">
-                            <button class="btn btn-dark ml-auto">Cambiar dirección</button>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -75,18 +85,21 @@
         <div class="col-6 text-center p-2 d-flex justify-content-strench">
             <div class="border border-dark w-100 p-3 d-flex flex-column justify-content-strench">
                 <h3 class="my-2">Mis tarjetas</h3>
-                <div *ngFor="let card of user.userCreditCard" class="card flex-row my-2 p-3">
-                    <div class="col-10 px-0 d-flex flex-column justify-content-center align-items-start">
-                        <p class="mb-0 font-weight-bold">{{card.userCreditCardHolder}}</p>
-                        <p class="mb-0">{{card.userCreditCardNumber}}</p>
-                        <p class="mb-0 text-muted">{{card.userCreditCardDate}}</p>
-                    </div>
-                    <div class="col-2 px-0 d-flex align-items-center justify-content-center">
-                        <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="#df4759"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
-                        </svg>
+                <p *ngIf="!user.userCreditCard">No tienes tarjetas guardadas.</p>
+                <div *ngIf="user.userCreditCard">
+                    <div *ngFor="let card of user.userCreditCard" class="card flex-row my-2 p-3">
+                        <div class="col-10 px-0 d-flex flex-column justify-content-center align-items-start">
+                            <p class="mb-0 font-weight-bold">{{card.userCreditCardHolder}}</p>
+                            <p class="mb-0">{{card.userCreditCardNumber}}</p>
+                            <p class="mb-0 text-muted">{{card.userCreditCardDate}}</p>
+                        </div>
+                        <div class="col-2 px-0 d-flex align-items-center justify-content-center">
+                            <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-trash-fill"
+                                fill="#df4759" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
+                            </svg>
+                        </div>
                     </div>
                 </div>
                 <div class="col-2 px-0 mx-auto mt-auto" data-toggle="collapse" data-target="#collapsePayment">
@@ -98,29 +111,33 @@
                 </div>
                 <div class="collapse" id="collapsePayment">
                     <div class="card card-body text-left">
-                        <div class="form-group">
-                            <label for="creditCardHolder" class="mb-1">Titular</label>
-                            <input type="text" class="form-control" id="creditCardHolder">
-                        </div>
-                        <div class="row m-0">
-                            <div class="col-8 px-0 pr-1">
-                                <div class="form-group">
-                                    <label for="creditCardNumber" class="mb-1">Número</label>
-                                    <input type="text" class="form-control" id="creditCardNumber">
+                        <form [formGroup]="creditCardForm" (ngSubmit)="addCreditCard()">
+                            <div class="form-group">
+                                <label for="creditCardHolder" class="mb-1">Titular</label>
+                                <input formControlName="creditCardHolder" type="text" class="form-control"
+                                    id="creditCardHolder" required>
+                            </div>
+                            <div class="row m-0">
+                                <div class="col-8 px-0 pr-1">
+                                    <div class="form-group">
+                                        <label for="creditCardNumber" class="mb-1">Número</label>
+                                        <input formControlName="creditCardNumber" type="text" class="form-control"
+                                            id="creditCardNumber" required>
+                                    </div>
+                                </div>
+                                <div class="col-4 px-0 pl-1">
+                                    <div class="form-group">
+                                        <label for="creditCardDate" class="mb-1">Fecha caducidad</label>
+                                        <input formControlName="creditCardDate" type="text" class="form-control"
+                                            id="creditCardDate" required>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-4 px-0 pl-1">
-                                <div class="form-group">
-                                    <label for="creditCardDate" class="mb-1">Fecha caducidad</label>
-                                    <input type="text" class="form-control" id="creditCardDate">
-                                </div>
+                            <div class="row m-0">
+                                <button type="submit" [disabled]="!creditCardForm.valid"
+                                    class="btn btn-dark ml-auto">Guardar tarjeta</button>
                             </div>
-                        </div>
-                        <div class="row m-0">
-                            <button class="btn btn-dark ml-auto">Guardar tarjeta</button>
-                        </div>
-
-
+                        </form>
                     </div>
                 </div>
             </div>
@@ -128,7 +145,7 @@
         <div class="col-6 text-center p-2 d-flex justify-content-strench">
             <div class="border border-dark w-100 p-3 d-flex flex-column justify-content-strench">
                 <h3 class="my-2">Mi contraseña</h3>
-                <p class="h3">{{user.userPassword}}</p>
+                <p class="h3">{{hidenPassword}}</p>
                 <div class="col-2 px-0 mx-auto mt-auto svg-button" data-toggle="collapse"
                     data-target="#collapsePassword">
                     <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-caret-down-fill" fill="currentColor"
@@ -139,27 +156,34 @@
                 </div>
                 <div class="collapse" id="collapsePassword">
                     <div class="card card-body text-left">
-                        <div class="form-group">
-                            <label for="currentPassword" class="mb-1">Contraseña actual</label>
-                            <input type="password" class="form-control" id="currentPassword">
-                        </div>
-                        <div class="row m-0">
-                            <div class="col-6 px-0 pr-1">
-                                <div class="form-group">
-                                    <label for="newPassword" class="mb-1">Nueva contraseña</label>
-                                    <input type="password" class="form-control" id="newPassword">
+                        <form [formGroup]="passwordForm" (ngSubmit)="changePassword()">
+                            <div class="form-group">
+                                <label for="currentProfilePassword" class="mb-1">Contraseña actual</label>
+                                <input formControlName="currentProfilePassword" type="password" class="form-control"
+                                    id="currentProfilePassword">
+                            </div>
+                            <div class="row m-0">
+                                <div class="col-6 px-0 pr-1">
+                                    <div class="form-group">
+                                        <label for="newProfilePassword" class="mb-1">Nueva contraseña</label>
+                                        <input formControlName="newProfilePassword" type="password" class="form-control"
+                                            id="newProfilePassword">
+                                    </div>
+                                </div>
+                                <div class="col-6 px-0 pl-1">
+                                    <div class="form-group">
+                                        <label for="confirmedProfilePassword" class="mb-1">Confirma contraseña</label>
+                                        <input formControlName="confirmedProfilePassword" type="password"
+                                            class="form-control" id="confirmedProfilePassword">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-6 px-0 pl-1">
-                                <div class="form-group">
-                                    <label for="confirmedPassword" class="mb-1">Confirma contraseña</label>
-                                    <input type="password" class="form-control" id="confirmedPassword">
-                                </div>
+                            <p class="text-danger">{{profilePasswordErrorMessage}}</p>
+                            <div class="row m-0">
+                                <button type="submit" [disabled]="!passwordForm.valid"
+                                    class="btn btn-dark ml-auto">Cambiar contraseña</button>
                             </div>
-                        </div>
-                        <div class="row m-0">
-                            <button class="btn btn-dark ml-auto">Cambiar contraseña</button>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

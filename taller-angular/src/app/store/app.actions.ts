@@ -1,5 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 import { Product } from '../models/product.model';
+import { User } from '../models/user.model';
 
 const login = createAction('[Header Component] login');
 const logout = createAction('[Header Component] logout');

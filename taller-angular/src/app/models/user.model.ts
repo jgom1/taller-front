@@ -15,11 +15,7 @@ export interface UserCreditCard {
 }
 
 export interface UserAddress {
-    "street"?: string;
-    "number"?: string;
-    "entrance"?: string;
-    "floor"?: string;
-    "door"?: string;
+    "address"?: string;
     "cp"?: string;
     "city"?: string;
     "province"?: string;
