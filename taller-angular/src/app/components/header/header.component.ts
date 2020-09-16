@@ -5,6 +5,7 @@ import { appActions } from '../../store/app.actions';
 import { Product } from '../../models/product.model';
 import { User } from '../../models/user.model';
 import { appState } from '../../store/app.state.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +22,9 @@ export class HeaderComponent implements OnInit {
   public logged: boolean;
   public userName: string = '';
 
-  constructor(private store: Store<appState>) { }
+  constructor(
+    private store: Store<appState>,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.subscribeLogged();
@@ -63,6 +66,7 @@ export class HeaderComponent implements OnInit {
     this.store.dispatch(appActions.logout());
     this.store.dispatch(appActions.setCart({ cart: [] }));
     this.store.dispatch(appActions.setUser({ user: {} }));
+    this.router.navigate(['/products']);
   }
 
 }
