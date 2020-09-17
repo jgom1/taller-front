@@ -5,7 +5,8 @@
     <div class="col-12 col-xl-9 px-0 pr-xl-4">
         <p *ngIf="products.length&lt;1" class="mx-auto text-center h2 py-5 my-5">Aún no tienes productos favoritos</p>
         <section *ngIf="products.length&gt;0" class="card-deck m-0 px-4 p-sm-2 bg-light">
-            <app-product *ngFor="let product of products" [product]="product" class="col-12 col-sm-6 col-md-4 col-xl-3 p-2"></app-product>
+            <app-product *ngFor="let product of products" [product]="product"
+                class="col-12 col-sm-6 col-md-4 col-xl-3 p-2"></app-product>
         </section>
     </div>
 </div>
