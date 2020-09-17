@@ -8,14 +8,14 @@
             <nav class="col-3 px-0">
                 <div class="row m-0 justify-content-center align-items-center">
                     <div *ngIf="!logged">
-                        <button class="btn btn-outline-light px-4 mr-2" data-toggle="modal"
+                        <button type="button" class="btn btn-outline-light px-4 mr-2" data-toggle="modal"
                             data-target="#registrationModal">Registrarse</button>
-                        <button class="btn btn-danger px-4 ml-2" data-toggle="modal"
+                        <button type="button" class="btn btn-danger px-4 ml-2" data-toggle="modal"
                             data-target="#loginModal">Entrar</button>
                     </div>
                     <div *ngIf="logged" class="d-flex align-items-center text-white">
                         <div class="dropdown mr-2">
-                            <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton"
+                            <button type="button" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 ¡Hola {{userName}}!
                             </button>

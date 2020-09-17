@@ -363,6 +363,30 @@
       },
       "purchasePayment": 614.87,
       "purchaseState": "Procesado"
+    },
+    {
+      "userId": 1,
+      "purchaseDate": "17/9/2020",
+      "purchaseProducts": [
+        {
+          "id": 3,
+          "productName": "Huawei P30 Lite",
+          "productResume": "128GB Breathing Crystal móvil libre",
+          "productBrand": "Huawei",
+          "productPromotion": true,
+          "productOldPrice": 259,
+          "productPrice": 229,
+          "productQuantity": 15,
+          "productImage": "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/201909/30/00157063419600009_1__640x640.jpg"
+        }
+      ],
+      "purchaseShipping": {
+        "purchaseShippingName": "Correos",
+        "purchaseShippingPayment": 6.9
+      },
+      "purchasePayment": 285.44,
+      "purchaseState": "Procesado",
+      "id": 4
     }
   ],
   "favourites": [

@@ -94,7 +94,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
       'purchaseState': 'Procesado'
     };
     this.subscription.add(
-      this.userService.addNewPurchase(purchase).subscribe((data) => { })
+      this.userService.addNewPurchase(purchase).subscribe((data) => { console.log(data) })
     );
   }
 
