@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ProductService } from '../../services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,7 +14,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
   public products: any[];
 
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +32,10 @@ export class SidebarComponent implements OnInit, OnDestroy {
         this.products = data;
       })
     );
+  }
+
+  public navigateTo(productId:number){
+    this.router.navigate(['/product',productId]);
   }
 
 }

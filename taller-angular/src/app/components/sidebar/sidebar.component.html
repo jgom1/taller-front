@@ -1,4 +1,58 @@
-<div class="text-center">
-    <h2 class="mb-0 py-3 bg-dark text-white">¡Ofertas!</h2>
-    <app-promotion-product *ngFor="let product of products" [product]="product"></app-promotion-product>
-</div>
+<aside>
+    <div class="d-xl-none carousel slide pb-3" id="carouselPromotions" data-ride="carousel">
+        <div class="carousel-inner">
+            <div *ngFor="let product of products;index as i" class="carousel-item cursor-pointer" [ngClass]="{'active':i==0}" (click)="navigateTo(product.id)">
+                <div class="row m-0 justify-content-center align-items-center" >
+                    <img [src]="product.productImage" [alt]="product.productName" class="col-3 img-fluid">
+                    <div class="col-6 px-0">
+                        <p class="text-center h4">{{product.productName}}</p>
+                        <p class="text-center h6">{{product.productResume}}</p>
+                        <p class="mb-0 d-flex justify-content-center align-items-center">
+                            <span
+                                class="text-danger font-weight-bold mr-2 h3"><del>{{product.productOldPrice}}€</del></span>
+                            <span
+                                class="text-success ml-2 font-weight-bold current-price h1">{{product.productPrice}}€</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev text-dark" href="#carouselPromotions" role="button" data-slide="prev">
+            <span aria-hidden="true">
+                <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-chevron-left" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                </svg>
+            </span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next text-dark" href="#carouselPromotions" role="button" data-slide="next">
+            <span aria-hidden="true">
+                <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                </svg>
+            </span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <div class="d-none d-xl-block">
+        <h2 class="mb-0 py-3 bg-dark text-center text-white d-none d-xl-block">¡Ofertas!</h2>
+        <div *ngFor="let product of products" class="row m-0 py-2 border-bottom border-dark promotion-product"
+            (click)="navigateTo(product.id)">
+            <div class="col-4 px-0">
+                <img class="img-fluid" [src]="product.productImage" [alt]="product.name">
+            </div>
+            <div class="col-8 px-0 d-flex flex-column justify-content-center align-items-center">
+                <h5 class="mb-0">{{product.productName}}</h5>
+                <h6 class="mb-0">{{product.productResume}}</h6>
+                <p class="mb-0">
+                    <span class="text-danger font-weight-bold mr-2"><del>{{product.productOldPrice}}€</del></span>|
+                    <span class="text-success ml-2 font-weight-bold current-price">{{product.productPrice}}€</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</aside>

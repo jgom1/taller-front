@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ShareDataService } from '../../services/share-data.service';
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-product-list-page',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductListPageComponent implements OnInit {
 
-  constructor() { }
+  private subscription: Subscription = new Subscription();
+  public products: Product[];
+
+  constructor(private shareService: ShareDataService) { }
 
   ngOnInit(): void {
+    this.getProductList();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  private getProductList() {
+    this.subscription.add(
+      this.shareService.filteredProducts.subscribe((data: Product[]) => {
+        this.products = data;
+      })
+    );
   }
 
 }

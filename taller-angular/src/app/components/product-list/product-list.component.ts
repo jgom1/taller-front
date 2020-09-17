@@ -1,33 +1,17 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { ShareDataService } from '../../services/share-data.service';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit, OnDestroy {
+export class ProductListComponent implements OnInit {
 
-  private subscription: Subscription = new Subscription();
-  public products: any[];
+  @Input() products: any[];
+  @Input() showSearch: boolean;
 
-  constructor(private shareService: ShareDataService) { }
+  constructor() { }
 
-  ngOnInit(): void {
-    this.getProductList();
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
-  private getProductList() {
-    this.subscription.add(
-      this.shareService.filteredProducts.subscribe((data: any) => {
-        this.products = data;
-      })
-    );
-  }
+  ngOnInit(): void {}
 
 }
