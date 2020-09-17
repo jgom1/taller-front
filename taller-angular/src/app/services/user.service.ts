@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Purchase } from '../models/purchase.model';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -43,11 +44,24 @@ export class UserService {
     return this.http.put(`https://jsonplaceholder.typicode.com/posts`, JSON.stringify(favourites), { headers });
   }
 
-  addNewPurchase(newPurchase: Purchase) {
-    // return this.http.post(`${this.URL}purchases`, newPurchase);
+  updateUser(user: User) {
     const headers = {
       "Content-type": "application/json; charset=UTF-8"
     };
+    // return this.http.put(`${this.URL}users/${user.id}`, JSON.stringify(user), { headers });
+    return this.http.put(`https://jsonplaceholder.typicode.com/posts/${user.id}`, JSON.stringify(user), { headers });
+  }
+
+  addNewPurchase(newPurchase: Purchase) {
+    const headers = {
+      "Content-type": "application/json; charset=UTF-8"
+    };
+    // return this.http.post(`${this.URL}purchases`, newPurchase);
     return this.http.post(`https://jsonplaceholder.typicode.com/posts`, JSON.stringify(newPurchase), { headers });
+  }
+
+  removeUser(userId: number) {
+    // return this.http.delete(`${this.URL}users/${userId}`);
+    return this.http.delete(`https://jsonplaceholder.typicode.com/posts/1`);
   }
 }

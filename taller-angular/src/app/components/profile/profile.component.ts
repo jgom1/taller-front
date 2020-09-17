@@ -29,7 +29,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private store: Store<appState>,
-    private router:Router) { }
+    private router: Router,
+    private userService: UserService) { }
 
   ngOnInit(): void {
     this.subscribeUser();
@@ -141,13 +142,22 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
   }
 
-  public saveChanges(){
-    this.showSaveChangesAlert = true;
+  public saveChanges() {
+    this.subscription.add(
+      this.userService.updateUser(this.user).subscribe((data) => {
+        this.showSaveChangesAlert = true;
+      })
+    );
   }
 
-  public removeAccount(){
-    this.store.dispatch(appActions.logout());
-    this.router.navigate(['/products']);
+  public removeAccount() {
+    this.subscription.add(
+      this.userService.removeUser(this.user.id).subscribe((data) => {
+        console.log(data);
+        this.store.dispatch(appActions.logout());
+        this.router.navigate(['/products']);
+      })
+    );
   }
 
 }
