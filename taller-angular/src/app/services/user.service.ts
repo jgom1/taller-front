@@ -45,8 +45,8 @@ export class UserService {
     const headers = {
       "Content-type": "application/json; charset=UTF-8"
     };
-     return this.http.post(`${this.URL}purchases`, JSON.stringify(newPurchase), { headers });
-    // return this.http.post(`https://jsonplaceholder.typicode.com/posts`, JSON.stringify(newPurchase), { headers });
+     // return this.http.post(`${this.URL}purchases`, JSON.stringify(newPurchase), { headers });
+     return this.http.post(`https://jsonplaceholder.typicode.com/posts`, JSON.stringify(newPurchase), { headers });
   }
   
   getUserFavourites(userId: number) {
