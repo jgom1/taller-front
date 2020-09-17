@@ -12,9 +12,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { PromotionProductComponent } from './components/promotion-product/promotion-product.component';
 import { ProductComponent } from './components/product/product.component';
-import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LoginComponent } from './components/login/login.component';
@@ -37,9 +35,7 @@ import { SearchComponent } from './components/search/search.component';
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    PromotionProductComponent,
     ProductComponent,
-    ProductListComponent,
     ProductDetailComponent,
     ProfileComponent,
     LoginComponent,
