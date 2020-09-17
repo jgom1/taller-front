@@ -1,3 +1,10 @@
-.cursor-pointer{
+.promotion-product:hover{
     cursor: pointer;
+    background-color: #F8F9FA;
+    h5{
+        font-weight: bolder;
+    }
+    .current-price{
+        font-size: 1.5em;
+    }
 }

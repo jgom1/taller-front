@@ -1,9 +1,9 @@
 <section>
     <app-search></app-search>
-    <div class="card-deck px-3 bg-light">
+    <div class="card-deck px-4 p-sm-2 bg-light">
         <p *ngIf="products.length&lt;1" class="mx-auto text-center h2 py-5 my-5">Parece que ningún producto coincide con
             lo que buscas...
         </p>
-        <app-product *ngFor="let product of products" [product]="product" class="col-3 px-0 py-2"></app-product>
+        <app-product *ngFor="let product of products" [product]="product" class="col-12 col-sm-6 col-md-4 col-xl-3 p-2 "></app-product>
     </div>
 </section>
