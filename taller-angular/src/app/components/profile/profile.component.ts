@@ -153,7 +153,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public removeAccount() {
     this.subscription.add(
       this.userService.removeUser(this.user.id).subscribe((data) => {
-        console.log(data);
         this.store.dispatch(appActions.logout());
         this.router.navigate(['/products']);
       })

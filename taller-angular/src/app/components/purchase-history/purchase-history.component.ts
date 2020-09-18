@@ -40,7 +40,7 @@ export class PurchaseHistoryComponent implements OnInit, OnDestroy {
   private getUser() {
     this.subscription.add(
       this.user$.subscribe((data: any) => {
-        if(data && data.id){
+        if (data && data.id) {
           this.getPurchases(data.id);
         }
       })

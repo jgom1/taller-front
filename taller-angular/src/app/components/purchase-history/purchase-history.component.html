@@ -1,7 +1,6 @@
-<section class="col-12 py-3 px-1 bg-light">
-    <h2 class="text-center mb-5">Mi historial de compras</h2>
-    <h4 *ngIf="!purchases" class="text-center">Aún no has realizado ninguna compra.</h4>
-    <div *ngIf="purchases" class="row m-0">
+<p *ngIf="!purchases" class="mx-auto text-center h2 py-5 my-5">Aún no has realizado ninguna compra.</p>
+<section *ngIf="purchases" class="col-12 py-3 px-1 bg-light">
+    <div class="row m-0">
         <div class="col-12 col-md-6 px-2" *ngFor="let purchase of purchases;index as i">
             <div class="card p-3 mb-3">
                 <div class="row m-0 align-items-center text-center cursor-pointer">
