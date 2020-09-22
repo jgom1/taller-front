@@ -38,6 +38,13 @@
   }
 }
 
+/* Product component */
+.product-card:hover{
+  box-shadow: 0 0 10px #292b2c;
+  cursor: pointer;
+}
+
+/* Footer component */
 .footer__links:hover{
   text-decoration: underline;
   cursor: pointer;

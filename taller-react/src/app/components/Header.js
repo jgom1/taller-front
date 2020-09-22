@@ -1,6 +1,7 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
+/* Bootstrap imports */
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Badge from 'react-bootstrap/Badge';
 

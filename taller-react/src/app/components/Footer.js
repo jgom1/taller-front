@@ -1,4 +1,6 @@
 import React from 'react';
+
+/* Bootstrap imports */
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const Footer = () => {
