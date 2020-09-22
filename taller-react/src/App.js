@@ -8,6 +8,7 @@ import { Footer } from "./app/components/Footer";
 import { Sidebar } from "./app/components/Sidebar";
 import { Product } from "./app/components/Product";
 import { ProductListPage } from "./app/pages/ProductListPage";
+import { AnonymousPage } from "./app/pages/AnonymousPage";
 
 function App() {
   return (
@@ -59,8 +60,9 @@ function App() {
           </a>
         </span>
       </header> */}
-      <main class="col-12 p-3 p-md-4 p-xl-5">
-        <ProductListPage></ProductListPage>
+      <main className="col-12 p-3 p-md-4 p-xl-5">
+        {/* <ProductListPage></ProductListPage> */}
+        <AnonymousPage></AnonymousPage>
       </main>
       <Footer></Footer>
     </div>

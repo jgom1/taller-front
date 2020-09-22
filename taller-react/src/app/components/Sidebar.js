@@ -12,7 +12,7 @@ const SidebarCarousel = () => {
                     <img className="col-3 img-fluid"
                         src="https://cdn.grupoelcorteingles.es/SGFM/dctm/MARKET/019/019/922/0190199227057_00_640x640.jpg"
                         alt="Nombre del producto" />
-                    <div class="col-6 px-0">
+                    <div className="col-6 px-0">
                         <p className="text-center h4">Nombre del producto</p>
                         <p className="text-center h6">Descripción del producto</p>
                         <p className="mb-0 d-flex justify-content-center align-items-center">
@@ -29,7 +29,7 @@ const SidebarCarousel = () => {
                     <img className="col-3 img-fluid"
                         src="https://cdn.grupoelcorteingles.es/SGFM/dctm/MARKET/019/019/922/0190199227057_00_640x640.jpg"
                         alt="Nombre del producto" />
-                    <div class="col-6 px-0">
+                    <div className="col-6 px-0">
                         <p className="text-center h4">Nombre del producto</p>
                         <p className="text-center h6">Descripción del producto</p>
                         <p className="mb-0 d-flex justify-content-center align-items-center">
