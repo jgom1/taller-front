@@ -38,6 +38,11 @@
   }
 }
 
+/* Global*/
+.cursor-pointer{
+  cursor: pointer;
+}
+
 /* Product component */
 .product-card:hover{
   box-shadow: 0 0 10px #292b2c;
@@ -48,4 +53,22 @@
 .footer__links:hover{
   text-decoration: underline;
   cursor: pointer;
+}
+
+/* Sidebar component*/
+.mh25{
+  max-height: 15em;
+}
+
+.promotion-product:hover{
+  cursor: pointer;
+  background-color: #F8F9FA;
+}
+
+.promotion-product:hover h5{
+  font-weight: bolder;
+}
+
+.promotion-product:hover .current-price{
+  font-size: 1.5em;
 }

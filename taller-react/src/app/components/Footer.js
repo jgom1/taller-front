@@ -9,7 +9,7 @@ export const Footer = () => {
             <div className="container">
                 <div className="row m-0 text-center">
                     <a className="text-white mb-4 mx-auto h4 text-decoration-none">Tienda
-                    <span className="ml-1 pb-1 px-1 bg-info text-dark">Angular</span>
+                    <span className="ml-1 pb-1 px-1 bg-info text-dark">React</span>
                     </a>
                 </div>
                 <div className="row m-0 text-light d-flex justify-content-between">
