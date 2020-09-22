@@ -4,6 +4,7 @@ import { Counter } from './features/counter/Counter';
 import './App.css';
 
 import { Header } from "./app/components/Header";
+import { Footer } from "./app/components/Footer";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
           </a>
         </span>
       </header>
+      <Footer></Footer>
     </div>
   );
 }

@@ -37,3 +37,8 @@
     transform: translateY(0px)
   }
 }
+
+.footer__links:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
