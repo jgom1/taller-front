@@ -61,8 +61,8 @@ function App() {
         </span>
       </header> */}
       <main className="col-12 p-3 p-md-4 p-xl-5">
-        {/* <ProductListPage></ProductListPage> */}
-        <AnonymousPage></AnonymousPage>
+        <ProductListPage></ProductListPage>
+        {/* <AnonymousPage></AnonymousPage> */}
       </main>
       <Footer></Footer>
     </div>
