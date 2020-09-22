@@ -8,6 +8,7 @@ import { Footer } from "./app/components/Footer";
 import { Sidebar } from "./app/components/Sidebar";
 import { Product } from "./app/components/Product";
 import { ProductListPage } from "./app/pages/ProductListPage";
+import { ProductDetailPage } from "./app/pages/ProductDetailPage";
 import { AnonymousPage } from "./app/pages/AnonymousPage";
 
 function App() {
@@ -61,7 +62,8 @@ function App() {
         </span>
       </header> */}
       <main className="col-12 p-3 p-md-4 p-xl-5">
-        <ProductListPage></ProductListPage>
+        {/* <ProductListPage></ProductListPage> */}
+        <ProductDetailPage></ProductDetailPage>
       </main>
       <Footer></Footer>
     </div>
