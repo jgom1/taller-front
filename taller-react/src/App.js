@@ -5,11 +5,13 @@ import './App.css';
 
 import { Header } from "./app/components/Header";
 import { Footer } from "./app/components/Footer";
+import { Sidebar } from "./app/components/Sidebar";
 
 function App() {
   return (
     <div className="App">
       <Header></Header>
+      <Sidebar></Sidebar>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
