@@ -62,14 +62,13 @@ export const Sidebar = () => {
     async function fetchPromotionalProducts() {
         const res = await fetch("http://localhost:3004/products?productPromotion=true");
         res.json().then(res => {
-            console.log(res);
             setProducts(res)
         });
     }
 
     useEffect(() => {
         fetchPromotionalProducts();
-    }, 1);
+    }, []);
     return (
         <aside>
             <SidebarCarousel promotionalProducts={products}></SidebarCarousel>

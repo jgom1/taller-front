@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 /* Bootstrap imports */
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,14 +7,14 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Badge from 'react-bootstrap/Badge';
 
 
-const UnloggedNav = () => {
-    return (
-        <div>
-            <button type="button" className="btn btn-outline-light px-4 mr-2">Registrarse</button>
-            <button type="button" className="btn btn-danger px-4 ml-2">Entrar</button>
-        </div>
-    )
-};
+// const UnloggedNav = () => {
+//     return (
+//         <div>
+//             <button type="button" className="btn btn-outline-light px-4 mr-2">Registrarse</button>
+//             <button type="button" className="btn btn-danger px-4 ml-2">Entrar</button>
+//         </div>
+//     )
+// };
 
 const LoggedNav = () => {
     return (
@@ -73,8 +74,9 @@ export const Header = () => {
             <div className="container-fluid bg-dark px-5">
                 <div className="row m-0 d-flex align-items-center py-3">
                     <div className="col-12 col-md-6 col-xl-9 px-0 text-center text-md-left text-xl-center">
-                        <a className="text-white mb-0 h2 text-decoration-none">Tienda<span
-                            className="ml-1 pb-1 px-1 bg-info text-dark">React</span></a>
+                        <Link to="/products" className="text-white mb-0 h2 text-decoration-none">Tienda<span
+                            className="ml-1 pb-1 px-1 bg-info text-dark">React</span>
+                        </Link>
                     </div>
                     <nav className="col-12 col-md-6 col-xl-3 mt-4 mt-md-0 px-0">
                         <div className="row m-0 justify-content-center justify-content-md-end justify-content-xl-center align-items-center">

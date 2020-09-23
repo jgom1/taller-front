@@ -1,13 +1,23 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 
 /* Bootstrap imports */
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
 
-export const Product = ({productData}) => {
+
+export const Product = ({ productData }) => {
+
+    const history = useHistory();
+
+    const navigateToProduct = () => {
+        let path = `/product/${productData.id}`;
+        history.push(path);
+    };
+
     return (
         <div className="col-12 col-sm-6 col-md-4 col-xl-3 p-2">
-            <Card className="product-card m-0 p-0">
+            <Card className="product-card m-0 p-0" onClick={navigateToProduct}>
                 <Card.Img variant="top" className="p-3" src={productData.productImage} alt={productData.productName} />
                 <Card.Body className="p-3 text-center">
                     <h5 className="mb-0">{productData.productName}</h5>

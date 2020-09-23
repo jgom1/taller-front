@@ -14,14 +14,13 @@ export const ProductListPage = () => {
     async function fetchProducts() {
         const res = await fetch("http://localhost:3004/products");
         res.json().then(res => {
-            console.log(res);
             setProducts(res)
         });
     }
 
     useEffect(() => {
         fetchProducts();
-    }, 1);
+    }, []);
 
     return (
         <div className="row m-0 flex-xl-row-reverse">
