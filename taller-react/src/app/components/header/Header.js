@@ -1,36 +1,21 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 
 /* Bootstrap imports */
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Badge from 'react-bootstrap/Badge';
-import Modal from 'react-bootstrap/Modal';
+
+/* Children components */
+import { Login } from './Login';
 
 
 const UnloggedNav = () => {
-    const [showLoginModal, setShowLoginModal] = useState(false);
-
-    const handleCloseLoginModal = () => setShowLoginModal(false);
-    const handleShowLoginModal = () => setShowLoginModal(true);
-
     return (
-        <React.Fragment>
-            <div>
-                <button type="button" className="btn btn-outline-light px-4 mr-2">Registrarse</button>
-                <button type="button" className="btn btn-danger px-4 ml-2" onClick={handleShowLoginModal}>Entrar</button>
-            </div>
-            <Modal show={showLoginModal} onHide={handleCloseLoginModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-                <Modal.Footer>
-                    <button className="btn btn-secondary" onClick={handleCloseLoginModal}>Close</button>
-                    <button className="btn btn-secondary" onClick={handleCloseLoginModal}>Save Changes</button>
-                </Modal.Footer>
-            </Modal>
-        </React.Fragment>
+        <div>
+            <button type="button" className="btn btn-outline-light px-4 mr-2">Registrarse</button>
+            <Login />
+        </div>
     )
 };
 
