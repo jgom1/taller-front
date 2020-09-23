@@ -1,15 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+// import logo from './logo.svg';
+// import { Counter } from './features/counter/Counter';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 import { Header } from "./app/components/Header";
 import { Footer } from "./app/components/Footer";
-import { Sidebar } from "./app/components/Sidebar";
-import { Product } from "./app/components/Product";
 import { ProductListPage } from "./app/pages/ProductListPage";
 import { ProductDetailPage } from "./app/pages/ProductDetailPage";
 import { AnonymousPage } from "./app/pages/AnonymousPage";
+
 
 function App() {
   return (
@@ -62,8 +66,23 @@ function App() {
         </span>
       </header> */}
       <main className="col-12 p-3 p-md-4 p-xl-5">
-        {/* <ProductListPage></ProductListPage> */}
-        <ProductDetailPage></ProductDetailPage>
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <ProductListPage />
+            </Route>
+            <Route exact path="/products">
+              <ProductListPage />
+            </Route>
+            <Route path="/other">
+              <AnonymousPage />
+            </Route>
+            <Route path="/product/:id" children={<ProductDetailPage />} />
+            <Route path="*">
+              <ProductListPage />
+            </Route>
+          </Switch>
+        </Router>
       </main>
       <Footer></Footer>
     </div>
