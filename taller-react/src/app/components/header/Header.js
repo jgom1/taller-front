@@ -7,13 +7,14 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Badge from 'react-bootstrap/Badge';
 
 /* Children components */
+import { Registration } from './Registration';
 import { Login } from './Login';
 
 
 const UnloggedNav = () => {
     return (
         <div>
-            <button type="button" className="btn btn-outline-light px-4 mr-2">Registrarse</button>
+            <Registration />
             <Login />
         </div>
     )

@@ -26,7 +26,7 @@ export const Login = () => {
                         <small className="form-text text-danger">Mensaje de error</small>
                     </div>
                     <div className="row m-0 mt-5 justify-content-center">
-                        <button type="button" className="col-4 btn btn-outline-danger mr-2" data-dismiss="modal"
+                        <button type="button" className="col-4 btn btn-outline-danger mr-2"
                             id="closeLoginModal" onClick={handleCloseLoginModal}>Cerrar</button>
                         <button type="submit" className="col-4 btn btn-dark ml-2">Entrar</button>
                     </div>
