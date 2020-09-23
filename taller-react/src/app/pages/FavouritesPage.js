@@ -14,7 +14,6 @@ export const FavouritesPage = () => {
     async function fetchFavouriteProducts() {
         const res = await fetch("http://localhost:3004/favourites?userId=1");
         res.json().then(res => {
-            console.log('Favoritos', res);
             setProducts(res[0].favouriteProducts);
         });
     }
