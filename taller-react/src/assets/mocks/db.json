@@ -24,6 +24,13 @@
         "city": "Madrid",
         "province": "Madrid"
       }
+    },
+    {
+      "userName": "Antonio",
+      "userSurname": "Lopez",
+      "userEmail": "antonio-lopez@correo.com",
+      "userPassword": "123456",
+      "id": 2
     }
   ],
   "brands": [

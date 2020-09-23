@@ -49,7 +49,7 @@ export const Login = () => {
                             <label htmlFor="password" className="mb-1 h5">Contraseña</label>
                             <input type="password" className="form-control" name="loginPassword" id="loginPassword" ref={register({ required: true })} />
                         </div>
-                        {errorMessage && <p class="mb-0 text-danger">{errorMessage}</p>}
+                        {errorMessage && <p class="mb-0 text-danger small">{errorMessage}</p>}
                         <div className="row m-0 mt-5 justify-content-center">
                             <button type="button" className="col-4 btn btn-outline-danger mr-2"
                                 id="closeLoginModal" onClick={handleCloseLoginModal}>Cerrar</button>
