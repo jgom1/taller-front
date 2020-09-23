@@ -10,8 +10,8 @@ import { Header } from "./app/components/Header";
 import { Footer } from "./app/components/Footer";
 import { ProductListPage } from "./app/pages/ProductListPage";
 import { ProductDetailPage } from "./app/pages/ProductDetailPage";
-import {AnonymousPage} from "./app/pages/AnonymousPage";
-import {PurchaseHistory} from "./app/components/PurchaseHistory";
+import { PurchasesPage } from "./app/pages/PurchasesPage";
+import { AnonymousPage } from "./app/pages/AnonymousPage";
 
 
 function App() {
@@ -22,8 +22,8 @@ function App() {
         <main className="col-12 p-3 p-md-4 p-xl-5">
           <Switch>
             <Route path="/products"><ProductListPage /></Route>
+            <Route path="/purchases"><PurchasesPage /></Route>
             <Route path="/other"><AnonymousPage /></Route>
-            <Route path="/purchases"><PurchaseHistory /></Route>
             <Route path="/product/:id" children={<ProductDetailPage />}></Route>
             <Route exact path="/"><ProductListPage /></Route>
           </Switch>
