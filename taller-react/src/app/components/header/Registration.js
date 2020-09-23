@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
+import { useDispatch } from 'react-redux';
+import { setUser, login } from '../../../features/counter/counterSlice';
 
 /* Bootstrap imports */
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,6 +11,7 @@ export const Registration = () => {
     const [showRegistrationModal, setShowRegistrationModal] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const { register, handleSubmit, formState } = useForm({ mode: "onChange" });
+    const dispatch = useDispatch();
 
     const handleCloseRegistrationModal = () => setShowRegistrationModal(false);
     const handleShowRegistrationModal = () => setShowRegistrationModal(true);
@@ -32,7 +35,9 @@ export const Registration = () => {
             body: JSON.stringify(createUserObject(formData))
         });
         res.json().then(res => {
-            console.log('Usuario creado', res);
+            dispatch(setUser(res));
+            dispatch(login());
+            handleCloseRegistrationModal();
         });
     }
 

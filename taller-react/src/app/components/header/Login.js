@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
+import { useDispatch } from 'react-redux';
+import { setUser, login } from '../../../features/counter/counterSlice';
 
 /* Bootstrap imports */
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,6 +11,7 @@ export const Login = () => {
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const { register, handleSubmit, formState } = useForm({ mode: "onChange" });
+    const dispatch = useDispatch();
 
     const handleCloseLoginModal = () => setShowLoginModal(false);
     const handleShowLoginModal = () => setShowLoginModal(true);
@@ -19,7 +22,9 @@ export const Login = () => {
             if (res.length > 0) {
                 setErrorMessage('');
                 if (res[0].userPassword === formData.loginPassword) {
-                    console.log('Entrar');
+                    dispatch(setUser(res[0]));
+                    dispatch(login());
+                    handleCloseLoginModal();
                 } else {
                     setErrorMessage('Los datos introducidos no son correctos.');
                 }
