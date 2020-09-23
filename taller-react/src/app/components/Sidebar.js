@@ -4,7 +4,9 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel';
 
-const SidebarCarousel = ({ promotionalProducts }) => {
+
+
+const SidebarCarousel = ({ promotionalProducts }) => {  
     return (
         <Carousel className="d-xl-none carousel pb-3">
             {promotionalProducts.map((product, index) =>
