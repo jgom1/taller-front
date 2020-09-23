@@ -11,6 +11,7 @@ import { Footer } from "./app/components/Footer";
 import { ProductListPage } from "./app/pages/ProductListPage";
 import { ProductDetailPage } from "./app/pages/ProductDetailPage";
 import {AnonymousPage} from "./app/pages/AnonymousPage";
+import {PurchaseHistory} from "./app/components/PurchaseHistory";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Switch>
             <Route path="/products"><ProductListPage /></Route>
             <Route path="/other"><AnonymousPage /></Route>
+            <Route path="/purchases"><PurchaseHistory /></Route>
             <Route path="/product/:id" children={<ProductDetailPage />}></Route>
             <Route exact path="/"><ProductListPage /></Route>
           </Switch>
