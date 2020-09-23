@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import classNames from "classnames";
 
 /* Bootstrap imports */
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -49,7 +50,14 @@ const Purchase = ({ purchase }) => {
                         </p>
                     </div>
                     <div className="col-6 col-xl-3 px-0">
-                        <p className="h5"><span className="badge font-weight-bold p-2">{purchase.purchaseState}</span></p>
+                        <p className="h5">
+                            <span className={classNames({
+                                'badge-info': purchase.purchaseState === 'Entregado',
+                                'badge-success': purchase.purchaseState === 'Enviado',
+                                'badge-warning': purchase.purchaseState === 'Procesado',
+                                'badge': true, 'font-weight-bold': true, 'p-2': true
+                            })}>{purchase.purchaseState}</span>
+                        </p>
                     </div>
                 </div>
                 <div className="row m-0 align-items-center border-top border-dark py-2">
