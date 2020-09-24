@@ -30,7 +30,7 @@ export const NavDropdown = () => {
                     ¡Hola {user.userName}!
                     </Dropdown.Toggle>
                 <Dropdown.Menu>
-                    <Dropdown.Item className="d-flex align-items-center" onClick={() => history.push('/other')}>
+                    <Dropdown.Item className="d-flex align-items-center" onClick={() => history.push('/profile')}>
                         <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-person-fill mr-1"
                             fill="#343A40" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
