@@ -71,6 +71,7 @@ export const Sidebar = () => {
     useEffect(() => {
         fetchPromotionalProducts();
     }, []);
+    
     return (
         <aside>
             <SidebarCarousel promotionalProducts={products}></SidebarCarousel>
