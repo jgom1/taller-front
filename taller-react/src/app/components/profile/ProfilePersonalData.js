@@ -22,8 +22,8 @@ export const ProfilePersonalData = ({ user }) => {
     return (
         <Accordion className="col-12 col-md-6 text-center p-2 d-flex justify-content-strench">
             <div className="border border-dark w-100 p-3 d-flex flex-column justify-content-strench">
-                <h3 class="my-2">Mis datos personales</h3>
-                <p class="mb-0">{user.userName} {user.userSurname}</p>
+                <h3 className="my-2">Mis datos personales</h3>
+                <p className="mb-0">{user.userName} {user.userSurname}</p>
                 <p>{user.userEmail}</p>
                 <Accordion.Toggle as={Button} variant="link" eventKey="0" className="col-2 px-0 mx-auto mt-auto text-dark shadow-none">
                     <svg width="2em" height="2em" viewBox="0 0 16 16" className="bi bi-caret-down-fill"
@@ -33,14 +33,14 @@ export const ProfilePersonalData = ({ user }) => {
                     </svg>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="0">
-                    <div class="card card-body text-left">
+                    <div className="card card-body text-left">
                         <form onSubmit={handleSubmit(profilePersonalDataSubmit)}>
-                            <div class="form-group">
-                                <label for="personalEmail" class="mb-1">Nuevo email</label>
-                                <input type="text" class="form-control" name="personalEmail" id="personalEmail" ref={register({ required: true })}/>
+                            <div className="form-group">
+                                <label for="personalEmail" className="mb-1">Nuevo email</label>
+                                <input type="text" className="form-control" name="personalEmail" id="personalEmail" ref={register({ required: true })}/>
                             </div>
-                            <div class="row m-0">
-                                <button type="submit" disabled={!formState.isValid} class="btn btn-dark ml-auto">Cambiar email</button>
+                            <div className="row m-0">
+                                <button type="submit" disabled={!formState.isValid} className="btn btn-dark ml-auto">Cambiar email</button>
                             </div>
                         </form>
                     </div>
