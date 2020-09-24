@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 /* Children components */
 import { Sidebar } from '../components/Sidebar';
+import { Profile } from '../components/profile/Profile';
 
 export const ProfilePage = () => {
 
@@ -14,7 +15,7 @@ export const ProfilePage = () => {
                 <Sidebar />
             </div>
             <div class="col-12 col-xl-9 px-0 pr-xl-4">
-                <p>PERFIL</p>
+                <Profile />
             </div>
         </div>
     );
