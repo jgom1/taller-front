@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 /* Children components */
 import { ProfilePersonalData } from './ProfilePersonalData';
 import { ProfileAddress } from './ProfileAddress';
+import { ProfileCreditCard } from './ProfileCreditCard';
 
 export const Profile = () => {
     const user = useSelector(selectUser);
@@ -17,6 +18,7 @@ export const Profile = () => {
             <div class="row m-0 px-1 align-items-strench">
                 <ProfilePersonalData user={user} />
                 <ProfileAddress user={user} />
+                <ProfileCreditCard user={user} />
             </div>
         </section>
     );
