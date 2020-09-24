@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useDispatch } from 'react-redux';
-import { setUser, login } from '../../../features/counter/counterSlice';
+import { setUser, login, setFavourites, setFavouritesId } from '../../../features/counter/counterSlice';
 
 /* Bootstrap imports */
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,6 +16,14 @@ export const Login = () => {
     const handleCloseLoginModal = () => setShowLoginModal(false);
     const handleShowLoginModal = () => setShowLoginModal(true);
 
+    async function fetchUserFavourites(userId) {
+        const res = await fetch(`http://localhost:3004/favourites?userId=${userId}`);
+        res.json().then(res => {
+            dispatch(setFavourites(res[0].favouriteProducts));
+            dispatch(setFavouritesId(res[0].id));
+        });
+    }
+
     async function fetchUser(formData) {
         const res = await fetch(`http://localhost:3004/users?userEmail=${formData.loginEmail}`);
         res.json().then(res => {
@@ -23,6 +31,7 @@ export const Login = () => {
                 setErrorMessage('');
                 if (res[0].userPassword === formData.loginPassword) {
                     dispatch(setUser(res[0]));
+                    fetchUserFavourites(res[0].id);
                     dispatch(login());
                     handleCloseLoginModal();
                 } else {

@@ -4,8 +4,10 @@ export const counterSlice = createSlice({
   name: 'counter',
   initialState: {
     cart: [],
+    favourites: [],
+    favouritesId: 0,
     user: {},
-    userLogged: true,
+    userLogged: false,
     value: 0
   },
   reducers: {
@@ -33,8 +35,13 @@ export const counterSlice = createSlice({
     },
     setCart: (state, action) => {
       state.cart = action.payload
+    },
+    setFavourites: (state, action) => {
+      state.favourites = action.payload
+    },
+    setFavouritesId: (state, action) => {
+      state.favouritesId = action.payload
     }
-
   },
 });
 
@@ -45,7 +52,10 @@ export const {
   setUser,
   login,
   logout,
-  setCart } = counterSlice.actions;
+  setCart,
+  setFavourites,
+  setFavouritesId
+} = counterSlice.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
@@ -64,5 +74,7 @@ export const selectCount = state => state.counter.value;
 export const selectUser = state => state.counter.user;
 export const selectLogged = state => state.counter.userLogged;
 export const selectCart = state => state.counter.cart;
+export const selectFavourites = state => state.counter.favourites;
+export const selectFavouritesId = state => state.counter.favouritesId;
 
 export default counterSlice.reducer;
