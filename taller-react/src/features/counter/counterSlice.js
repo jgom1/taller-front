@@ -3,9 +3,10 @@ import { createSlice } from '@reduxjs/toolkit';
 export const counterSlice = createSlice({
   name: 'counter',
   initialState: {
-    value: 0,
+    cart: [],
     user: {},
-    userLogged: true
+    userLogged: true,
+    value: 0
   },
   reducers: {
     increment: state => {
@@ -30,6 +31,10 @@ export const counterSlice = createSlice({
     logout: state => {
       state.userLogged = false;
     },
+    setCart: (state, action) => {
+      state.cart = action.payload
+    }
+
   },
 });
 
@@ -39,7 +44,8 @@ export const {
   incrementByAmount,
   setUser,
   login,
-  logout } = counterSlice.actions;
+  logout,
+  setCart } = counterSlice.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
@@ -57,5 +63,6 @@ export const incrementAsync = amount => dispatch => {
 export const selectCount = state => state.counter.value;
 export const selectUser = state => state.counter.user;
 export const selectLogged = state => state.counter.userLogged;
+export const selectCart = state => state.counter.cart;
 
 export default counterSlice.reducer;
