@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { ProfilePersonalData } from './ProfilePersonalData';
 import { ProfileAddress } from './ProfileAddress';
 import { ProfileCreditCard } from './ProfileCreditCard';
+import { ProfilePassword } from './ProfilePassword';
 
 export const Profile = () => {
     const user = useSelector(selectUser);
@@ -19,6 +20,7 @@ export const Profile = () => {
                 <ProfilePersonalData user={user} />
                 <ProfileAddress user={user} />
                 <ProfileCreditCard user={user} />
+                <ProfilePassword user={user} />
             </div>
         </section>
     );
