@@ -43,6 +43,10 @@
   cursor: pointer;
 }
 
+.cursor-pointer-hover:hover{
+  cursor: pointer;
+}
+
 /* Product component */
 .product-card:hover{
   box-shadow: 0 0 10px #292b2c;

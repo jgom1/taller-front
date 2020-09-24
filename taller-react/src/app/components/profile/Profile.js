@@ -1,14 +1,20 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../features/counter/counterSlice';
 
 /* Bootstrap imports */
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export const Profile = ()=>{
-    return(
+/* Children components */
+import { ProfilePersonalData } from './ProfilePersonalData';
+
+export const Profile = () => {
+    const user = useSelector(selectUser);
+    return (
         <section className="bg-light p-3">
             <h2 className="text-center my-3">Mi perfil</h2>
             <div class="row m-0 px-1 align-items-strench">
-                <p>Elementos perfil</p>
+                <ProfilePersonalData user={user} />
             </div>
         </section>
     );
