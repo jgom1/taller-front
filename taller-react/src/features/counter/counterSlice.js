@@ -56,5 +56,6 @@ export const incrementAsync = amount => dispatch => {
 // in the slice file. For example: `useSelector((state) => state.counter.value)`
 export const selectCount = state => state.counter.value;
 export const selectUser = state => state.counter.user;
+export const selectLogged = state => state.counter.userLogged;
 
 export default counterSlice.reducer;

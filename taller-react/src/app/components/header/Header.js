@@ -1,14 +1,16 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { selectLogged, selectUser } from '../../../features/counter/counterSlice';
 
 /* Bootstrap imports */
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Dropdown from 'react-bootstrap/Dropdown';
 import Badge from 'react-bootstrap/Badge';
 
 /* Children components */
 import { Registration } from './Registration';
 import { Login } from './Login';
+import { NavDropdown } from './NavDropdown';
 
 
 const UnloggedNav = () => {
@@ -21,45 +23,10 @@ const UnloggedNav = () => {
 };
 
 const LoggedNav = () => {
+    
     return (
         <div className="d-flex align-items-center text-white">
-            <Dropdown className="mr-2">
-                <Dropdown.Toggle variant="outline-light" id="dropdown-basic">
-                    ¡Hola Usuario!
-                    </Dropdown.Toggle>
-                <Dropdown.Menu>
-                    <Dropdown.Item className="d-flex align-items-center" href="#/action-1">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-person-fill mr-1"
-                            fill="#343A40" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                        </svg>Mi perfil
-                        </Dropdown.Item>
-                    <Dropdown.Item className="d-flex align-items-center" href="#/action-2">
-                        <svg
-                            width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-heart-fill mr-1"
-                            fill="#343A40" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                        </svg>Mis favoritos
-                        </Dropdown.Item>
-                    <Dropdown.Item className="d-flex align-items-center" href="#/action-3">
-                        <svg
-                            width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-handbag-fill mr-1"
-                            fill="#343A40" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M8 1a2 2 0 0 0-2 2v2H5V3a3 3 0 0 1 6 0v2h-1V3a2 2 0 0 0-2-2zM5 5H3.361a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.356a2.5 2.5 0 0 0 2.472-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11v1.5a.5.5 0 0 1-1 0V5H6v1.5a.5.5 0 0 1-1 0V5z" />
-                        </svg>Mis compras
-                        </Dropdown.Item>
-                    <Dropdown.Item className="d-flex align-items-center" href="#/action-4">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-door-open-fill mr-1"
-                            fill="#343A40" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2v13h1V2.5a.5.5 0 0 0-.5-.5H11zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />
-                        </svg>Salir
-                        </Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
+           <NavDropdown /> 
             <div className="d-flex align-items-center cursor-pointer">
                 <svg width="2em" height="2em" viewBox="0 0 16 16" className="bi bi-cart-fill ml-2 mb-0"
                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -73,6 +40,7 @@ const LoggedNav = () => {
 };
 
 export const Header = () => {
+    const logged = useSelector(selectLogged);
     return (
         <header>
             <div className="container-fluid bg-dark px-5">
@@ -84,8 +52,7 @@ export const Header = () => {
                     </div>
                     <nav className="col-12 col-md-6 col-xl-3 mt-4 mt-md-0 px-0">
                         <div className="row m-0 justify-content-center justify-content-md-end justify-content-xl-center align-items-center">
-                            <UnloggedNav></UnloggedNav>
-                            {/* <LoggedNav></LoggedNav> */}
+                            {(logged) ? <LoggedNav /> : <UnloggedNav />}
                         </div>
                     </nav>
                 </div>
