@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { selectCart, setCart } from '../../features/counter/counterSlice';
+import { selectCart, selectFavourites, setCart, setFavourites } from '../../features/counter/counterSlice';
 
 /* Bootstrap imports */
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,11 +22,32 @@ const LinkBackToProducts = () => {
 
 const ProductDescription = ({ product }) => {
     let cart = useSelector(selectCart);
+    let favourites = useSelector(selectFavourites);
     const dispatch = useDispatch();
+    const checkFavourite = () => {
+        for (const key in favourites) {
+            if (favourites[key].id === product.id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    let isFavourite = checkFavourite();
 
     const addProductToCart = () => {
         cart = [...cart, product];
         dispatch(setCart(cart));
+    }
+
+    const addProductToFavourites = () => {
+        favourites = [...favourites, product];
+        dispatch(setFavourites(favourites));
+    }
+
+    const removeProductFromFavourites = () => {
+        favourites = [...favourites].filter((value) => value.id !== product.id);
+        dispatch(setFavourites(favourites));
     }
 
     return (
@@ -49,33 +70,37 @@ const ProductDescription = ({ product }) => {
             </div>
             <div className="col-12 px-0">
                 <div className="row m-0 mt-4 justify-content-center justify-content-xl-end">
-                    <div className="col-12 col-md-6 col-lg-4 col-xl-3 mb-2 mb-md-0 px-0 pr-md-2">
-                        <button type="button"
-                            className="btn btn-outline-dark btn-block p-3 p-xl-2 d-flex align-items-center justify-content-center">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-heart-fill mr-1" fill="#df4759"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                            </svg>
-                            Añadir a favoritos
-                        </button>
-                    </div>
-                    <div className="col-12 col-md-6 col-lg-4 col-xl-3 mb-2 mb-md-0 px-0 pr-md-2" >
-                        <button type="button"
-                            className="btn btn-dark btn-block p-3 p-xl-2 d-flex align-items-center justify-content-center" >
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-heart-fill mr-1" fill="#df4759"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                            </svg>
+                    {(isFavourite)
+                        ?
+                        <div className="col-12 col-md-6 col-lg-4 col-xl-3 mb-2 mb-md-0 px-0 pr-md-2" >
+                            <button type="button" onClick={removeProductFromFavourites} 
+                                className="btn btn-dark btn-block p-3 p-xl-2 d-flex align-items-center justify-content-center" >
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-heart-fill mr-1" fill="#df4759"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                                </svg>
                             Quitar de favoritos
                         </button >
-                    </div>
+                        </div>
+                        :
+                        <div className="col-12 col-md-6 col-lg-4 col-xl-3 mb-2 mb-md-0 px-0 pr-md-2">
+                            <button type="button" onClick={addProductToFavourites}
+                                className="btn btn-outline-dark btn-block p-3 p-xl-2 d-flex align-items-center justify-content-center">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-heart-fill mr-1" fill="#df4759"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                                </svg>
+                            Añadir a favoritos
+                        </button>
+                        </div>
+                    }
                     <div className="col-12 col-md-6 col-lg-6 col-xl-5 mb-2 mb-md-0 px-0 pl-md-2">
-                        {product.productQuantity > 0 &&
+                        {(product.productQuantity) > 0
+                            ?
                             <button type="button" className="btn btn-danger btn-block p-3 p-xl-2" onClick={addProductToCart}>Comprar</button>
-                        }
-                        {product.productQuantity < 1 &&
+                            :
                             <button type="button" className="btn btn-dark btn-block p-3 p-xl-2 d-flex align-items-center justify-content-center"
                                 data-toggle="modal" data-target="#noticeOutOfStockModal">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-envelope-fill mr-1"
