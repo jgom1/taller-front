@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { selectCart, selectFavourites, setCart, setFavourites } from '../../features/counter/counterSlice';
+import { selectCart, selectFavourites, selectFavouritesId, selectUser, setCart, setFavourites } from '../../features/counter/counterSlice';
 
 /* Bootstrap imports */
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -23,7 +23,10 @@ const LinkBackToProducts = () => {
 const ProductDescription = ({ product }) => {
     let cart = useSelector(selectCart);
     let favourites = useSelector(selectFavourites);
+    const favouritesId = useSelector(selectFavouritesId);
+    const useId = (useSelector(selectUser)).id;
     const dispatch = useDispatch();
+    let isFavourite = false;
     const checkFavourite = () => {
         for (const key in favourites) {
             if (favourites[key].id === product.id) {
@@ -33,7 +36,29 @@ const ProductDescription = ({ product }) => {
         return false;
     }
 
-    let isFavourite = checkFavourite();
+    isFavourite = checkFavourite();
+
+    const createFavouriteObject = () => {
+        return {
+            "id": favouritesId,
+            "userId": useId,
+            "favouriteProducts": favourites
+        };
+    }
+
+    const updateFavourites = async () => {
+        const res = await fetch(`http://localhost:3004/favourites/${favouritesId}`, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(createFavouriteObject())
+        });
+        res.json().then(res => {
+            dispatch(setFavourites(favourites));
+        });
+    }
 
     const addProductToCart = () => {
         cart = [...cart, product];
@@ -42,12 +67,12 @@ const ProductDescription = ({ product }) => {
 
     const addProductToFavourites = () => {
         favourites = [...favourites, product];
-        dispatch(setFavourites(favourites));
+        updateFavourites();
     }
 
     const removeProductFromFavourites = () => {
         favourites = [...favourites].filter((value) => value.id !== product.id);
-        dispatch(setFavourites(favourites));
+        updateFavourites();
     }
 
     return (
@@ -73,7 +98,7 @@ const ProductDescription = ({ product }) => {
                     {(isFavourite)
                         ?
                         <div className="col-12 col-md-6 col-lg-4 col-xl-3 mb-2 mb-md-0 px-0 pr-md-2" >
-                            <button type="button" onClick={removeProductFromFavourites} 
+                            <button type="button" onClick={removeProductFromFavourites}
                                 className="btn btn-dark btn-block p-3 p-xl-2 d-flex align-items-center justify-content-center" >
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-heart-fill mr-1" fill="#df4759"
                                     xmlns="http://www.w3.org/2000/svg">
