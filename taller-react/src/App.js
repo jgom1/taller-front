@@ -17,6 +17,7 @@ import { ProductDetailPage } from "./app/pages/ProductDetailPage";
 import { FavouritesPage } from "./app/pages/FavouritesPage";
 import { PurchasesPage } from "./app/pages/PurchasesPage";
 import { ProfilePage } from './app/pages/ProfilePage';
+import { Payment } from "./app/components/payment/Payment";
 import { AnonymousPage } from "./app/pages/AnonymousPage";
 
 
@@ -31,6 +32,7 @@ function App() {
             <Route path="/favourites"><FavouritesPage /></Route>
             <Route path="/purchases"><PurchasesPage /></Route>
             <Route path="/profile"><ProfilePage /></Route>
+            <Route path="/payment"><Payment /></Route>
             <Route path="/other"><AnonymousPage /></Route>
             <Route path="/product/:id" children={<ProductDetailPage />}></Route>
             <Route exact path="/"><ProductListPage /></Route>
