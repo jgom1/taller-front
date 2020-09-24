@@ -5,7 +5,7 @@ export const counterSlice = createSlice({
   initialState: {
     value: 0,
     user: {},
-    userLogged: false
+    userLogged: true
   },
   reducers: {
     increment: state => {
