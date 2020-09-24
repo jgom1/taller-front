@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { selectCart, setCart } from '../../features/counter/counterSlice';
 
 /* Bootstrap imports */
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,6 +21,14 @@ const LinkBackToProducts = () => {
 }
 
 const ProductDescription = ({ product }) => {
+    let cart = useSelector(selectCart);
+    const dispatch = useDispatch();
+
+    const addProductToCart = () => {
+        cart = [...cart, product];
+        dispatch(setCart(cart));
+    }
+
     return (
         <div className="row m-0">
             <div className="col-12 col-lg-4 px-0 pr-lg-3 mb-3 mb-lg-0 d-flex align-items-center">
@@ -63,7 +73,7 @@ const ProductDescription = ({ product }) => {
                     </div>
                     <div className="col-12 col-md-6 col-lg-6 col-xl-5 mb-2 mb-md-0 px-0 pl-md-2">
                         {product.productQuantity > 0 &&
-                            <button type="button" className="btn btn-danger btn-block p-3 p-xl-2">Comprar</button>
+                            <button type="button" className="btn btn-danger btn-block p-3 p-xl-2" onClick={addProductToCart}>Comprar</button>
                         }
                         {product.productQuantity < 1 &&
                             <button type="button" className="btn btn-dark btn-block p-3 p-xl-2 d-flex align-items-center justify-content-center"
