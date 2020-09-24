@@ -6,8 +6,8 @@ import { selectCart, selectUser } from '../../../features/counter/counterSlice';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 /* Children components */
-import { PaymentUserSettings } from './PaymentUserSettings';
-import { PaymentDetails } from './PaymentDetails';
+import { PaymentUserSettings } from './paymentUserSettings/PaymentUserSettings';
+import { PaymentDetails } from './paymentDetails/PaymentDetails';
 
 export const Payment = () => {
     // const user = useSelector(selectUser);
