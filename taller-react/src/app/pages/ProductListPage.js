@@ -6,6 +6,7 @@ import CardDeck from 'react-bootstrap/CardDeck';
 
 /* Children components */
 import { Sidebar } from '../components/Sidebar';
+import { Search } from '../components/Search';
 import { Product } from '../components/Product';
 
 export const ProductListPage = () => {
@@ -28,7 +29,7 @@ export const ProductListPage = () => {
                 <Sidebar></Sidebar>
             </div>
             <div className="col-12 col-xl-9 px-0 pr-xl-4">
-                <p>BUSCADOR</p>
+                <Search />
                 {(products.length > 0)
                     ?
                     <CardDeck className="m-0 px-4 p-sm-2 bg-light">
