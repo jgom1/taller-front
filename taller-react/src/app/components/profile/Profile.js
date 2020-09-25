@@ -10,6 +10,7 @@ import { ProfilePersonalData } from './ProfilePersonalData';
 import { ProfileAddress } from './ProfileAddress';
 import { ProfileCreditCard } from './ProfileCreditCard';
 import { ProfilePassword } from './ProfilePassword';
+import { ProfileManagementButtons } from './ProfileManagementButtons';
 
 export const Profile = () => {
     const user = useSelector(selectUser);
@@ -22,6 +23,7 @@ export const Profile = () => {
                 <ProfileCreditCard user={user} />
                 <ProfilePassword user={user} />
             </div>
+            <ProfileManagementButtons user={user} />
         </section>
     );
 };
