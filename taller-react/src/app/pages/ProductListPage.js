@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectFilteredProducts } from '../../features/counter/counterSlice';
 
 /* Bootstrap imports */
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,18 +12,7 @@ import { Search } from '../components/Search';
 import { Product } from '../components/Product';
 
 export const ProductListPage = () => {
-    const [products, setProducts] = useState([]);
-
-    async function fetchProducts() {
-        const res = await fetch("http://localhost:3004/products");
-        res.json().then(res => {
-            setProducts(res)
-        });
-    }
-
-    useEffect(() => {
-        fetchProducts();
-    }, []);
+    const products = useSelector(selectFilteredProducts);
 
     return (
         <div className="row m-0 flex-xl-row-reverse">
