@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { selectUser, setUser, logout } from '../../../features/counter/counterSlice';
+import { selectUser, setUser, setCart, setFavourites, setFavouritesId, logout } from '../../../features/counter/counterSlice';
 
 /* Bootstrap imports */
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,8 +16,11 @@ export const NavDropdown = () => {
 
     const handleCloseConfirmExitModal = () => setShowConfirmExitModal(false);
     const handleShowConfirmExitModal = () => setShowConfirmExitModal(true);
-    const logoutEvent = () => {
+    const handleLogout = () => {
         dispatch(logout());
+        dispatch(setCart([]));
+        dispatch(setFavourites([]));
+        dispatch(setFavouritesId(0));
         dispatch(setUser({}));
         handleCloseConfirmExitModal();
         history.push('/products');
@@ -68,7 +71,7 @@ export const NavDropdown = () => {
                     <div className="modal-body text-center h4 mb-4">¿Seguro que deseas salir?</div>
                     <div className="row m-0 justify-content-center">
                         <button type="button" className="col-3 btn btn-success mr-2" onClick={handleCloseConfirmExitModal}>No</button>
-                        <button type="button" className="col-3 btn btn-danger ml-2" onClick={logoutEvent}>Sí</button>
+                        <button type="button" className="col-3 btn btn-danger ml-2" onClick={handleLogout}>Sí</button>
                     </div>
                 </Modal.Body>
             </Modal>

@@ -23,6 +23,11 @@ export const ShoppingCart = () => {
         dispatch(setCart(cart));
     }
 
+    const goToPayment = ()=>{
+        handleCloseShoppingCartModal();
+        history.push('/payment');
+    }
+
     return (
         <React.Fragment>
             <div className={classNames({
@@ -74,7 +79,7 @@ export const ShoppingCart = () => {
                     }
                 </div>
                 <div className="modal-footer bg-dark px-5 py-3">
-                    <button type="button" disabled={cart.length < 1} className="btn btn-success btn-block py-2" onClick={() => history.push('/payment')}>Continuar</button>
+                    <button type="button" disabled={cart.length < 1} className="btn btn-success btn-block py-2" onClick={goToPayment}>Continuar</button>
                 </div>
             </Modal>
         </React.Fragment >
