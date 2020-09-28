@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { selectCart, selectFavourites, selectFavouritesId, selectUser, setCart, setFavourites } from '../../features/counter/counterSlice';
+import { selectCart, selectFavourites, selectFavouritesId, selectUser, setCart, setFavourites, selectLogged } from '../../features/counter/counterSlice';
 
 /* Bootstrap imports */
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Modal from 'react-bootstrap/Modal';
 import { BsChevronLeft, BsFillHeartFill, BsEnvelopeFill } from "react-icons/bs";
 
 const LinkBackToProducts = () => {
@@ -18,13 +19,18 @@ const LinkBackToProducts = () => {
     );
 }
 
-const ProductDescription = ({ product }) => {
+const ProductDescription = ({ product, logged }) => {
     let cart = useSelector(selectCart);
     let favourites = useSelector(selectFavourites);
     const favouritesId = useSelector(selectFavouritesId);
     const useId = (useSelector(selectUser)).id;
     const dispatch = useDispatch();
     let isFavourite = false;
+    const [showOutOfStockModal, setShowOutOfStockModal] = useState(false);
+
+    const handleCloseOutOfStockModal = () => setShowOutOfStockModal(false);
+    const handleShowOutOfStockModal = () => setShowOutOfStockModal(true);
+
     const checkFavourite = () => {
         for (const key in favourites) {
             if (favourites[key].id === product.id) {
@@ -91,63 +97,55 @@ const ProductDescription = ({ product }) => {
                     <p className="h4 text-center text-danger">¡Ops! Actualmente este producto no está disponible en nuestro stock...</p>
                 }
             </div>
-            <div className="col-12 px-0">
-                <div className="row m-0 mt-4 justify-content-center justify-content-xl-end">
-                    {(isFavourite)
-                        ?
-                        <div className="col-12 col-md-6 col-lg-4 col-xl-3 mb-2 mb-md-0 px-0 pr-md-2" >
-                            <button type="button" onClick={removeProductFromFavourites}
-                                className="btn btn-dark btn-block p-3 p-xl-2 d-flex align-items-center justify-content-center" >
-                                <BsFillHeartFill className="text-danger mr-1" />Quitar de favoritos
-                        </button >
-                        </div>
-                        :
-                        <div className="col-12 col-md-6 col-lg-4 col-xl-3 mb-2 mb-md-0 px-0 pr-md-2">
-                            <button type="button" onClick={addProductToFavourites}
-                                className="btn btn-outline-dark btn-block p-3 p-xl-2 d-flex align-items-center justify-content-center">
-                                <BsFillHeartFill className="mr-1" />Añadir a favoritos
-                        </button>
-                        </div>
-                    }
-                    <div className="col-12 col-md-6 col-lg-6 col-xl-5 mb-2 mb-md-0 px-0 pl-md-2">
-                        {(product.productQuantity) > 0
+            {logged &&
+                <div className="col-12 px-0">
+                    <div className="row m-0 mt-4 justify-content-center justify-content-xl-end">
+                        {(isFavourite)
                             ?
-                            <button type="button" className="btn btn-danger btn-block p-3 p-xl-2" onClick={addProductToCart}>Comprar</button>
+                            <div className="col-12 col-md-6 col-lg-4 col-xl-3 mb-2 mb-md-0 px-0 pr-md-2" >
+                                <button type="button" onClick={removeProductFromFavourites}
+                                    className="btn btn-dark btn-block p-3 p-xl-2 d-flex align-items-center justify-content-center" >
+                                    <BsFillHeartFill className="text-danger mr-1" />Quitar de favoritos
+                        </button >
+                            </div>
                             :
-                            <button type="button" className="btn btn-dark btn-block p-3 p-xl-2 d-flex align-items-center justify-content-center"
-                                data-toggle="modal" data-target="#noticeOutOfStockModal">
-                                <BsEnvelopeFill className="mr-1" />Notifícame cuando esté disponible
-                            </button>
+                            <div className="col-12 col-md-6 col-lg-4 col-xl-3 mb-2 mb-md-0 px-0 pr-md-2">
+                                <button type="button" onClick={addProductToFavourites}
+                                    className="btn btn-outline-dark btn-block p-3 p-xl-2 d-flex align-items-center justify-content-center">
+                                    <BsFillHeartFill className="mr-1" />Añadir a favoritos
+                        </button>
+                            </div>
                         }
+                        <div className="col-12 col-md-6 col-lg-6 col-xl-5 mb-2 mb-md-0 px-0 pl-md-2">
+                            {(product.productQuantity) > 0
+                                ?
+                                <button type="button" className="btn btn-danger btn-block p-3 p-xl-2" onClick={addProductToCart}>Comprar</button>
+                                :
+                                <button type="button" className="btn btn-dark btn-block p-3 p-xl-2 d-flex align-items-center justify-content-center"
+                                    onClick={handleShowOutOfStockModal}>
+                                    <BsEnvelopeFill className="mr-1" />Notifícame cuando esté disponible
+                            </button>
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
+            <Modal show={showOutOfStockModal} onHide={handleCloseOutOfStockModal}>
+                <Modal.Body className="p-5 text-center">
+                    <h2 className="mt-5">¡Tomamos nota!</h2>
+                    <h5>Trabajamos para que puedas disfrutar de tus artículos favoritos cuanto antes.</h5>
+                    <p className="my-3">Recibirás un correo electrónico cuando este artículo esté disponible.</p>
+                    <button type="button" className="col-4 btn btn-dark mx-auto" onClick={handleCloseOutOfStockModal}>Aceptar</button>
+                </Modal.Body>
+            </Modal>
         </div>
     );
 }
 
-// const OutOfStockModal = () => {
-//     return (
-//         <div className="modal fade" id="noticeOutOfStockModal" tabindex="-1" aria-labelledby="noticeOutOfStockModalLabel" aria-hidden="true">
-//             <div className="modal-dialog">
-//                 <div className="modal-content">
-//                     <div className="modal-body p-5 text-center">
-//                         <h2 className="mt-5">¡Tomamos nota!</h2>
-//                         <h5>Trabajamos para que puedas disfrutar de tus artículos favoritos cuanto antes.</h5>
-//                         <p className="my-3">Recibirás un correo electrónico cuando este artículo esté disponible.</p>
-//                         <button type="button" className="col-4 btn btn-dark mx-auto" data-dismiss="modal">Aceptar</button>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// }
-
-
-
 export const ProductDetail = () => {
     let { id } = useParams();
     const [product, setProduct] = useState({});
+    const logged = useSelector(selectLogged);
 
     async function fetchProduct() {
         const res = await fetch(`http://localhost:3004/products/${id}`);
@@ -163,7 +161,7 @@ export const ProductDetail = () => {
     return (
         <section className="col-12 px-0 bg-light p-3">
             <LinkBackToProducts></LinkBackToProducts>
-            <ProductDescription product={product}></ProductDescription>
+            <ProductDescription product={product} logged={logged}></ProductDescription>
         </section>
     );
 };
