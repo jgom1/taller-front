@@ -5,6 +5,8 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { selectLogged } from './features/counter/counterSlice';
 
 /* Bootstrap imports */
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,9 +21,11 @@ import { PurchasesPage } from "./app/pages/PurchasesPage";
 import { ProfilePage } from './app/pages/ProfilePage';
 import { Payment } from "./app/components/payment/Payment";
 import { AnonymousPage } from "./app/pages/AnonymousPage";
+import GuardedRoute from './app/components/GuardedRoute';
 
 
 function App() {
+  const logged = useSelector(selectLogged);
   return (
     <div className="App">
       <Router>
@@ -29,10 +33,10 @@ function App() {
         <main className="col-12 p-3 p-md-4 p-xl-5">
           <Switch>
             <Route path="/products"><ProductListPage /></Route>
-            <Route path="/favourites"><FavouritesPage /></Route>
-            <Route path="/purchases"><PurchasesPage /></Route>
-            <Route path="/profile"><ProfilePage /></Route>
-            <Route path="/payment"><Payment /></Route>
+            <GuardedRoute path='/favourites' component={FavouritesPage} auth={logged} />
+            <GuardedRoute path='/purchases' component={PurchasesPage} auth={logged} />
+            <GuardedRoute path='/profile' component={ProfilePage} auth={logged} />
+            <GuardedRoute path='/payment' component={Payment} auth={logged} />
             <Route path="/other"><AnonymousPage /></Route>
             <Route path="/product/:id" children={<ProductDetailPage />}></Route>
             <Route exact path="/"><ProductListPage /></Route>
