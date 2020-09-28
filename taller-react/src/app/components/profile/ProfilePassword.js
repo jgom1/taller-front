@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../../features/counter/counterSlice';
@@ -8,6 +8,7 @@ import { setUser } from '../../../features/counter/counterSlice';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
+import { BsFillCaretDownFill } from "react-icons/bs";
 
 export const ProfilePassword = ({ user }) => {
     const { register, handleSubmit, formState } = useForm({ mode: 'onChange' });
@@ -36,31 +37,27 @@ export const ProfilePassword = ({ user }) => {
                 <h3 className="my-2">Mi contraseña</h3>
                 <p className="h3">{hidenPassword}</p>
                 <Accordion.Toggle as={Button} variant='link' eventKey='0' className='col-2 px-0 mx-auto mt-auto text-dark shadow-none'>
-                    <svg width='2em' height='2em' viewBox='0 0 16 16' className='bi bi-caret-down-fill'
-                        fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
-                        <path
-                            d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z' />
-                    </svg>
+                    <BsFillCaretDownFill className='icon__size--2' />
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey='0'>
                     <div className="card card-body text-left">
                         <form onSubmit={handleSubmit(profilePasswordSubmit)}>
                             <div className="form-group">
-                                <label for="currentProfilePassword" className="mb-1">Contraseña actual</label>
+                                <label htmlFor="currentProfilePassword" className="mb-1">Contraseña actual</label>
                                 <input type="password" className="form-control"
                                     name="currentProfilePassword" id="currentProfilePassword" ref={register({ required: true })} />
                             </div>
                             <div className="row m-0">
                                 <div className="col-6 col-xl-12 px-0 pr-1 pr-xl-0">
                                     <div className="form-group">
-                                        <label for="newProfilePassword" className="mb-1">Nueva contraseña</label>
+                                        <label htmlFor="newProfilePassword" className="mb-1">Nueva contraseña</label>
                                         <input type="password" className="form-control"
                                             name="newProfilePassword" id="newProfilePassword" ref={register({ required: true })} />
                                     </div>
                                 </div>
                                 <div className="col-6 col-xl-12 px-0 pl-1 pl-xl-0">
                                     <div className="form-group">
-                                        <label for="confirmedProfilePassword" className="mb-1">Confirma contraseña</label>
+                                        <label htmlFor="confirmedProfilePassword" className="mb-1">Confirma contraseña</label>
                                         <input type="password"
                                             className="form-control" name="confirmedProfilePassword" id="confirmedProfilePassword" ref={register({ required: true })} />
                                     </div>

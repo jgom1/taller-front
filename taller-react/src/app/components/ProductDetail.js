@@ -5,17 +5,15 @@ import { selectCart, selectFavourites, selectFavouritesId, selectUser, setCart, 
 
 /* Bootstrap imports */
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BsChevronLeft, BsFillHeartFill, BsEnvelopeFill } from "react-icons/bs";
 
 const LinkBackToProducts = () => {
     return (
-        <p className="h5 mb-4 mb-lg-0"><Link to="/products"
-            className="text-dark d-flex align-items-center text-decoration-none">
-            <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-chevron-left" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-            </svg>
-            Volver al listado de productos</Link>
+        <p className="h5 mb-4 mb-lg-0">
+            <Link to="/products"
+                className="text-dark d-flex align-items-center text-decoration-none">
+                <BsChevronLeft />Volver al listado de productos
+            </Link>
         </p>
     );
 }
@@ -100,24 +98,14 @@ const ProductDescription = ({ product }) => {
                         <div className="col-12 col-md-6 col-lg-4 col-xl-3 mb-2 mb-md-0 px-0 pr-md-2" >
                             <button type="button" onClick={removeProductFromFavourites}
                                 className="btn btn-dark btn-block p-3 p-xl-2 d-flex align-items-center justify-content-center" >
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-heart-fill mr-1" fill="#df4759"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                                </svg>
-                            Quitar de favoritos
+                                <BsFillHeartFill className="text-danger mr-1" />Quitar de favoritos
                         </button >
                         </div>
                         :
                         <div className="col-12 col-md-6 col-lg-4 col-xl-3 mb-2 mb-md-0 px-0 pr-md-2">
                             <button type="button" onClick={addProductToFavourites}
                                 className="btn btn-outline-dark btn-block p-3 p-xl-2 d-flex align-items-center justify-content-center">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-heart-fill mr-1" fill="#df4759"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                                </svg>
-                            Añadir a favoritos
+                                <BsFillHeartFill className="mr-1" />Añadir a favoritos
                         </button>
                         </div>
                     }
@@ -128,12 +116,7 @@ const ProductDescription = ({ product }) => {
                             :
                             <button type="button" className="btn btn-dark btn-block p-3 p-xl-2 d-flex align-items-center justify-content-center"
                                 data-toggle="modal" data-target="#noticeOutOfStockModal">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-envelope-fill mr-1"
-                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
-                                </svg>
-                                Notifícame cuando esté disponible
+                                <BsEnvelopeFill className="mr-1" />Notifícame cuando esté disponible
                             </button>
                         }
                     </div>

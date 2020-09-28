@@ -7,6 +7,7 @@ import { setUser } from '../../../features/counter/counterSlice';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
+import { BsFillCaretDownFill } from "react-icons/bs";
 
 export const ProfileAddress = ({ user }) => {
     const { register, handleSubmit, formState } = useForm({ mode: 'onChange' });
@@ -31,37 +32,33 @@ export const ProfileAddress = ({ user }) => {
                 {user.userAddress && <p className='mb-0'>{user.userAddress.address}</p>}
                 {user.userAddress && <p>{user.userAddress.cp}, {user.userAddress.city}, {user.userAddress.province}</p>}
                 <Accordion.Toggle as={Button} variant='link' eventKey='0' className='col-2 px-0 mx-auto mt-auto text-dark shadow-none'>
-                    <svg width='2em' height='2em' viewBox='0 0 16 16' className='bi bi-caret-down-fill'
-                        fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
-                        <path
-                            d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z' />
-                    </svg>
+                    <BsFillCaretDownFill className='icon__size--2' />
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey='0'>
                     <div className='card card-body text-left'>
                         <form onSubmit={handleSubmit(profileAddressDataSubmit)}>
                             <div className='form-group'>
-                                <label for='address' className='mb-1'>Dirección</label>
+                                <label htmlFor='address' className='mb-1'>Dirección</label>
                                 <input type='text' className='form-control' name='address' id='address' ref={register({ required: true })} />
                             </div>
                             <div className='row m-0'>
                                 <div className='col-12 col-xl-2 px-0 pr-1'>
                                     <div className='form-group'>
-                                        <label for='postalCode' className='mb-1'>CP</label>
+                                        <label htmlFor='postalCode' className='mb-1'>CP</label>
                                         <input type='text' className='form-control'
                                             name='postalCode' id='postalCode' ref={register({ required: true })} />
                                     </div>
                                 </div>
                                 <div className='col-12 col-xl-5 px-0 pl-1 pr-1'>
                                     <div className='form-group'>
-                                        <label for='city' className='mb-1'>Ciudad</label>
+                                        <label htmlFor='city' className='mb-1'>Ciudad</label>
                                         <input type='text' className='form-control' name='city' id='city'
                                             ref={register({ required: true })} />
                                     </div>
                                 </div>
                                 <div className='col-12 col-xl-5 px-0 pl-1'>
                                     <div className='form-group'>
-                                        <label for='province' className='mb-1'>Provincia</label>
+                                        <label htmlFor='province' className='mb-1'>Provincia</label>
                                         <input type='text' className='form-control' name='province' id='province'
                                             ref={register({ required: true })} />
                                     </div>

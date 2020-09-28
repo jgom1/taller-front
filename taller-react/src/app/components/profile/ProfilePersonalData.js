@@ -8,13 +8,14 @@ import { setUser } from '../../../features/counter/counterSlice';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
+import { BsFillCaretDownFill } from "react-icons/bs";
 
 export const ProfilePersonalData = ({ user }) => {
     const { register, handleSubmit, formState } = useForm({ mode: "onChange" });
     const dispatch = useDispatch();
 
     const profilePersonalDataSubmit = (formData) => {
-        const altUser = {...user};
+        const altUser = { ...user };
         altUser.userEmail = formData.personalEmail;
         dispatch(setUser(altUser));
     }
@@ -26,18 +27,14 @@ export const ProfilePersonalData = ({ user }) => {
                 <p className="mb-0">{user.userName} {user.userSurname}</p>
                 <p>{user.userEmail}</p>
                 <Accordion.Toggle as={Button} variant="link" eventKey="0" className="col-2 px-0 mx-auto mt-auto text-dark shadow-none">
-                    <svg width="2em" height="2em" viewBox="0 0 16 16" className="bi bi-caret-down-fill"
-                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                    </svg>
+                    <BsFillCaretDownFill className='icon__size--2' />
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="0">
                     <div className="card card-body text-left">
                         <form onSubmit={handleSubmit(profilePersonalDataSubmit)}>
                             <div className="form-group">
-                                <label for="personalEmail" className="mb-1">Nuevo email</label>
-                                <input type="text" className="form-control" name="personalEmail" id="personalEmail" ref={register({ required: true })}/>
+                                <label htmlFor="personalEmail" className="mb-1">Nuevo email</label>
+                                <input type="text" className="form-control" name="personalEmail" id="personalEmail" ref={register({ required: true })} />
                             </div>
                             <div className="row m-0">
                                 <button type="submit" disabled={!formState.isValid} className="btn btn-dark ml-auto">Cambiar email</button>

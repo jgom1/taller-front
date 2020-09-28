@@ -8,6 +8,8 @@ import classNames from "classnames";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Badge from 'react-bootstrap/Badge';
 import Modal from 'react-bootstrap/Modal';
+import { FaShoppingCart } from "react-icons/fa";
+import { BsTrashFill } from "react-icons/bs";
 
 export const ShoppingCart = () => {
     const [showShoppingCartModal, setShowShoppingCartModal] = useState(false);
@@ -23,7 +25,7 @@ export const ShoppingCart = () => {
         dispatch(setCart(cart));
     }
 
-    const goToPayment = ()=>{
+    const goToPayment = () => {
         handleCloseShoppingCartModal();
         history.push('/payment');
     }
@@ -36,11 +38,7 @@ export const ShoppingCart = () => {
                 'd-flex': true, 'align-items-center': true, 'cursor-pointer': true
             })}
                 onClick={handleShowShoppingCartModal}>
-                <svg width="2em" height="2em" viewBox="0 0 16 16" className="bi bi-cart-fill ml-2 mb-0"
-                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                </svg>
+                <FaShoppingCart className="ml-2 mr-1 mb-0 icon__size--2" />
                 <Badge className={classNames({
                     'badge-light': cart.length < 1,
                     'badge-success': cart.length > 0,
@@ -68,11 +66,7 @@ export const ShoppingCart = () => {
                                     <p className="mb-0 h5">{product.productPrice}€</p>
                                 </div>
                                 <div className="col-2 px-0 d-flex align-items-center justify-content-center">
-                                    <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" className="bi bi-trash-fill ml-1 cursor-pointer" fill="#df4759"
-                                        xmlns="http://www.w3.org/2000/svg" onClick={() => removeCartItem(index)}>
-                                        <path fill-rule="evenodd"
-                                            d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
-                                    </svg>
+                                    <BsTrashFill className="ml-1 icon__size--1-3 cursor-pointer text-danger" onClick={() => removeCartItem(index)}/>
                                 </div>
                             </div>
                         )

@@ -8,6 +8,7 @@ import { setUser } from '../../../features/counter/counterSlice';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
+import { BsFillCaretDownFill, BsTrashFill } from "react-icons/bs";
 
 export const ProfileCreditCard = ({ user }) => {
     const { register, handleSubmit, formState } = useForm({ mode: "onChange" });
@@ -44,41 +45,33 @@ export const ProfileCreditCard = ({ user }) => {
                                 <p className="mb-0 text-muted">{card.userCreditCardDate}</p>
                             </div>
                             <div className="col-2 px-0 d-flex align-items-center justify-content-center">
-                                <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" className="bi bi-trash-fill cursor-pointer"
-                                    fill="#df4759" xmlns="http://www.w3.org/2000/svg" onClick={() => removeCreditCard(index)}>
-                                    <path fill-rule="evenodd"
-                                        d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
-                                </svg>
+                                <BsTrashFill className="icon__size--1-3 cursor-pointer text-danger" onClick={() => removeCreditCard(index)} />
                             </div>
                         </div>
                     )
                 }
                 <Accordion.Toggle as={Button} variant="link" eventKey="0" className="col-2 px-0 mx-auto mt-auto text-dark shadow-none">
-                    <svg width="2em" height="2em" viewBox="0 0 16 16" className="bi bi-caret-down-fill"
-                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                    </svg>
+                    <BsFillCaretDownFill className='icon__size--2' />
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="0">
                     <div className="card card-body text-left">
                         <form onSubmit={handleSubmit(profileCreditCardSubmit)}>
                             <div className="form-group">
-                                <label for="creditCardHolder" className="mb-1">Titular</label>
+                                <label htmlFor="creditCardHolder" className="mb-1">Titular</label>
                                 <input type="text" className="form-control"
                                     name="creditCardHolder" id="creditCardHolder" ref={register({ required: true })} />
                             </div>
                             <div className="row m-0">
                                 <div className="col-8 col-xl-12 px-0 pr-1 pr-xl-0">
                                     <div className="form-group">
-                                        <label for="creditCardNumber" className="mb-1">Número</label>
+                                        <label htmlFor="creditCardNumber" className="mb-1">Número</label>
                                         <input type="text" className="form-control"
                                             name="creditCardNumber" id="creditCardNumber" ref={register({ required: true })} />
                                     </div>
                                 </div>
                                 <div className="col-4 col-xl-12 px-0 pl-1 pl-xl-0">
                                     <div className="form-group">
-                                        <label for="creditCardDate" className="mb-1">Fecha caducidad</label>
+                                        <label htmlFor="creditCardDate" className="mb-1">Fecha caducidad</label>
                                         <input type="text" className="form-control"
                                             name="creditCardDate" id="creditCardDate" ref={register({ required: true })} />
                                     </div>
