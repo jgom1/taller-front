@@ -11,7 +11,7 @@ export const Search = () => {
     let filteredProducts = [];
     const [brands, setBrands] = useState([]);
     const [prices, setPrices] = useState([[]]);
-    const { register, handleSubmit, formState } = useForm({ mode: "onChange" });
+    const { register, handleSubmit } = useForm();
     const dispatch = useDispatch();
 
 

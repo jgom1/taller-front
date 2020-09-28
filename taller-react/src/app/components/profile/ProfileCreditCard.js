@@ -38,7 +38,7 @@ export const ProfileCreditCard = ({ user }) => {
                 {(!user.userCreditCard || user.userCreditCard.length < 1) && <p>No tienes tarjetas guardadas.</p>}
                 {user.userCreditCard &&
                     user.userCreditCard.map((card, index) =>
-                        <div className="card flex-row my-2 p-3">
+                        <div key={index} className="card flex-row my-2 p-3">
                             <div className="col-10 px-0 d-flex flex-column justify-content-center align-items-start">
                                 <p className="mb-0 font-weight-bold">{card.userCreditCardHolder}</p>
                                 <p className="mb-0">{card.userCreditCardNumber}</p>

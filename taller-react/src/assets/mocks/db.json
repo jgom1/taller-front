@@ -11,11 +11,6 @@
           "userCreditCardHolder": "Juan Pérez",
           "userCreditCardNumber": "1111111111111111",
           "userCreditCardDate": "01/2025"
-        },
-        {
-          "userCreditCardHolder": "Juan Pérez",
-          "userCreditCardNumber": "2222222222222222",
-          "userCreditCardDate": "09/2023"
         }
       ],
       "userAddress": {

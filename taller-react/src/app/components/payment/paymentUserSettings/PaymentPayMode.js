@@ -61,7 +61,7 @@ export const PaymentPayMode = ({ user, purchase }) => {
                         <label className="form-check-label cursor-pointer" htmlFor="paymentOption3">Contra reembolso</label>
                     </div>
                     {(user.userCreditCard && user.userCreditCard.length > 0) &&
-                        <Accordion.Collapse eventKey='0' className="col" Collapse>
+                        <Accordion.Collapse eventKey='0' className="col" collapse="true">
                             <div className="row m-0 mt-4">
                                 {user.userCreditCard.map((creditCard, index) =>
                                     <div key={index} className="col-12 col-sm-6 col-lg-4 px-0 px-sm-1 mb-2" onClick={() => selectCreditCard(index)}>
