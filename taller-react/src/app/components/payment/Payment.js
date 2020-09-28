@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectCart, selectUser } from '../../../features/counter/counterSlice';
+import { selectCart, selectUser, selectPurchase } from '../../../features/counter/counterSlice';
 
 /* Bootstrap imports */
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,38 +10,14 @@ import { PaymentUserSettings } from './paymentUserSettings/PaymentUserSettings';
 import { PaymentDetails } from './paymentDetails/PaymentDetails';
 
 export const Payment = () => {
-    // const user = useSelector(selectUser);
-    const user = {
-        "id": 1,
-        "userName": "Juan",
-        "userSurname": "Pérez",
-        "userEmail": "juan-perez@correo.com",
-        "userPassword": "abc123",
-        "userCreditCard": [
-          {
-            "userCreditCardHolder": "Juan Pérez",
-            "userCreditCardNumber": "1111111111111111",
-            "userCreditCardDate": "01/2025"
-          },
-          {
-            "userCreditCardHolder": "Juan Pérez",
-            "userCreditCardNumber": "2222222222222222",
-            "userCreditCardDate": "09/2023"
-          }
-        ],
-        "userAddress": {
-          "address": "C/Algo, n25, portal 1, 2 Dcha",
-          "cp": "28001",
-          "city": "Madrid",
-          "province": "Madrid"
-        }
-      };
+  const user = useSelector(selectUser);
+  const purchase = useSelector(selectPurchase);
+  const cart = useSelector(selectCart);
 
-    const cart = useSelector(selectCart);
-    return (
-        <section className="row m-0">
-            <PaymentUserSettings user={user} />
-            <PaymentDetails cart={cart} />
-        </section>
-    );
+  return (
+    <section className="row m-0">
+      <PaymentUserSettings user={user} purchase={purchase} />
+      <PaymentDetails cart={cart} purchase={purchase} user={user} />
+    </section>
+  );
 };

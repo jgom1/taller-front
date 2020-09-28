@@ -3,7 +3,23 @@ import React from 'react';
 /* Bootstrap imports */
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export const PaymentTaxes = ({ cart }) => {
+export const PaymentTaxes = ({ cart, purchase }) => {
+    let totalPayment = 0;
+
+    const getProductsTotalPrice = () => {
+        let productsTotalPrice = 0;
+        cart.map((product) => {
+            productsTotalPrice += product.productPrice;
+        });
+        return productsTotalPrice;
+    }
+
+    const getTotalPayment = () => {
+        totalPayment = (cart.length > 0) ? getProductsTotalPrice() + purchase.shippingDetails.shippingPrice : 0;
+    }
+
+    getTotalPayment();
+
     return (
         <React.Fragment>
             <div className="row m-0">
@@ -13,8 +29,8 @@ export const PaymentTaxes = ({ cart }) => {
                             <p className="mb-0 font-weight-bold">Envío:</p>
                         </div>
                         <div className="col-6 px-0 text-right">
-                            <p className="mb-0 font-weight-bold">Correos</p>
-                            <p className="mb-0 h4">4.90€</p>
+                            <p className="mb-0 font-weight-bold">{(purchase.shippingDetails && purchase.shippingDetails.shippingCompany) ? purchase.shippingDetails.shippingCompany : ''}</p>
+                            <p className="mb-0 h4">{(purchase.shippingDetails && purchase.shippingDetails.shippingPrice) ? purchase.shippingDetails.shippingPrice : ''}€</p>
                         </div>
                     </div>
                 </div>
@@ -25,7 +41,7 @@ export const PaymentTaxes = ({ cart }) => {
                         </div>
                         <div className="col-6 px-0 text-right">
                             <p className="mb-0">Importe</p>
-                            <p className="mb-0 h4">100€</p>
+                            <p className="mb-0 h4">{Math.round((totalPayment * 0.21) * 100) / 100}€</p>
                         </div>
                     </div>
                 </div>
@@ -35,7 +51,7 @@ export const PaymentTaxes = ({ cart }) => {
                     <p className="mb-0">TOTAL</p>
                 </div>
                 <div className="col-6 px-0 text-right">
-                    <p className="mb-0">100€</p>
+                    <p className="mb-0">{Math.round((totalPayment * 1.21) * 100) / 100}€</p>
                 </div>
             </div>
         </React.Fragment>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCart, setCart } from '../../../features/counter/counterSlice';
 import classNames from "classnames";
@@ -12,6 +13,7 @@ export const ShoppingCart = () => {
     const [showShoppingCartModal, setShowShoppingCartModal] = useState(false);
     let cart = useSelector(selectCart);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const handleCloseShoppingCartModal = () => setShowShoppingCartModal(false);
     const handleShowShoppingCartModal = () => setShowShoppingCartModal(true);
@@ -54,7 +56,7 @@ export const ShoppingCart = () => {
                         <p className="h3 my-3 text-center">Aún no tienes ningún artículo en el carro.</p>
                         :
                         cart.map((product, index) =>
-                            <div className="card flex-row m-0 my-2 p-3" >
+                            <div key={index} className="card flex-row m-0 my-2 p-3" >
                                 <div className="col-10 px-0 d-flex flex-column justify-content-center align-items-start">
                                     <p className="mb-0 font-weight-bold h4">{product.productName}</p>
                                     <p className="mb-3">{product.productResume}</p>
@@ -72,7 +74,7 @@ export const ShoppingCart = () => {
                     }
                 </div>
                 <div className="modal-footer bg-dark px-5 py-3">
-                    <button type="button" disabled={cart.length < 1} className="btn btn-success btn-block py-2">Continuar</button>
+                    <button type="button" disabled={cart.length < 1} className="btn btn-success btn-block py-2" onClick={() => history.push('/payment')}>Continuar</button>
                 </div>
             </Modal>
         </React.Fragment >

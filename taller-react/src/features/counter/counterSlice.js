@@ -7,16 +7,19 @@ export const counterSlice = createSlice({
     favourites: [],
     favouritesId: 0,
     filteredProducts: [],
+    purchase: {
+      'shippingDetails': {
+        'shippingIndex': 0,
+        'shippingCompany': 'Correos',
+        'shippingPrice': 6.90
+      }
+    },
     user: {},
     userLogged: false,
     value: 0
   },
   reducers: {
     increment: state => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
       state.value += 1;
     },
     decrement: state => {
@@ -45,8 +48,11 @@ export const counterSlice = createSlice({
     },
     setFilteredProducts: (state, action) => {
       state.filteredProducts = action.payload
+    },
+    setPurchase: (state, action) => {
+      state.purchase = action.payload
     }
-  },
+  }
 });
 
 export const {
@@ -59,7 +65,8 @@ export const {
   setCart,
   setFavourites,
   setFavouritesId,
-  setFilteredProducts
+  setFilteredProducts,
+  setPurchase
 } = counterSlice.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -82,5 +89,6 @@ export const selectCart = state => state.counter.cart;
 export const selectFavourites = state => state.counter.favourites;
 export const selectFavouritesId = state => state.counter.favouritesId;
 export const selectFilteredProducts = state => state.counter.filteredProducts;
+export const selectPurchase = state => state.counter.purchase;
 
 export default counterSlice.reducer;

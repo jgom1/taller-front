@@ -65,10 +65,10 @@ export const NavDropdown = () => {
 
             <Modal show={showConfirmExitModal} onHide={handleCloseConfirmExitModal}>
                 <Modal.Body className="p-5 text-center">
-                    <div class="modal-body text-center h4 mb-4">¿Seguro que deseas salir?</div>
-                    <div class="row m-0 justify-content-center">
-                        <button type="button" class="col-3 btn btn-success mr-2" onClick={handleCloseConfirmExitModal}>No</button>
-                        <button type="button" class="col-3 btn btn-danger ml-2" onClick={logoutEvent}>Sí</button>
+                    <div className="modal-body text-center h4 mb-4">¿Seguro que deseas salir?</div>
+                    <div className="row m-0 justify-content-center">
+                        <button type="button" className="col-3 btn btn-success mr-2" onClick={handleCloseConfirmExitModal}>No</button>
+                        <button type="button" className="col-3 btn btn-danger ml-2" onClick={logoutEvent}>Sí</button>
                     </div>
                 </Modal.Body>
             </Modal>

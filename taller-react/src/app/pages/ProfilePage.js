@@ -10,11 +10,11 @@ import { Profile } from '../components/profile/Profile';
 export const ProfilePage = () => {
 
     return (
-        <div class="row m-0 flex-xl-row-reverse">
-            <div class="col-12 col-xl-3 px-0 pl-xl-4">
+        <div className="row m-0 flex-xl-row-reverse">
+            <div className="col-12 col-xl-3 px-0 pl-xl-4">
                 <Sidebar />
             </div>
-            <div class="col-12 col-xl-9 px-0 pr-xl-4">
+            <div className="col-12 col-xl-9 px-0 pr-xl-4">
                 <Profile />
             </div>
         </div>

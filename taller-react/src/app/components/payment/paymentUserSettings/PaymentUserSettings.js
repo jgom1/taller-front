@@ -8,7 +8,7 @@ import { PaymentShippingDetails } from './PaymentShippingDetails';
 import { PaymentShippingAddress } from './PaymentShippingAddress';
 import { PaymentPayMode } from './PaymentPayMode';
 
-export const PaymentUserSettings = ({ user }) => {
+export const PaymentUserSettings = ({ user, purchase }) => {
     return (
         <div className="col-12 col-xl-8 px-0 pr-xl-4">
             <div className="col-12 p-3 bg-light">
@@ -20,9 +20,9 @@ export const PaymentUserSettings = ({ user }) => {
                             <p className="mb-0">{user.userEmail}</p>
                         </div>
                     </div>
-                    <PaymentShippingDetails />
-                    <PaymentShippingAddress user={user} />
-                    <PaymentPayMode user={user} />
+                    <PaymentShippingDetails purchase={purchase} />
+                    <PaymentShippingAddress user={user} purchase={purchase} />
+                    <PaymentPayMode user={user} purchase={purchase} />
                 </div>
             </div>
         </div>

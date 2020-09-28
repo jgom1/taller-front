@@ -67,30 +67,30 @@ export const Registration = () => {
                 <Modal.Body className="p-5 text-center">
                     <h2 className="mb-5">¡Bienvenido!</h2>
                     <form onSubmit={handleSubmit(RegistrationSubmit)}>
-                        <div class="form-group">
-                            <label htmlFor="registrationName" class="mb-1 h5">Nombre</label>
-                            <input type="text" class="form-control" name="registrationName" id="registrationName" ref={register({ required: true })} />
+                        <div className="form-group">
+                            <label htmlFor="registrationName" className="mb-1 h5">Nombre</label>
+                            <input type="text" className="form-control" name="registrationName" id="registrationName" ref={register({ required: true })} />
                         </div>
-                        <div class="form-group">
-                            <label htmlFor="registrationSurname" class="mb-1 h5">Apellidos</label>
-                            <input type="text" class="form-control" name="registrationSurname" id="registrationSurname" ref={register({ required: true })} />
+                        <div className="form-group">
+                            <label htmlFor="registrationSurname" className="mb-1 h5">Apellidos</label>
+                            <input type="text" className="form-control" name="registrationSurname" id="registrationSurname" ref={register({ required: true })} />
                         </div>
-                        <div class="form-group">
-                            <label htmlFor="registrationEmail" class="mb-1 h5">Correo electrónico</label>
-                            <input type="email" class="form-control" name="registrationEmail" id="registrationEmail" ref={register({ required: true })} />
+                        <div className="form-group">
+                            <label htmlFor="registrationEmail" className="mb-1 h5">Correo electrónico</label>
+                            <input type="email" className="form-control" name="registrationEmail" id="registrationEmail" ref={register({ required: true })} />
                         </div>
-                        <div class="form-group">
-                            <label htmlFor="registrationPassword" class="mb-1 h5">Contraseña</label>
-                            <input type="password" class="form-control" name="registrationPassword" id="registrationPassword" ref={register({ required: true })} />
+                        <div className="form-group">
+                            <label htmlFor="registrationPassword" className="mb-1 h5">Contraseña</label>
+                            <input type="password" className="form-control" name="registrationPassword" id="registrationPassword" ref={register({ required: true })} />
                         </div>
-                        <div class="form-group">
-                            <label htmlFor="confirmedRegistrationPassword" class="mb-1 h5">Confirma la contraseña</label>
-                            <input type="password" class="form-control" name="confirmedRegistrationPassword" id="confirmedRegistrationPassword" ref={register({ required: true })} />
+                        <div className="form-group">
+                            <label htmlFor="confirmedRegistrationPassword" className="mb-1 h5">Confirma la contraseña</label>
+                            <input type="password" className="form-control" name="confirmedRegistrationPassword" id="confirmedRegistrationPassword" ref={register({ required: true })} />
                         </div>
-                        {errorMessage && <p class="mb-0 text-danger small">{errorMessage}</p>}
-                        <div class="row m-0 mt-5 justify-content-center">
-                            <button type="button" class="col-4 btn btn-outline-danger mr-2" id="closeRegistrationModal" onClick={handleCloseRegistrationModal}>Cerrar</button>
-                            <button type="submit" disabled={!formState.isValid} class="col-4 btn btn-dark ml-2">Registrarse</button>
+                        {errorMessage && <p className="mb-0 text-danger small">{errorMessage}</p>}
+                        <div className="row m-0 mt-5 justify-content-center">
+                            <button type="button" className="col-4 btn btn-outline-danger mr-2" id="closeRegistrationModal" onClick={handleCloseRegistrationModal}>Cerrar</button>
+                            <button type="submit" disabled={!formState.isValid} className="col-4 btn btn-dark ml-2">Registrarse</button>
                         </div>
                     </form>
                 </Modal.Body>

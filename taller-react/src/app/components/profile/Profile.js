@@ -17,7 +17,7 @@ export const Profile = () => {
     return (
         <section className="bg-light p-3">
             <h2 className="text-center my-3">Mi perfil</h2>
-            <div class="row m-0 px-1 align-items-strench">
+            <div className="row m-0 px-1 align-items-strench">
                 <ProfilePersonalData user={user} />
                 <ProfileAddress user={user} />
                 <ProfileCreditCard user={user} />
