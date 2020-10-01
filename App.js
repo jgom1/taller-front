@@ -1,10 +1,11 @@
 import 'react-native-gesture-handler';
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 
-import MyDrawer from './src/navigation/AppNavigatior'
+import MyStack from './src/navigation/AppNavigatior'
 
 export default function App() {
   return (
-    <MyDrawer />
+    <MyStack />
   );
 }

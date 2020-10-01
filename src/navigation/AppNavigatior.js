@@ -1,34 +1,23 @@
 import React from 'react';
+import { Button, Text, View, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { ProductListScreen } from 'TallerReactNative/src/screens';
+import { ProductListScreen, ProductDetailScreen } from 'TallerReactNative/src/screens';
 
 const Stack = createStackNavigator();
-const Drawer = createDrawerNavigator();
 
-function MyStack() {
-    return (
-        <Stack.Navigator>
-            <Stack.Screen name="Profile" component={ProductListScreen} options={{ title: 'Productos' }} />
-            <Stack.Screen name="Settings" component={ProductListScreen} />
-        </Stack.Navigator>
-    );
-}
-
-export default function MyDrawer() {
+export default function MyStack() {
     return (
         <NavigationContainer>
-            <Drawer.Navigator>
-                <Drawer.Screen name="Productos" component={ProductListScreen} />
-                <Drawer.Screen name="¡Ofertas!" component={ProductListScreen} />
-                <Drawer.Screen name="Mi perfil" component={ProductListScreen} />
-                <Drawer.Screen name="Mi favoritos" component={ProductListScreen} />
-                <Drawer.Screen name="Mis compras" component={ProductListScreen} />
-            </Drawer.Navigator>
+            <Stack.Navigator>
+                <Stack.Screen name="Productos" component={ProductListScreen} />
+                <Stack.Screen name="Producto" component={ProductDetailScreen} />
+            </Stack.Navigator>
         </NavigationContainer>
     );
 }
+
+
 
 
 

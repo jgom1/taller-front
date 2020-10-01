@@ -2,12 +2,11 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import basicStyles from 'TallerReactNative/src/styles/basicStyles';
 
-export const ProductItem = () => {
-    const onPress = () => { }
+export const ProductItem = ({navigation}) => {
     return (
         <TouchableOpacity
             style={styles.button}
-            onPress={onPress}
+            onPress={() => navigation.navigate('Producto')}
         >
             <Image
                 style={styles.productImage}
@@ -44,14 +43,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: 100
     },
-    productName:{
+    productName: {
         fontSize: 20,
         fontWeight: 'bold'
     },
-    productResume:{
+    productResume: {
         fontSize: 16
     },
-    productPrice:{
+    productPrice: {
         fontSize: 26,
         fontWeight: 'bold'
     }

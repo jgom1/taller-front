@@ -4,13 +4,13 @@ import basicStyles from 'TallerReactNative/src/styles/basicStyles';
 
 import { ProductItem } from './ProductItem';
 
-export const ProductListScreen = () => {
+export const ProductListScreen = ({ navigation }) => {
     return (
         <View style={basicStyles.container}>
-            <ProductItem />
-            <ProductItem />
-            <ProductItem />
-            <ProductItem />
+            <ProductItem navigation={navigation} />
+            <ProductItem navigation={navigation} />
+            <ProductItem navigation={navigation} />
+            <ProductItem navigation={navigation} />
         </View>
     )
 }
