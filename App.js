@@ -1,11 +1,10 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import { View } from 'react-native';
 
-import { ProductListScreen } from 'TallerReactNative/src/screens';
-import basicStyles from './src/styles/basicStyles';
+import MyDrawer from './src/navigation/AppNavigatior'
 
 export default function App() {
   return (
-    <ProductListScreen />
+    <MyDrawer />
   );
 }
