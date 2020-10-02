@@ -10,8 +10,8 @@ export default function MyStack() {
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen name="Inicio" component={LoginAndRegisterScreen} />
-                {/* <Stack.Screen name="Productos" component={ProductListScreen} />
-                <Stack.Screen name="Producto" component={ProductDetailScreen} /> */}
+                <Stack.Screen name="Productos" component={ProductListScreen} />
+                <Stack.Screen name="Producto" component={ProductDetailScreen} /> 
             </Stack.Navigator>
         </NavigationContainer>
     );
